@@ -1,1 +1,1 @@
-test
+assets/js/shared.js
