@@ -20,15 +20,40 @@
 <body>
 <a href="#main" class="skip-link">تخطّى إلى المحتوى</a>
 <header class="mocro-header" id="top">
-  <div class="masthead"><div class="container masthead-inner">
-    <a href="index.html" class="brand" aria-label="مُوكْرُو — الصفحة الرئيسية">مُوكْرُو</a>
-    <div class="masthead-actions">
-      <button class="search-btn" data-search-toggle aria-label="فتح البحث"><span class="material-symbols-outlined">search</span></button>
-      <button class="theme-toggle" data-theme-toggle aria-label="تبديل الوضع" aria-pressed="false"><span class="material-symbols-outlined icon-moon">dark_mode</span><span class="material-symbols-outlined icon-sun">light_mode</span></button>
-      <button class="burger" data-burger aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+  <div class="masthead">
+    <div class="container masthead-inner">
+      <a href="index.html" class="brand" aria-label="مُوكْرُو — الصفحة الرئيسية">مُوكْرُو</a>
+      <nav class="nav-desktop" aria-label="التنقل الرئيسي">
+        <a href="index.html#latest" class="nav-link">الأحدث</a>
+        <div class="nav-item has-sub">
+          <button class="nav-link nav-trigger" aria-haspopup="true" aria-expanded="false">الأقسام <span class="material-symbols-outlined nav-caret" aria-hidden="true">expand_more</span></button>
+          <div class="submenu" role="menu" id="nav-categories-desktop"></div>
+        </div>
+        <a href="index.html#process" class="nav-link">المنهج</a>
+        <a href="index.html#journal" class="nav-link">مقالات</a>
+      </nav>
+      <div class="masthead-actions">
+        <button class="search-btn" data-search-toggle aria-label="فتح البحث"><span class="material-symbols-outlined" aria-hidden="true">search</span></button>
+        <button class="theme-toggle" data-theme-toggle aria-label="تبديل الوضع الليلي/النهاري" aria-pressed="false"><span class="material-symbols-outlined icon-moon" aria-hidden="true">dark_mode</span><span class="material-symbols-outlined icon-sun" aria-hidden="true">light_mode</span></button>
+        <button class="burger" data-burger aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+      </div>
     </div>
-  </div></div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="قائمة الجوال" aria-hidden="true">
+      <a href="index.html#latest"><span>الأحدث</span><span class="material-symbols-outlined menu-arrow" aria-hidden="true">arrow_back</span></a>
+      <a href="index.html#process"><span>المنهج</span><span class="material-symbols-outlined menu-arrow" aria-hidden="true">arrow_back</span></a>
+      <a href="index.html#journal"><span>مقالات</span><span class="material-symbols-outlined menu-arrow" aria-hidden="true">arrow_back</span></a>
+    </nav>
+  </div>
 </header>
+
+<div class="search-overlay" id="search-overlay" aria-hidden="true">
+  <div class="search-panel">
+    <button class="search-close" data-search-close aria-label="إغلاق البحث"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
+    <h2 class="search-title">ابحث في مُوكْرُو</h2>
+    <input type="search" class="search-input" id="search-input" placeholder="اكتب كلمة مثل: ذكاء اصطناعي، هوية، واجهة…" autocomplete="off">
+    <div class="search-results" id="search-results"></div>
+  </div>
+</div>
 <main id="main">
   <div class="container page-head" id="page-head"><h1 class="skeleton" style="height:2.2rem;width:40%"></h1><div class="page-desc skeleton" style="height:1rem;width:60%;margin-top:.75rem"></div></div>
   <div class="listing container"><div class="listing-grid" id="listing-grid"></div></div>
@@ -47,6 +72,8 @@
 <script src="assets/js/config.js"></script>
 <script src="assets/js/api.js"></script>
 <script src="assets/js/main.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/shared.js"></script>
 <script src="assets/js/category.js"></script>
 </body>
 </html>
