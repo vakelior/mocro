@@ -25,16 +25,6 @@
       storeTheme(next);
     });
   }
-  var preloader = document.getElementById('preloader');
-  function hidePreloader() {
-    if (!preloader) return;
-    preloader.classList.add('hidden');
-    setTimeout(function () { if (preloader.parentNode) preloader.parentNode.removeChild(preloader); }, 700);
-  }
-  if (preloader) {
-    window.addEventListener('load', function () { setTimeout(hidePreloader, 250); });
-    setTimeout(hidePreloader, 2500);
-  }
   const burger = document.querySelector('[data-burger]');
   const sidebar = document.querySelector('[data-sidebar]');
   const backdrop = document.querySelector('[data-backdrop]');

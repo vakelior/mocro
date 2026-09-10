@@ -13,12 +13,6 @@ ul,ol{list-style:none}
 a:focus-visible,button:focus-visible{outline:2px solid var(--color-fg);outline-offset:3px}
 .skip-link{position:absolute;top:-100%;right:1rem;z-index:200;background:var(--color-bg-inverse);color:var(--color-fg-inverse);padding:0.75rem 1.5rem;border-radius:var(--radius-sm);transition:top var(--duration) var(--ease)}
 .skip-link:focus{top:1rem}
-.preloader{position:fixed;inset:0;z-index:1000;background:var(--color-bg);display:flex;align-items:center;justify-content:center;transition:opacity var(--duration-slow) var(--ease),visibility var(--duration-slow) var(--ease)}
-.preloader.hidden{opacity:0;visibility:hidden}
-.preloader .mark{font-size:3rem;font-weight:700;letter-spacing:.04em;display:flex;align-items:center;gap:1rem;animation:loaderPulse 1.2s var(--ease) infinite}
-.preloader .mark .dot{width:14px;height:14px;background:var(--color-accent);border-radius:50%;animation:loaderDot 1.2s var(--ease) infinite}
-@keyframes loaderPulse{0%,100%{opacity:.4}50%{opacity:1}}
-@keyframes loaderDot{0%,100%{transform:scale(1)}50%{transform:scale(1.6)}}
 .theme-toggle{width:36px;height:36px;border:1px solid var(--color-line);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all var(--duration-fast);color:var(--color-fg)}
 .theme-toggle:hover{border-color:var(--color-fg)}
 .theme-toggle svg{width:17px;height:17px}
