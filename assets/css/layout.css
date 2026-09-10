@@ -9,7 +9,7 @@
 .slide-body h2{font-size:var(--text-3xl);font-weight:700;letter-spacing:-.01em;line-height:1.3;margin-bottom:1rem}
 .slide-body p{color:var(--color-muted);font-size:1rem;line-height:1.85;font-weight:300;margin-bottom:1.75rem}
 .slide-link{display:inline-flex;align-items:center;gap:.6rem;font-weight:700;font-size:.95rem;color:var(--color-fg);border-bottom:2px solid var(--color-accent);padding-bottom:.25rem;transition:gap var(--duration) var(--ease)}
-.slide-link svg{width:1.1rem;height:1.1rem}
+.slide-link .material-symbols-outlined{font-size:20px}
 .slide-link:hover{gap:1rem}
 .slider-nav{display:flex;gap:.6rem;margin-top:1.25rem;justify-content:center}
 .slider-dot{width:36px;height:4px;border-radius:2px;background:var(--color-line);transition:background var(--duration) var(--ease),width var(--duration) var(--ease)}

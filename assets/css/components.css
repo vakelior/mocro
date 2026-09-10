@@ -13,7 +13,7 @@
 .nav-desktop > a.nav-link::after,.nav-trigger::after{content:"";position:absolute;bottom:-8px;right:0;width:0;height:2px;background:var(--color-accent);transition:width var(--duration) var(--ease)}
 .nav-link:hover{color:var(--color-fg)}
 .nav-desktop > a.nav-link:hover::after,.nav-trigger:hover::after{width:100%}
-.nav-caret{width:14px;height:14px;transition:transform var(--duration-fast)}
+.nav-caret{font-size:20px;transition:transform var(--duration-fast)}
 .nav-item{position:relative}
 .nav-item.has-sub.open .nav-caret{transform:rotate(180deg)}
 .nav-item.has-sub.open .nav-trigger{color:var(--color-fg)}
@@ -22,11 +22,12 @@
 .submenu a{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border-radius:8px;font-size:.9rem;font-weight:500;color:var(--color-muted);transition:all var(--duration-fast)}
 .submenu a:hover{background:var(--color-bg-soft);color:var(--color-fg)}
 .submenu a .sub-num{font-family:var(--font-mono);font-size:.72rem;color:var(--color-muted)}
+.submenu a:not(:last-child){border-bottom:1px solid var(--color-line)}
 .submenu a:hover .sub-num{color:var(--color-accent)}
 .masthead-actions{display:flex;align-items:center;gap:.75rem}
 .search-btn{width:40px;height:40px;border:1px solid var(--color-line);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all var(--duration-fast)}
 .search-btn:hover{border-color:var(--color-fg)}
-.search-btn svg{width:18px;height:18px}
+.search-btn .material-symbols-outlined{font-size:20px}
 .burger{display:none;width:44px;height:44px;position:relative;z-index:110}
 .burger span,.burger span::before,.burger span::after{content:"";display:block;width:24px;height:2px;background:var(--color-bg-inverse);position:absolute;right:10px;transition:all var(--duration) var(--ease)}
 .burger span{top:50%;transform:translateY(-50%)}
@@ -86,7 +87,7 @@
 .journal-body{flex:1}
 .journal-body h3{font-size:1.15rem;font-weight:700;margin-bottom:.35rem;transition:color var(--duration)}
 .journal-body p{color:var(--color-muted);font-size:.9rem;line-height:1.7;font-weight:300}
-.journal-arrow{font-size:1.25rem;color:var(--color-muted);transition:transform var(--duration)}
+.journal-arrow{font-size:22px;color:var(--color-muted);transition:transform var(--duration)}
 .journal-item:hover .journal-arrow{transform:translateX(-6px)}
 .widget{border:1px solid var(--color-line);border-radius:var(--radius-md);padding:1.5rem 1.5rem 1.75rem;margin-bottom:1.5rem}
 .widget-title{font-size:.85rem;font-weight:700;letter-spacing:.05em;margin-bottom:1.25rem;padding-bottom:.75rem;border-bottom:2px solid var(--color-bg-inverse);position:relative;display:inline-block}
