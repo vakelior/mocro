@@ -128,38 +128,4 @@
     revealEls.forEach(function (el) { el.classList.add('in-view'); });
   }
 
-  /* ---------- Animated counters ---------- */
-  function animateCount(el) {
-    const target = parseInt(el.getAttribute('data-count'), 10);
-    if (isNaN(target)) return;
-    const duration = 1600;
-    let start = null;
-    function step(ts) {
-      if (start === null) start = ts;
-      const progress = Math.min((ts - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.floor(eased * target);
-      if (progress < 1) requestAnimationFrame(step);
-      else el.textContent = target;
-    }
-    requestAnimationFrame(step);
-  }
-
-  const counters = document.querySelectorAll('[data-count]');
-  const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (prefersReduced) {
-    counters.forEach(function (el) { el.textContent = el.getAttribute('data-count'); });
-  } else if ('IntersectionObserver' in window) {
-    const counterObserver = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          animateCount(entry.target);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(function (el) { counterObserver.observe(el); });
-  } else {
-    counters.forEach(function (el) { el.textContent = el.getAttribute('data-count'); });
-  }
 })();
