@@ -89,13 +89,39 @@
   closeBtn && closeBtn.addEventListener('click', closeSidebar);
   backdrop && backdrop.addEventListener('click', closeSidebar);
 
-  /* ---------- Header scroll state ---------- */
-  const header = document.querySelector('.mocro-header');
-  function onScroll() {
-    header && header.classList.toggle('is-scrolled', window.scrollY > 30);
+  /* ---------- Featured slider ---------- */
+  var slides = Array.prototype.slice.call(document.querySelectorAll('[data-slide]'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('[data-slider-dot]'));
+  var current = 0;
+  var sliderAuto = null;
+
+  function showSlide(index) {
+    if (!slides.length) return;
+    current = (index + slides.length) % slides.length;
+    slides.forEach(function (s, i) { s.classList.toggle('is-active', i === current); });
+    dots.forEach(function (d, i) { d.classList.toggle('is-active', i === current); });
   }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  onScroll();
+
+  function nextSlide() { showSlide(current + 1); }
+
+  dots.forEach(function (dot) {
+    dot.addEventListener('click', function () {
+      showSlide(parseInt(dot.getAttribute('data-slider-dot'), 10));
+      restartAuto();
+    });
+  });
+
+  function startAuto() {
+    if (slides.length <= 1) return;
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+    sliderAuto = setInterval(nextSlide, 6000);
+  }
+  function restartAuto() {
+    clearInterval(sliderAuto);
+    startAuto();
+  }
+  startAuto();
 
   /* ---------- Smooth scroll + close sidebar on nav ---------- */
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
