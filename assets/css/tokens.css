@@ -1,1 +1,67 @@
-:root{--color-bg:#ffffff;--color-bg-inverse:#000000;--color-surface:#0a0a0a;--color-fg:#0a0a0a;--color-fg-inverse:#ffffff;--color-muted:#666666;--color-muted-inverse:#999999;--color-line:#e8e8e8;--color-line-inverse:#262626;--font-sans:'Al-Jazeera-Arabic',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;--font-mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;--text-xs:0.75rem;--text-sm:0.875rem;--text-base:1rem;--text-lg:1.125rem;--text-xl:1.3125rem;--text-2xl:1.625rem;--text-3xl:clamp(1.875rem,4.5vw,3rem);--text-4xl:clamp(2.5rem,6vw,4rem);--text-hero:clamp(2.875rem,8vw,6rem);--space-1:0.25rem;--space-2:0.5rem;--space-3:0.75rem;--space-4:1rem;--space-5:1.5rem;--space-6:2rem;--space-8:3rem;--space-12:4.5rem;--space-16:6rem;--max-width:1200px;--ease:cubic-bezier(.22,1,.36,1);--duration-fast:.2s;--duration:.35s;--duration-slow:.6s;--radius-sm:12px;--radius-md:20px;--radius-full:100px;}
+/* ============ DESIGN TOKENS ============ */
+:root{
+  /* Light theme (default) */
+  --color-bg:#ffffff;
+  --color-bg-inverse:#000000;
+  --color-surface:#0a0a0a;
+  --color-fg:#0a0a0a;
+  --color-fg-inverse:#ffffff;
+  --color-muted:#666666;
+  --color-muted-inverse:#999999;
+  --color-line:#e8e8e8;
+  --color-line-inverse:#262626;
+  --color-header-bg:rgba(255,255,255,.85);
+
+  /* Typography */
+  --font-sans:'Al-Jazeera-Arabic',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
+
+  --text-xs:0.75rem;
+  --text-sm:0.875rem;
+  --text-base:1rem;
+  --text-lg:1.125rem;
+  --text-xl:1.3125rem;
+  --text-2xl:1.625rem;
+  --text-3xl:clamp(1.875rem,4.5vw,3rem);
+  --text-4xl:clamp(2.5rem,6vw,4rem);
+  --text-hero:clamp(2.875rem,9vw,7rem);
+
+  /* Spacing */
+  --space-1:0.25rem;
+  --space-2:0.5rem;
+  --space-3:0.75rem;
+  --space-4:1rem;
+  --space-5:1.5rem;
+  --space-6:2rem;
+  --space-8:3rem;
+  --space-12:4.5rem;
+  --space-16:6rem;
+
+  /* Layout */
+  --max-width:1200px;
+
+  /* Motion */
+  --ease:cubic-bezier(.22,1,.36,1);
+  --duration-fast:.2s;
+  --duration:.35s;
+  --duration-slow:.6s;
+
+  /* Radius */
+  --radius-sm:12px;
+  --radius-md:20px;
+  --radius-full:100px;
+}
+
+/* Dark theme — flipped */
+[data-theme="dark"]{
+  --color-bg:#0a0a0a;
+  --color-bg-inverse:#ffffff;
+  --color-surface:#141414;
+  --color-fg:#ffffff;
+  --color-fg-inverse:#0a0a0a;
+  --color-muted:#999999;
+  --color-muted-inverse:#666666;
+  --color-line:#262626;
+  --color-line-inverse:#e8e8e8;
+  --color-header-bg:rgba(10,10,10,.85);
+}
