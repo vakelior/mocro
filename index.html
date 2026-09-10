@@ -33,15 +33,6 @@
 <body>
 <a href="#main" class="skip-link">تخطّى إلى المحتوى</a>
 <header class="mocro-header" id="top">
-  <div class="topbar">
-    <div class="container topbar-inner">
-      <span class="topbar-note">مجلة التصميم الرقمي — تصدر دورياً</span>
-      <button class="theme-toggle" data-theme-toggle aria-label="تبديل الوضع الليلي/النهاري" aria-pressed="false">
-        <span class="material-symbols-outlined icon-moon" aria-hidden="true">dark_mode</span>
-        <span class="material-symbols-outlined icon-sun" aria-hidden="true">light_mode</span>
-      </button>
-    </div>
-  </div>
   <div class="masthead">
     <div class="container masthead-inner">
       <a href="#top" class="brand" aria-label="مُوكْرُو — الصفحة الرئيسية"><span class="dot"></span> مُوكْرُو</a>
@@ -53,52 +44,36 @@
             <a href="#identity" role="menuitem"><span>الهوية البصرية</span><span class="sub-num">01</span></a>
             <a href="#frontend" role="menuitem"><span>تطوير الواجهات</span><span class="sub-num">02</span></a>
             <a href="#ux" role="menuitem"><span>تجربة المستخدم</span><span class="sub-num">03</span></a>
-            <a href="#journal" role="menuitem"><span>الفلسفة</span><span class="sub-num">04</span></a>
           </div>
         </div>
         <a href="#process" class="nav-link">المنهج</a>
-        <div class="nav-item has-sub">
-          <button class="nav-link nav-trigger" aria-haspopup="true" aria-expanded="false">مقالات <span class="material-symbols-outlined nav-caret" aria-hidden="true">expand_more</span></button>
-          <div class="submenu" role="menu">
-            <a href="#journal" role="menuitem"><span>الوضوح أولاً</span><span class="sub-num">01</span></a>
-            <a href="#journal" role="menuitem"><span>نيّة قبل مؤثرات</span><span class="sub-num">02</span></a>
-            <a href="#journal" role="menuitem"><span>بساطة مقصودة</span><span class="sub-num">03</span></a>
-          </div>
-        </div>
+        <a href="#journal" class="nav-link">مقالات</a>
       </nav>
       <div class="masthead-actions">
         <button class="search-btn" data-search-toggle aria-label="فتح البحث">
           <span class="material-symbols-outlined" aria-hidden="true">search</span>
+        </button>
+        <button class="theme-toggle" data-theme-toggle aria-label="تبديل الوضع الليلي/النهاري" aria-pressed="false">
+          <span class="material-symbols-outlined icon-moon" aria-hidden="true">dark_mode</span>
+          <span class="material-symbols-outlined icon-sun" aria-hidden="true">light_mode</span>
         </button>
         <button class="burger" data-burger aria-label="فتح القائمة" aria-expanded="false" aria-controls="sidebar"><span></span></button>
       </div>
     </div>
   </div>
 </header>
-<div class="ticker" aria-label="آخر المستجدات">
-  <div class="container ticker-inner">
-    <span class="ticker-label">آخر المستجدات</span>
-    <div class="ticker-viewport">
-      <ul class="ticker-track" id="ticker-track">
-        <li><span class="ticker-time">قريباً</span> إطلاق هوية مُوكْرُو البصرية الكاملة</li>
-        <li><span class="ticker-time">جديد</span> مقال: الوضوح أولاً — لماذا يسبق كل عنصر بصري</li>
-        <li><span class="ticker-time">منهج</span> نُفكّر ثم نبني، ولا نبني ثم نُصحّح</li>
-        <li><span class="ticker-time">ملاحظة</span> هذا الإصدار تجريبي — المحتوى يتجدّد فور الإطلاق</li>
-      </ul>
-    </div>
-  </div>
-</div>
 <div class="sidebar" id="sidebar" data-sidebar role="dialog" aria-modal="true" aria-hidden="true" aria-label="قائمة التنقل">
   <div class="sidebar-head">
     <a href="#top" class="brand"><span class="dot"></span> مُوكْرُو</a>
-    <button class="sidebar-close" data-sidebar-close aria-label="إغلاق القائمة">✕</button>
+    <button class="sidebar-close" data-sidebar-close aria-label="إغلاق القائمة"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
   </div>
   <nav class="sidebar-nav" aria-label="قائمة الجوال">
     <a href="#latest"><span>الأحدث</span><span class="num">01</span></a>
     <a href="#identity"><span>الهوية</span><span class="num">02</span></a>
     <a href="#frontend"><span>الواجهات</span><span class="num">03</span></a>
     <a href="#ux"><span>التجربة</span><span class="num">04</span></a>
-    <a href="#journal"><span>مقالات</span><span class="num">05</span></a>
+    <a href="#process"><span>المنهج</span><span class="num">05</span></a>
+    <a href="#journal"><span>مقالات</span><span class="num">06</span></a>
   </nav>
   <div class="sidebar-foot">
     <p>© 2026 مُوكْرُو — مجلة التصميم الرقمي</p>
@@ -110,7 +85,7 @@
   <section class="featured container" aria-label="مقالات مميزة">
     <div class="featured-slider" data-slider>
       <div class="slide is-active" data-slide>
-        <div class="slide-media"><div class="placeholder-art ph-1">مُوكْرُو</div></div>
+        <div class="slide-media"><img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80&fm=jpg" alt="تصميم جرافيكي بهوية بيضاء وسوداء" loading="eager" width="1200" height="800"></div>
         <div class="slide-body">
           <span class="cat">مقال</span>
           <h2>الوضوح أولاً — لماذا يسبق كل عنصر بصري</h2>
@@ -119,7 +94,7 @@
         </div>
       </div>
       <div class="slide" data-slide>
-        <div class="slide-media"><div class="placeholder-art ph-2">ذوق</div></div>
+        <div class="slide-media"><img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=1200&q=80&fm=jpg" alt="واجهة تصميم رقمية" loading="lazy" width="1200" height="800"></div>
         <div class="slide-body">
           <span class="cat">فلسفة</span>
           <h2>الذوق فوق الزخرفة — التصميم قرار وليس إضافة</h2>
@@ -128,7 +103,7 @@
         </div>
       </div>
       <div class="slide" data-slide>
-        <div class="slide-media"><div class="placeholder-art ph-3">منهج</div></div>
+        <div class="slide-media"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80&fm=jpg" alt="شاشة كود وواجهة تطوير" loading="lazy" width="1200" height="800"></div>
         <div class="slide-body">
           <span class="cat">منهج</span>
           <h2>نفكّر ثم نبني — منهج من أربع خطوات</h2>
@@ -148,10 +123,22 @@
       <section id="latest">
         <div class="section-bar"><h2 class="section-title">الأحدث</h2><span class="section-rule"></span></div>
         <div class="post-grid">
-          <article class="post"><div class="post-thumb"><div class="placeholder-art ph-2">وضوح</div></div><div class="post-body"><span class="cat">الهوية</span><h3>الهوية البصرية كقرار استراتيجي لا كزخرفة</h3><p>الشعار ليس صورة، بل اختصار لقيم العلامة. هوية واضحة تختصر الرسالة في مشهد واحد.</p><time class="meta">مقال تمهيدي</time></div></article>
-          <article class="post"><div class="post-thumb"><div class="placeholder-art ph-1">خط</div></div><div class="post-body"><span class="cat">الواجهات</span><h3>الخط العربي في الواجهات — قراءة قبل الجمال</h3><p>الخط عنصر بنيوي لا تزييني. اختيار خط واضح مقروء يسبق أي اعتبار جمالي.</p><time class="meta">مقال تمهيدي</time></div></article>
-          <article class="post"><div class="post-thumb"><div class="placeholder-art ph-3">تجربة</div></div><div class="post-body"><span class="cat">التجربة</span><h3>تجربة المستخدم تبدأ من الهدف لا من الشاشة</h3><p>رحلات استخدام واضحة تُرشد المستخدم نحو هدفه بسلاسة، دون تعقيد أو حشو.</p><time class="meta">مقال تمهيدي</time></div></article>
-          <article class="post"><div class="post-thumb"><div class="placeholder-art ph-2">البساطة</div></div><div class="post-body"><span class="cat">فلسفة</span><h3>البساطة المقصودة — فن الحذف</h3><p>أصعب قرار في التصميم ليس ما تضيفه، بل ما تُزيله. البساطة نضجٌ لا نقص.</p><time class="meta">مقال تمهيدي</time></div></article>
+          <article class="post">
+            <div class="post-thumb"><img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?w=800&q=80&fm=jpg" alt="تصميم هوية بصرية" loading="lazy" width="800" height="533"></div>
+            <div class="post-body"><span class="cat">الهوية</span><h3>الهوية البصرية كقرار استراتيجي لا كزخرفة</h3><p>الشعار ليس صورة، بل اختصار لقيم العلامة. هوية واضحة تختصر الرسالة في مشهد واحد يستحيل نسيانه.</p><time class="meta">مقال تجريبي · 5 دقائق</time></div>
+          </article>
+          <article class="post">
+            <div class="post-thumb"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80&fm=jpg" alt="شاشة كود وواجهة تطوير" loading="lazy" width="800" height="533"></div>
+            <div class="post-body"><span class="cat">الواجهات</span><h3>الخط العربي في الواجهات — قراءة قبل الجمال</h3><p>الخط عنصر بنيوي لا تزييني. اختيار خط واضح مقروء يسبق أي اعتبار جمالي في الواجهات الرقمية.</p><time class="meta">مقال تجريبي · 7 دقائق</time></div>
+          </article>
+          <article class="post">
+            <div class="post-thumb"><img src="https://images.unsplash.com/photo-1581291518857-4e27b48ff24e?w=800&q=80&fm=jpg" alt="لوحة تصميم تجربة مستخدم" loading="lazy" width="800" height="533"></div>
+            <div class="post-body"><span class="cat">التجربة</span><h3>تجربة المستخدم تبدأ من الهدف لا من الشاشة</h3><p>رحلات استخدام واضحة تُرشد المستخدم نحو هدفه بسلاسة، دون تعقيد أو حشو بصري زائد.</p><time class="meta">مقال تجريبي · 6 دقائق</time></div>
+          </article>
+          <article class="post">
+            <div class="post-thumb"><img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=800&q=80&fm=jpg" alt="شاشة تعليمات برمجية" loading="lazy" width="800" height="533"></div>
+            <div class="post-body"><span class="cat">فلسفة</span><h3>البساطة المقصودة — فن الحذف</h3><p>أصعب قرار في التصميم ليس ما تضيفه، بل ما تُزيله. البساطة نضجٌ لا نقص.</p><time class="meta">مقال تجريبي · 4 دقائق</time></div>
+          </article>
         </div>
       </section>
       <section id="process">
@@ -166,9 +153,21 @@
       <section id="journal">
         <div class="section-bar"><h2 class="section-title">مقالات</h2><span class="section-rule"></span></div>
         <div class="journal-list">
-          <article class="journal-item"><div class="journal-num">01</div><div class="journal-body"><h3>الوضوح أولاً</h3><p>قبل أي لون أو خط، نحدد ما يجب أن يفهمه المستخدم خلال خمس ثوانٍ. هذه هي البوصلة التي يبدأ منها كل تصميم ناجح.</p></div><span class="journal-arrow material-symbols-outlined" aria-hidden="true">arrow_back</span></article>
-          <article class="journal-item"><div class="journal-num">02</div><div class="journal-body"><h3>نيّة قبل مؤثرات</h3><p>كل عنصر بصري يجب أن يخدم هدفاً واضحاً، وإلا حذفناه بلا تردد. المؤثر بلا نيّة تشويش لا إثراء.</p></div><span class="journal-arrow material-symbols-outlined" aria-hidden="true">arrow_back</span></article>
-          <article class="journal-item"><div class="journal-num">03</div><div class="journal-body"><h3>بساطة مقصودة</h3><p>نؤمن أن التصميم الجيد ليس ما تضيفه، بل ما تختار حذفه. الفراغ لغة بحد ذاتها.</p></div><span class="journal-arrow material-symbols-outlined" aria-hidden="true">arrow_back</span></article>
+          <article class="journal-item">
+            <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1559028012-481c04fa702d?w=400&q=80&fm=jpg" alt="تصميم بسيط بألوان محايدة" loading="lazy" width="400" height="267"></div>
+            <div class="journal-body"><h3>الوضوح أولاً</h3><p>قبل أي لون أو خط، نحدد ما يجب أن يفهمه المستخدم خلال خمس ثوانٍ. هذه هي البوصلة التي يبدأ منها كل تصميم ناجح، فإذا لم يصل المعنى بسرعة فقد التصميم وظيفته الجوهرية.</p><span class="cat">فلسفة · قراءة 4 دقائق</span></div>
+            <a href="#journal" class="journal-arrow material-symbols-outlined" aria-hidden="true" aria-label="اقرأ المقال">arrow_back</a>
+          </article>
+          <article class="journal-item">
+            <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1545235617-9465d2a55698?w=400&q=80&fm=jpg" alt="تصميم واجهة مستخدم" loading="lazy" width="400" height="267"></div>
+            <div class="journal-body"><h3>نيّة قبل مؤثرات</h3><p>كل عنصر بصري يجب أن يخدم هدفاً واضحاً، وإلا حذفناه بلا تردد. المؤثر بلا نيّة تشويش لا إثراء، والحركة بلا معنى ضياع للانتباه.</p><span class="cat">فلسفة · قراءة 5 دقائق</span></div>
+            <a href="#journal" class="journal-arrow material-symbols-outlined" aria-hidden="true" aria-label="اقرأ المقال">arrow_back</a>
+          </article>
+          <article class="journal-item">
+            <div class="journal-thumb"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&fm=jpg" alt="مساحة فارغة وبساطة" loading="lazy" width="400" height="267"></div>
+            <div class="journal-body"><h3>بساطة مقصودة</h3><p>نؤمن أن التصميم الجيد ليس ما تضيفه، بل ما تختار حذفه. الفراغ لغة بحد ذاتها تمنح العناصر مساحةً للتنفس وتوجه العين نحو الأساسي.</p><span class="cat">فلسفة · قراءة 3 دقائق</span></div>
+            <a href="#journal" class="journal-arrow material-symbols-outlined" aria-hidden="true" aria-label="اقرأ المقال">arrow_back</a>
+          </article>
         </div>
       </section>
     </div>
