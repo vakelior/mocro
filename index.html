@@ -186,6 +186,61 @@ img{max-width:100%;display:block}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 
+
+/* ==== MARQUEE ==== */
+.marquee{background:#000;color:#fff;overflow:hidden;padding:20px 0;border-top:1px solid var(--line-alt);border-bottom:1px solid var(--line-alt);white-space:nowrap}
+.marquee-track{display:inline-block;animation:marquee 28s linear infinite}
+.marquee-track span{font-size:clamp(20px,3vw,34px);font-weight:700;padding:0 28px;letter-spacing:.02em}
+.marquee-track span.outline{color:transparent;-webkit-text-stroke:1px #fff}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ==== SECTION NUMBER ==== */
+.section-label{display:flex;align-items:baseline;gap:16px;justify-content:space-between;border-bottom:1px solid var(--line);padding-bottom:20px;margin-bottom:56px}
+.section-label .kicker{font-family:var(--mono);font-size:13px;letter-spacing:.25em;text-transform:uppercase;color:var(--muted)}
+.section-label .index{font-family:var(--mono);font-size:14px;color:var(--muted)}
+
+/* ==== PROCESS ==== */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.process-step{padding:32px 26px;border-left:1px solid var(--line);position:relative;transition:background .3s}
+.process-step:last-child{border-left:none}
+.process-step:hover{background:#000;color:#fff}
+.process-step .num{font-family:var(--mono);font-size:13px;color:var(--muted);margin-bottom:20px;transition:color .3s}
+.process-step:hover .num{color:#fff}
+.process-step h3{font-size:18px;font-weight:700;margin-bottom:10px;line-height:1.4}
+.process-step p{font-size:13.5px;color:var(--muted);line-height:1.7;font-weight:300;transition:color .3s}
+.process-step:hover p{color:var(--muted-alt)}
+
+/* ==== WORKS ==== */
+.works{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.work{position:relative;border:1px solid var(--line);border-radius:20px;overflow:hidden;background:#000;aspect-ratio:4/3;display:flex;align-items:flex-end;transition:all .4s var(--ease)}
+.work:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,.18)}
+.work .img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:72px;color:rgba(255,255,255,.12);font-weight:700;transition:font-size .4s var(--ease)}
+.work:hover .img{font-size:80px}
+.work .info{position:relative;z-index:1;padding:28px;width:100%;background:linear-gradient(transparent,rgba(0,0,0,.85));color:#fff}
+.work .info .cat{font-family:var(--mono);font-size:11px;letter-spacing:.15em;text-transform:uppercase;color:var(--muted-alt);margin-bottom:8px}
+.work .info h3{font-size:22px;font-weight:700}
+.work .info .arrow{position:absolute;top:28px;left:28px;width:42px;height:42px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all .3s}
+.work:hover .info .arrow{background:#fff;color:#000;border-color:#fff}
+
+/* ==== FOOTER CTA ==== */
+.footer-cta{background:#000;color:#fff;padding:120px 0;text-align:center;position:relative;overflow:hidden}
+.footer-cta h2{font-size:clamp(40px,7vw,80px);font-weight:700;letter-spacing:-.03em;line-height:1.05;margin-bottom:8px}
+.footer-cta h2 .ghost{color:transparent;-webkit-text-stroke:1.5px #fff}
+.footer-cta .sub{color:var(--muted-alt);margin:24px 0 48px;font-size:18px;font-weight:300}
+.footer-cta .email-link{display:inline-block;font-family:var(--mono);font-size:clamp(18px,3vw,30px);border-bottom:2px solid #fff;padding-bottom:6px;transition:opacity .2s}
+.footer-cta .email-link:hover{opacity:.7}
+
+/* responsive for new */
+@media(max-width:900px){
+  .process{grid-template-columns:repeat(2,1fr)}
+  .works{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  .process{grid-template-columns:1fr}
+  .process-step{border-left:none;border-bottom:1px solid var(--line)}
+  .process-step:last-child{border-bottom:none}
+}
+
 </style>
 </head>
 <body>
@@ -196,6 +251,7 @@ img{max-width:100%;display:block}
     <nav class="nav-desktop">
       <a href="#services">الخدمات</a>
       <a href="#about">من نحن</a>
+      <a href="#works">أعمالنا</a>
       <a href="#journal">المدوّنة</a>
       <a href="#contact" class="cta-link">تواصل معنا</a>
     </nav>
@@ -211,8 +267,9 @@ img{max-width:100%;display:block}
   <nav class="sidebar-nav">
     <a href="#services"><span>الخدمات</span><span class="num">01</span></a>
     <a href="#about"><span>من نحن</span><span class="num">02</span></a>
-    <a href="#journal"><span>المدوّنة</span><span class="num">03</span></a>
-    <a href="#contact"><span>تواصل معنا</span><span class="num">04</span></a>
+    <a href="#works"><span>أعمال مختارة</span><span class="num">03</span></a>
+    <a href="#journal"><span>المدوّنة</span><span class="num">04</span></a>
+    <a href="#contact"><span>تواصل معنا</span><span class="num">05</span></a>
   </nav>
   <div class="sidebar-foot">
     <div class="social">
@@ -245,7 +302,15 @@ img{max-width:100%;display:block}
     </div>
   </section>
 
-  <section class="section" id="services">
+  
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span>تصميم</span><span class="outline">هوية بصرية</span><span>تطوير</span><span class="outline">واجهات أنيقة</span><span>إستراتيجية</span><span class="outline">إبداع رقمي</span><span>2026</span>
+    <span>تصميم</span><span class="outline">هوية بصرية</span><span>تطوير</span><span class="outline">واجهات أنيقة</span><span>إستراتيجية</span><span class="outline">إبداع رقمي</span><span>2026</span>
+  </div>
+</div>
+
+<section class="section" id="services">
     <div class="container">
       <div class="section-head reveal">
         <div class="eyebrow">الخدمات</div>
@@ -299,7 +364,39 @@ img{max-width:100%;display:block}
     </div>
   </section>
 
-  <section class="section" id="journal">
+  
+<section class="section" id="process">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="kicker">كيف نعمل</span>
+      <span class="index">( 02 )</span>
+    </div>
+    <div class="process">
+      <div class="process-step reveal">
+        <div class="num">01</div>
+        <h3>اكتشاف</h3>
+        <p>نفهم عملك وجمهورك وأهدافك قبل أي تصميم.</p>
+      </div>
+      <div class="process-step reveal" data-delay="1">
+        <div class="num">02</div>
+        <h3>تصوّر</h3>
+        <p>نحوّل الرؤية إلى مفاهيم وهوية بصرية واضحة.</p>
+      </div>
+      <div class="process-step reveal" data-delay="2">
+        <div class="num">03</div>
+        <h3>تنفيذ</h3>
+        <p>نبني التصميم بدقة متناهية وجودة عالية.</p>
+      </div>
+      <div class="process-step reveal" data-delay="3">
+        <div class="num">04</div>
+        <h3>إطلاق</h3>
+        <p>نطلق المشروع ونتابع الأداء والتحسين.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="journal">
     <div class="container">
       <div class="section-head reveal">
         <div class="eyebrow">المدوّنة</div>
@@ -338,13 +435,59 @@ img{max-width:100%;display:block}
     </div>
   </section>
 
-  <section class="cta" id="contact">
-    <div class="container">
-      <h2 class="reveal">جاهز <span class="accent">للانطلاق؟</span></h2>
-      <p class="reveal" data-delay="1">تواصل معنا اليوم ودعنا نحوّل أفكارك إلى تجربة رقمية استثنائية.</p>
-      <a href="mailto:hello@mocro.example" class="btn btn-primary reveal" data-delay="2">راسلنا الآن <span class="arrow">←</span></a>
+  
+<section class="section section-alt" id="works">
+  <div class="container">
+    <div class="section-label reveal">
+      <span class="kicker">أعمال مختارة</span>
+      <span class="index">( 03 )</span>
     </div>
-  </section>
+    <div class="works">
+      <a href="#" class="work reveal">
+        <div class="img">A+</div>
+        <div class="info">
+          <div class="cat">هوية بصرية</div>
+          <h3>Aurora Brand</h3>
+          <span class="arrow">←</span>
+        </div>
+      </a>
+      <a href="#" class="work reveal" data-delay="1">
+        <div class="img">N╱</div>
+        <div class="info">
+          <div class="cat">موقع إلكتروني</div>
+          <h3>Nimbus Studio</h3>
+          <span class="arrow">←</span>
+        </div>
+      </a>
+      <a href="#" class="work reveal" data-delay="1">
+        <div class="img">◼</div>
+        <div class="info">
+          <div class="cat">تطبيق</div>
+          <h3>Forma App</h3>
+          <span class="arrow">←</span>
+        </div>
+      </a>
+      <a href="#" class="work reveal" data-delay="2">
+        <div class="img">M╳</div>
+        <div class="info">
+          <div class="cat">حملة إطلاق</div>
+          <h3>Mono Campaign</h3>
+          <span class="arrow">←</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<section class="footer-cta" id="contact">
+  <div class="container">
+    <h2 class="reveal">لنصنع شيئاً <span class="ghost">استثنائياً</span></h2>
+    <p class="sub reveal" data-delay="1">دعنا نحوّل أفكارك إلى تجربة رقمية لا تُنسى.</p>
+    <a href="mailto:hello@mocro.example" class="email-link reveal" data-delay="2">hello@mocro.example</a>
+  </div>
+</section>
+
 </main>
 
 <footer class="mocro-footer">
