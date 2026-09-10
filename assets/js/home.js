@@ -9,7 +9,7 @@
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
   function url(path) { var b = M.client !== undefined ? window.MOCRO_CONFIG.SITE_BASE : ''; if (b && b.slice(-1) !== '/') b += '/'; return b + path; }
   function dateStr(iso) { if (!iso) return ''; try { return new Date(iso).toLocaleDateString('ar-TN', { year: 'numeric', month: 'long', day: 'numeric' }); } catch (e) { return iso.slice(0, 10); } }
-  function readingTime(content) { var w = (content || '').trim().split(/\s+/).length; return Math.max(1, Math.round(w / 180)) + ' دقائق'; }
+  function readingTime(content) { var w = (content || '').trim().split(/\s+/).length; var m = Math.max(1, Math.round(w / 180)); return m + (m === 1 ? ' دقيقة' : ' دقائق'); }
   function artUrl(a) { return url('article.html?slug=' + encodeURIComponent(a.slug)); }
   function catUrl(c) { return url('category.html?slug=' + encodeURIComponent(c.slug)); }
 
