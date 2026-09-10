@@ -101,16 +101,21 @@
     grid.innerHTML = '';
     posts.forEach(function (a) {
       var article = el('article', 'post');
-      article.setAttribute('data-href', artUrl(a));
+      var href = artUrl(a);
+      article.setAttribute('data-href', href);
+      article.setAttribute('tabindex', '0');
+      article.setAttribute('role', 'link');
+      article.setAttribute('aria-label', a.title);
       var thumb = el('div', 'post-thumb');
       if (a.featured_image) { var img = document.createElement('img'); img.src = a.featured_image; img.alt = a.title; img.loading = 'lazy'; thumb.appendChild(img); }
       var body = el('div', 'post-body');
       body.appendChild(el('span', 'cat', a.category ? a.category.name : ''));
       body.appendChild(el('h3', null, a.title));
       body.appendChild(el('p', null, a.excerpt));
-      body.appendChild(el('time', 'meta', 'قراءة ' + readingTime(a.content)));
+      body.appendChild(el('time', 'meta', (a.published_at ? dateStr(a.published_at) + ' · ' : '') + 'قراءة ' + readingTime(a.content)));
       article.appendChild(thumb); article.appendChild(body);
-      article.addEventListener('click', function () { window.location.href = artUrl(a); });
+      article.addEventListener('click', function () { window.location.href = href; });
+      article.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
       grid.appendChild(article);
     });
   }
@@ -121,7 +126,11 @@
     list.innerHTML = '';
     articles.forEach(function (a) {
       var item = el('article', 'journal-item');
-      item.setAttribute('data-href', artUrl(a));
+      var href = artUrl(a);
+      item.setAttribute('data-href', href);
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'link');
+      item.setAttribute('aria-label', a.title);
       var thumb = el('div', 'journal-thumb');
       if (a.featured_image) { var img = document.createElement('img'); img.src = a.featured_image; img.alt = a.title; img.loading = 'lazy'; thumb.appendChild(img); }
       var body = el('div', 'journal-body');
@@ -130,9 +139,10 @@
       body.appendChild(el('span', 'cat', (a.category ? a.category.name + ' · ' : '') + readingTime(a.content)));
       var arrow = document.createElement('a');
       arrow.className = 'journal-arrow material-symbols-outlined';
-      arrow.href = artUrl(a); arrow.textContent = 'arrow_back'; arrow.setAttribute('aria-hidden', 'true'); arrow.setAttribute('aria-label', 'اقرأ المقال');
+      arrow.href = href; arrow.textContent = 'arrow_back'; arrow.setAttribute('aria-hidden', 'true'); arrow.setAttribute('tabindex', '-1');
       item.appendChild(thumb); item.appendChild(body); item.appendChild(arrow);
-      item.addEventListener('click', function () { window.location.href = artUrl(a); });
+      item.addEventListener('click', function () { window.location.href = href; });
+      item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
       list.appendChild(item);
     });
   }
