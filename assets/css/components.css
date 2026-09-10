@@ -1,11 +1,27 @@
-.btn{display:inline-flex;align-items:center;gap:.75rem;padding:1rem 2.125rem;border-radius:var(--radius-full);font-size:.95rem;font-weight:700;border:1px solid transparent;transition:all var(--duration) var(--ease);line-height:1}
+/* ============ COMPONENTS ============ */
+
+/* ---------- Buttons ---------- */
+.btn{
+  display:inline-flex;align-items:center;gap:.75rem;
+  padding:1rem 2.125rem;border-radius:var(--radius-full);
+  font-size:.95rem;font-weight:700;border:1px solid transparent;
+  transition:all var(--duration) var(--ease);line-height:1;
+}
 .btn svg{width:1.1rem;height:1.1rem;transition:transform var(--duration) var(--ease)}
 .btn:hover svg{transform:translateX(-4px)}
 .btn-primary{background:var(--color-bg-inverse);color:var(--color-fg-inverse)}
 .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(0,0,0,.22)}
 .btn-ghost{background:transparent;border-color:var(--color-line);color:var(--color-fg)}
 .btn-ghost:hover{border-color:var(--color-bg-inverse)}
-.mocro-header{position:fixed;top:0;left:0;right:0;z-index:80;background:rgba(255,255,255,.85);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color var(--duration)}
+
+/* ---------- Header ---------- */
+.mocro-header{
+  position:fixed;top:0;left:0;right:0;z-index:80;
+  background:var(--color-header-bg);
+  -webkit-backdrop-filter:blur(14px);
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid transparent;transition:border-color var(--duration);
+}
 .mocro-header.is-scrolled{border-bottom:1px solid var(--color-line)}
 .mocro-header .container{display:flex;align-items:center;justify-content:space-between;height:4.5rem}
 .brand{display:flex;align-items:center;gap:.75rem;font-size:1.35rem;font-weight:700;letter-spacing:.04em}
@@ -21,7 +37,15 @@
 .burger span{top:50%;transform:translateY(-50%)}
 .burger span::before{top:-9px;right:0}
 .burger span::after{top:9px;right:0}
-.sidebar{position:fixed;top:0;right:0;bottom:0;width:min(78vw,380px);background:var(--color-bg-inverse);color:var(--color-fg-inverse);z-index:100;transform:translateX(100%);transition:transform .45s var(--ease);display:flex;flex-direction:column;padding:2.5rem 2.25rem;box-shadow:-20px 0 60px rgba(0,0,0,.3)}
+
+/* ---------- Sidebar ---------- */
+.sidebar{
+  position:fixed;top:0;right:0;bottom:0;width:min(78vw,380px);
+  background:var(--color-bg-inverse);color:var(--color-fg-inverse);z-index:100;
+  transform:translateX(100%);transition:transform .45s var(--ease);
+  display:flex;flex-direction:column;padding:2.5rem 2.25rem;
+  box-shadow:-20px 0 60px rgba(0,0,0,.3);
+}
 .sidebar.is-open{transform:translateX(0)}
 .sidebar-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:3rem}
 .sidebar .brand{color:var(--color-fg-inverse)}
@@ -39,7 +63,13 @@
 .sidebar-foot p{font-size:.8rem;color:var(--color-muted-inverse)}
 .backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);backdrop-filter:blur(2px);z-index:95;opacity:0;visibility:hidden;transition:opacity .4s,visibility .4s}
 .backdrop.is-open{opacity:1;visibility:visible}
-.card{border:1px solid var(--color-line);border-radius:var(--radius-md);padding:2.5rem 2.125rem;background:var(--color-bg);transition:all var(--duration) var(--ease);position:relative;overflow:hidden}
+
+/* ---------- Cards ---------- */
+.card{
+  border:1px solid var(--color-line);border-radius:var(--radius-md);
+  padding:2.5rem 2.125rem;background:var(--color-bg);
+  transition:all var(--duration) var(--ease);position:relative;overflow:hidden;
+}
 .card::before{content:"";position:absolute;top:0;left:0;right:0;height:0;background:var(--color-bg-inverse);transition:height var(--duration) var(--ease);z-index:0}
 .card:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,.1)}
 .card:hover::before{height:4px}
@@ -48,6 +78,8 @@
 .card:hover .icon{background:var(--color-bg-inverse);color:var(--color-fg-inverse);border-color:var(--color-bg-inverse)}
 .card h3{font-size:1.3rem;font-weight:700;margin-bottom:.9rem}
 .card p{color:var(--color-muted);font-size:.95rem;line-height:1.85;font-weight:300}
+
+/* ---------- Posts ---------- */
 .post{border:1px solid var(--color-line);border-radius:var(--radius-md);overflow:hidden;display:flex;flex-direction:column;transition:all var(--duration) var(--ease);background:var(--color-bg)}
 .post:hover{border-color:var(--color-bg-inverse);transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,.1)}
 .post .thumb{aspect-ratio:16/10;background:linear-gradient(135deg,#1a1a1a,#000);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
@@ -60,14 +92,16 @@
 .read-link svg{width:1rem;height:1rem;transition:transform var(--duration-fast)}
 .read-link:hover{border-bottom-color:var(--color-bg-inverse)}
 .read-link:hover svg{transform:translateX(-4px)}
+
+/* ---------- Work cards (gallery) ---------- */
 .work{position:relative;border:1px solid var(--color-line);border-radius:var(--radius-md);overflow:hidden;background:var(--color-bg-inverse);aspect-ratio:4/3;display:flex;align-items:flex-end;transition:all var(--duration) var(--ease)}
 .work:hover{transform:translateY(-6px);box-shadow:0 30px 60px rgba(0,0,0,.18)}
-.work .img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.14)}
+.work .img{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--color-muted-inverse)}
 .work .img svg{width:76px;height:76px;stroke-width:1.5;transition:transform var(--duration) var(--ease)}
 .work:hover .img svg{transform:scale(1.08)}
 .work .info{position:relative;z-index:1;padding:1.75rem;width:100%;background:linear-gradient(transparent,rgba(0,0,0,.85));color:var(--color-fg-inverse)}
 .work .info .cat{font-family:var(--font-mono);font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--color-muted-inverse);margin-bottom:.5rem}
 .work .info h3{font-size:1.35rem;font-weight:700}
-.work .info .arrow{position:absolute;top:1.75rem;left:1.75rem;width:42px;height:42px;border:1px solid #333;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all var(--duration)}
+.work .info .arrow{position:absolute;top:1.75rem;left:1.75rem;width:42px;height:42px;border:1px solid var(--color-line-inverse);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all var(--duration)}
 .work .info .arrow svg{width:20px;height:20px}
 .work:hover .info .arrow{background:var(--color-fg-inverse);color:var(--color-bg-inverse);border-color:var(--color-fg-inverse)}
