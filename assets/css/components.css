@@ -21,8 +21,8 @@
 .submenu a:not(:last-child){border-bottom:1px solid var(--color-line)}
 .submenu a:hover .sub-num{color:var(--color-accent)}
 .masthead-actions{display:flex;align-items:center;gap:.15rem}
-.search-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;transition:color var(--duration-fast),transform var(--duration-fast);color:var(--color-muted)}
-.search-btn:hover{color:var(--color-fg);transform:translateY(-1px)}
+.search-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;transition:color var(--duration-fast);color:var(--color-fg)}
+.search-btn:hover{color:var(--color-accent)}
 .search-btn .material-symbols-outlined{font-size:23px}
 .burger{display:none;width:44px;height:44px;position:relative;z-index:110;background:none;border:none}
 .burger span,.burger span::before,.burger span::after{content:"";display:block;width:24px;height:2px;background:var(--color-bg-inverse);position:absolute;right:10px;transition:all var(--duration) var(--ease)}
