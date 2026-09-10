@@ -3,194 +3,207 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>تجربة — موقع إخباري تجريبي</title>
-<meta name="description" content="تجربة — موقع إخباري تجريبي بواجهة عربية عصرية.">
-<meta name="theme-color" content="#32a2ef">
+<title>MOCRO — مجلة التصميم الرقمي</title>
+<meta name="description" content="MOCRO — مجلة رقمية بهوية أبيض وأسود أنيقة حول التصميم: هوية بصرية، تطوير واجهات، وتجربة مستخدم. أفكار ومقالات عن الوضوح والذوق والبساطة.">
+<meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://vakelior.github.io/mocro/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="تجربة">
-<meta property="og:title" content="تجربة — موقع إخباري تجريبي">
-<meta property="og:description" content="موقع إخباري تجريبي بواجهة عربية عصرية.">
+<meta property="og:site_name" content="MOCRO">
+<meta property="og:title" content="MOCRO — مجلة التصميم الرقمي">
+<meta property="og:description" content="مجلة رقمية بهوية أبيض وأسود حول التصميم: هوية بصرية، تطوير واجهات، وتجربة مستخدم.">
 <meta property="og:url" content="https://vakelior.github.io/mocro/">
 <meta property="og:locale" content="ar_AR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MOCRO — مجلة التصميم الرقمي">
+<meta name="twitter:description" content="مجلة رقمية بهوية أبيض وأسود حول التصميم.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<script>try{var t=localStorage.getItem("mocro-theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t)}else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}</script>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/layout.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"تجربة","url":"https://vakelior.github.io/mocro/","description":"موقع إخباري تجريبي بواجهة عربية عصرية."}
+{"@context":"https://schema.org","@type":"WebSite","name":"MOCRO","url":"https://vakelior.github.io/mocro/","description":"مجلة رقمية بهوية أبيض وأسود أنيقة حول التصميم."}
 </script>
 </head>
 <body>
+<div class="preloader" id="preloader" aria-hidden="true"><div class="mark">MOCRO<span class="dot"></span></div></div>
 <a href="#main" class="skip-link">تخطّى إلى المحتوى</a>
-<header class="hd">
-  <div class="container hd-inner">
-    <button class="ic-menu" data-burger aria-label="القائمة" aria-expanded="false" aria-controls="sidebar"><span></span></button>
-    <nav class="nav-desktop" aria-label="التنقل الرئيسي">
-      <ul>
-        <li><a href="#news">أخبار</a></li>
-        <li><a href="#economy">اقتصاد</a></li>
-        <li><a href="#tech">تقنية</a></li>
-        <li><a href="#sport">رياضة</a></li>
-        <li><a href="#health">صحة</a></li>
-        <li><a href="#culture">ثقافة</a></li>
-      </ul>
-    </nav>
-    <a href="#main" class="brand" aria-label="تجربة — الصفحة الرئيسية">
-      <span class="brand-main">تجربة</span>
-      <span class="brand-sub">موقع إخباري</span>
-    </a>
-    <div class="hd-actions">
-      <button class="search-btn" aria-label="بحث"><span class="material-symbols-outlined">search</span></button>
+<header class="mocro-header" id="top">
+  <div class="topbar">
+    <div class="container topbar-inner">
+      <span class="topbar-note">مجلة التصميم الرقمي — تصدر دورياً</span>
+      <button class="theme-toggle" data-theme-toggle aria-label="تبديل الوضع الليلي/النهاري" aria-pressed="false">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+      </button>
+    </div>
+  </div>
+  <div class="masthead">
+    <div class="container masthead-inner">
+      <a href="#top" class="brand" aria-label="MOCRO — الصفحة الرئيسية"><span class="dot"></span> MOCRO</a>
+      <nav class="nav-desktop" aria-label="التنقل الرئيسي">
+        <a href="#latest">الأحدث</a>
+        <a href="#identity">الهوية</a>
+        <a href="#frontend">الواجهات</a>
+        <a href="#ux">التجربة</a>
+        <a href="#journal">مقالات</a>
+      </nav>
+      <div class="masthead-actions">
+        <button class="search-btn" data-search-toggle aria-label="فتح البحث">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+        </button>
+        <button class="burger" data-burger aria-label="فتح القائمة" aria-expanded="false" aria-controls="sidebar"><span></span></button>
+      </div>
     </div>
   </div>
 </header>
-<div class="ticker" aria-label="آخر الأخبار">
-  <span class="ticker-label">آخر الأخبار</span>
-  <div class="ticker-viewport">
-    <ul class="ticker-track" id="ticker">
-      <li><span class="ticker-time">14:32</span> انطلاق مؤتمر التقنية السنوي بمشاركة دولية واسعة</li>
-      <li><span class="ticker-time">13:50</span> الأسواق العالمية تسجّل ارتفاعاً طفيفاً في نهاية التعاملات</li>
-      <li><span class="ticker-time">12:15</span> منتخبنا يتأهل إلى ربع النهائي بعد مباراة مثيرة</li>
-      <li><span class="ticker-time">11:40</span> دراسة جديدة تكشف فوائد المشي اليومي على الصحة</li>
-      <li><span class="ticker-time">10:05</span> معرض الكتاب يفتح أبوابه للجمهور نهاية الأسبوع</li>
-    </ul>
+<div class="ticker" aria-label="آخر المستجدات">
+  <div class="container ticker-inner">
+    <span class="ticker-label">آخر المستجدات</span>
+    <div class="ticker-viewport">
+      <ul class="ticker-track" id="ticker-track">
+        <li><span class="ticker-time">قريباً</span> إطلاق هوية MOCRO البصرية الكاملة</li>
+        <li><span class="ticker-time">جديد</span> مقال: الوضوح أولاً — لماذا يسبق كل عنصر بصري</li>
+        <li><span class="ticker-time">منهج</span> نُفكّر ثم نبني، ولا نبني ثم نُصحّح</li>
+        <li><span class="ticker-time">ملاحظة</span> هذا الإصدار تجريبي — المحتوى يتجدّد فور الإطلاق</li>
+      </ul>
+    </div>
   </div>
 </div>
-<div class="sidebar" id="sidebar" data-sidebar role="dialog" aria-modal="true" aria-hidden="true" aria-label="القائمة">
+<div class="sidebar" id="sidebar" data-sidebar role="dialog" aria-modal="true" aria-hidden="true" aria-label="قائمة التنقل">
   <div class="sidebar-head">
-    <span>تجربة</span>
-    <button class="sidebar-close" data-sidebar-close aria-label="إغلاق"><span class="material-symbols-outlined">close</span></button>
+    <a href="#top" class="brand"><span class="dot"></span> MOCRO</a>
+    <button class="sidebar-close" data-sidebar-close aria-label="إغلاق القائمة">✕</button>
   </div>
   <nav class="sidebar-nav" aria-label="قائمة الجوال">
-    <a href="#news"><span class="material-symbols-outlined">newspaper</span> أخبار</a>
-    <a href="#economy"><span class="material-symbols-outlined">trending_up</span> اقتصاد</a>
-    <a href="#tech"><span class="material-symbols-outlined">devices</span> تقنية</a>
-    <a href="#sport"><span class="material-symbols-outlined">sports_soccer</span> رياضة</a>
-    <a href="#health"><span class="material-symbols-outlined">favorite</span> صحة</a>
-    <a href="#culture"><span class="material-symbols-outlined">palette</span> ثقافة</a>
+    <a href="#latest"><span>الأحدث</span><span class="num">01</span></a>
+    <a href="#identity"><span>الهوية</span><span class="num">02</span></a>
+    <a href="#frontend"><span>الواجهات</span><span class="num">03</span></a>
+    <a href="#ux"><span>التجربة</span><span class="num">04</span></a>
+    <a href="#journal"><span>مقالات</span><span class="num">05</span></a>
   </nav>
+  <div class="sidebar-foot">
+    <p>© 2026 MOCRO — مجلة التصميم الرقمي</p>
+  </div>
 </div>
 <div class="backdrop" data-backdrop aria-hidden="true"></div>
-<main id="main" class="page container">
-  <section class="hero" aria-label="أبرز الأخبار">
-    <div class="hero-slider" data-slider>
-      <article class="slide is-active" data-slide>
-        <div class="hero-media"><img src="assets/img/hero.jpg" alt="صورة الخبر الرئيسي"></div>
-        <div class="hero-cap">
-          <span class="cat">رئيسي</span>
-          <h2>انطلاق مؤتمر التقنية السنوي بمشاركة دولية واسعة</h2>
-          <p>تنطلق فعاليات المؤتمر هذا الأسبوع بمشاركة نخبة من الخبراء وصنّاع القرار من مختلف دول العالم.</p>
+<main id="main">
+  <h1 class="sr-only">MOCRO — مجلة التصميم الرقمي بهوية أبيض وأسود</h1>
+  <section class="featured container" aria-label="مقالات مميزة">
+    <div class="featured-slider" data-slider>
+      <div class="slide is-active" data-slide>
+        <div class="slide-media"><div class="placeholder-art ph-1">MOCRO</div></div>
+        <div class="slide-body">
+          <span class="cat">مقال</span>
+          <h2>الوضوح أولاً — لماذا يسبق كل عنصر بصري</h2>
+          <p>قبل أي لون أو خط أو مؤثر، نحدد ما يجب أن يفهمه المستخدم خلال خمس ثوانٍ. الوضوح ليس خياراً جمالياً، بل شرط وظيفي.</p>
+          <a href="#journal" class="slide-link">اقرأ المقال <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></a>
         </div>
-      </article>
-      <article class="slide" data-slide>
-        <div class="hero-media"><img src="assets/img/news-2.jpg" alt=""></div>
-        <div class="hero-cap">
-          <span class="cat">اقتصاد</span>
-          <h2>الأسواق العالمية تسجّل ارتفاعاً طفيفاً في نهاية التعاملات</h2>
-          <p>شهدت المؤشرات الرئيسية أداءً إيجابياً مدعوماً بتفاؤل المستثمرين حيال النمو.</p>
+      </div>
+      <div class="slide" data-slide>
+        <div class="slide-media"><div class="placeholder-art ph-2">ذوق</div></div>
+        <div class="slide-body">
+          <span class="cat">فلسفة</span>
+          <h2>الذوق فوق الزخرفة — التصميم قرار وليس إضافة</h2>
+          <p>التصميم الجيد ليس ما تضيفه من عناصر، بل ما تختار حذفه. كل عنصر لا يخدم هدفاً واضحاً هو عبء وليس إثراءً.</p>
+          <a href="#journal" class="slide-link">اقرأ المقال <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></a>
         </div>
-      </article>
-      <article class="slide" data-slide>
-        <div class="hero-media"><img src="assets/img/news-4.jpg" alt=""></div>
-        <div class="hero-cap">
-          <span class="cat">رياضة</span>
-          <h2>منتخبنا يتأهل إلى ربع النهائي بعد مباراة مثيرة</h2>
-          <p>حسم المنتخب بطاقة التأهل في الدقائق الأخيرة بأداء دفاعي متماسك وهجمات مرتدة سريعة.</p>
+      </div>
+      <div class="slide" data-slide>
+        <div class="slide-media"><div class="placeholder-art ph-3">منهج</div></div>
+        <div class="slide-body">
+          <span class="cat">منهج</span>
+          <h2>نفكّر ثم نبني — منهج من أربع خطوات</h2>
+          <p>اكتشاف، تصوّر، تنفيذ، إطلاق. منظومة واضحة تحوّل الرؤية إلى تجربة رقمية ملموسة دون شوائب.</p>
+          <a href="#process" class="slide-link">اكتشف المنهج <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="M12 19l-7-7 7-7"/></svg></a>
         </div>
-      </article>
+      </div>
     </div>
-    <div class="hero-nav" role="tablist" aria-label="التنقل بين الأخبار">
-      <button class="hero-dot is-active" data-hero-dot="0" aria-label="الخبر 1"></button>
-      <button class="hero-dot" data-hero-dot="1" aria-label="الخبر 2"></button>
-      <button class="hero-dot" data-hero-dot="2" aria-label="الخبر 3"></button>
+    <div class="slider-nav" role="tablist" aria-label="التنقل بين المقالات">
+      <button class="slider-dot is-active" data-slider-dot="0" aria-label="المقال 1"></button>
+      <button class="slider-dot" data-slider-dot="1" aria-label="المقال 2"></button>
+      <button class="slider-dot" data-slider-dot="2" aria-label="المقال 3"></button>
     </div>
   </section>
-  <div class="tags" role="tablist" aria-label="تصفية الأخبار">
-    <button class="tag active" data-filter="*">الكل</button>
-    <button class="tag" data-filter="economy">اقتصاد</button>
-    <button class="tag" data-filter="tech">تقنية</button>
-    <button class="tag" data-filter="sport">رياضة</button>
-    <button class="tag" data-filter="health">صحة</button>
-    <button class="tag" data-filter="culture">ثقافة</button>
-  </div>
-  <div class="main-grid">
+  <div class="container main-grid">
     <div class="content-col">
-      <div class="sec-title" id="news"><h2><span class="material-symbols-outlined">newspaper</span> آخر الأخبار</h2></div>
-      <div class="post-grid">
-        <article class="item" data-cat="tech"><div class="thumb"><img src="assets/img/news-1.jpg" alt="تقنية" loading="lazy"><a class="aplink" href="#news" aria-label="تصفح الخبر"></a></div><div class="det"><span class="cat">تقنية</span><h3>الذكاء الاصطناعي يغيّر ملامح الصناعة والتعليم</h3><p>تتسارع وتيرة اعتماد تقنيات الذكاء الاصطناعي في مختلف القطاعات، ما يفتح آفاقاً جديدة للابتكار.</p></div></article>
-        <article class="item" data-cat="economy"><div class="thumb"><img src="assets/img/news-2.jpg" alt="اقتصاد" loading="lazy"><a class="aplink" href="#news" aria-label="تصفح الخبر"></a></div><div class="det"><span class="cat">اقتصاد</span><h3>ارتفاع طفيف في المؤشرات الاقتصادية العالمية</h3><p>سجّلت الأسواق العالمية أداءً إيجابياً وسط تفاؤل متزايد بآفاق النمو الاقتصادي.</p></div></article>
-        <article class="item" data-cat="health"><div class="thumb"><img src="assets/img/news-3.jpg" alt="صحة" loading="lazy"><a class="aplink" href="#news" aria-label="تصفح الخبر"></a></div><div class="det"><span class="cat">صحة</span><h3>دراسة حديثة تكشف فوائد المشي اليومي</h3><p>أظهرت دراسة علمية أن المشي المنتظم يقلّل مخاطر الإصابة بالأمراض المزمنة ويحسّن المزاج.</p></div></article>
-        <article class="item" data-cat="sport"><div class="thumb"><img src="assets/img/news-4.jpg" alt="رياضة" loading="lazy"><a class="aplink" href="#news" aria-label="تصفح الخبر"></a></div><div class="det"><span class="cat">رياضة</span><h3>تأهل مستحق للمنتخب إلى ربع النهائي</h3><p>حسم المنتخب بطاقة التأهل بأداء جماعي مشرّف، وسط فرحة عارمة للجماهير.</p></div></article>
-        <article class="item" data-cat="culture"><div class="thumb"><img src="assets/img/news-5.jpg" alt="ثقافة" loading="lazy"><a class="aplink" href="#news" aria-label="تصفح الخبر"></a></div><div class="det"><span class="cat">ثقافة</span><h3>معرض الكتاب يفتح أبوابه للجمهور هذا الأسبوع</h3><p>يستقطب المعرض آلاف الزوار وعشرات دور النشر لعرض أحدث الإصدارات الأدبية والفكرية.</p></div></article>
-        <article class="item" data-cat="tech"><div class="thumb"><img src="assets/img/news-6.jpg" alt="تقنية" loading="lazy"><a class="aplink" href="#news" aria-label="تصفح الخبر"></a></div><div class="det"><span class="cat">تقنية</span><h3>تطبيقات الهواتف الذكية تسهّل الحياة اليومية</h3><p>تواصل التطبيقات الذكية تقديم حلول مبتكرة توفّر الوقت والجهد في مجالات متعددة.</p></div></article>
-        <article class="item" data-cat="economy"><div class="thumb"><img src="assets/img/news-7.jpg" alt="اقتصاد" loading="lazy"><a class="aplink" href="#news" aria-label="تصفح الخبر"></a></div><div class="det"><span class="cat">اقتصاد</span><h3>قطاع الطاقة المتجددة يسجّل نمواً قياسياً</h3><p>يشهد قطاع الطاقة النظيفة توسّعاً غير مسبوق بفضل الاستثمارات المتزايدة.</p></div></article>
-        <article class="item" data-cat="sport"><div class="thumb"><img src="assets/img/news-8.jpg" alt="رياضة" loading="lazy"><a class="aplink" href="#news" aria-label="تصفح الخبر"></a></div><div class="det"><span class="cat">رياضة</span><h3>بطولة العالم تجمع أفضل المواهب الرياضية</h3><p>تُقام البطولة بمشاركة نخبة من الرياضيين العالميين في أجواء تنافسية كبيرة.</p></div></article>
-      </div>
-      <div class="sec-title" id="economy"><h2><span class="material-symbols-outlined">trending_up</span> اقتصاد</h2></div>
-      <div class="post-grid">
-        <article class="item" data-cat="economy"><div class="thumb"><img src="assets/img/news-2.jpg" alt="" loading="lazy"></div><div class="det"><h3>توقعات بنمو مطرد في الاستثمارات المحلية</h3><p>يرى المحللون أن المناخ الاستثماري يشهد تحسّناً ملحوظاً خلال الفترة المقبلة.</p></div></article>
-        <article class="item" data-cat="economy"><div class="thumb"><img src="assets/img/news-7.jpg" alt="" loading="lazy"></div><div class="det"><h3>الطاقة المتجددة تقود التحول الاقتصادي</h3><p>تتزايد الاستثمارات في المصادر النظيفة لتلبية الطلب المتصاعد على الطاقة.</p></div></article>
-      </div>
-      <div class="sec-title" id="sport"><h2><span class="material-symbols-outlined">sports_soccer</span> رياضة</h2></div>
-      <div class="post-grid">
-        <article class="item" data-cat="sport"><div class="thumb"><img src="assets/img/news-4.jpg" alt="" loading="lazy"></div><div class="det"><h3>تحضيرات مكثفة للمنتخب قبل المواجهة القادمة</h3><p>يواصل الفريق تدريباته استعداداً للمباراة المرتقبة وسط روح معنوية عالية.</p></div></article>
-        <article class="item" data-cat="sport"><div class="thumb"><img src="assets/img/news-8.jpg" alt="" loading="lazy"></div><div class="det"><h3>نجوم رياضية يتألقون في البطولات الدولية</h3><p>قدّم الرياضيون أداءً لافتاً يعكس تطور مستوى المنافسة على الصعيد العالمي.</p></div></article>
-      </div>
+      <section id="latest">
+        <div class="section-bar"><h2 class="section-title">الأحدث</h2><span class="section-rule"></span></div>
+        <div class="post-grid">
+          <article class="post"><div class="post-thumb"><div class="placeholder-art ph-2">وضوح</div></div><div class="post-body"><span class="cat">الهوية</span><h3>الهوية البصرية كقرار استراتيجي لا كزخرفة</h3><p>الشعار ليس صورة، بل اختصار لقيم العلامة. هوية واضحة تختصر الرسالة في مشهد واحد.</p><time class="meta">مقال تمهيدي</time></div></article>
+          <article class="post"><div class="post-thumb"><div class="placeholder-art ph-1">خط</div></div><div class="post-body"><span class="cat">الواجهات</span><h3>الخط العربي في الواجهات — قراءة قبل الجمال</h3><p>الخط عنصر بنيوي لا تزييني. اختيار خط واضح مقروء يسبق أي اعتبار جمالي.</p><time class="meta">مقال تمهيدي</time></div></article>
+          <article class="post"><div class="post-thumb"><div class="placeholder-art ph-3">تجربة</div></div><div class="post-body"><span class="cat">التجربة</span><h3>تجربة المستخدم تبدأ من الهدف لا من الشاشة</h3><p>رحلات استخدام واضحة تُرشد المستخدم نحو هدفه بسلاسة، دون تعقيد أو حشو.</p><time class="meta">مقال تمهيدي</time></div></article>
+          <article class="post"><div class="post-thumb"><div class="placeholder-art ph-2">البساطة</div></div><div class="post-body"><span class="cat">فلسفة</span><h3>البساطة المقصودة — فن الحذف</h3><p>أصعب قرار في التصميم ليس ما تضيفه، بل ما تُزيله. البساطة نضجٌ لا نقص.</p><time class="meta">مقال تمهيدي</time></div></article>
+        </div>
+      </section>
+      <section id="process">
+        <div class="section-bar"><h2 class="section-title">المنهج</h2><span class="section-rule"></span></div>
+        <div class="process">
+          <div class="process-step"><span class="num">01</span><h3>اكتشاف</h3><p>نفهم عملك وجمهورك وأهدافك قبل أي تصميم.</p></div>
+          <div class="process-step"><span class="num">02</span><h3>تصوّر</h3><p>نحوّل الرؤية إلى مفاهيم وهوية بصرية واضحة.</p></div>
+          <div class="process-step"><span class="num">03</span><h3>تنفيذ</h3><p>نبني التصميم بدقة متناهية وجودة عالية.</p></div>
+          <div class="process-step"><span class="num">04</span><h3>إطلاق</h3><p>نطلق المشروع ونتابع الأداء والتحسين.</p></div>
+        </div>
+      </section>
+      <section id="journal">
+        <div class="section-bar"><h2 class="section-title">مقالات</h2><span class="section-rule"></span></div>
+        <div class="journal-list">
+          <article class="journal-item"><div class="journal-num">01</div><div class="journal-body"><h3>الوضوح أولاً</h3><p>قبل أي لون أو خط، نحدد ما يجب أن يفهمه المستخدم خلال خمس ثوانٍ. هذه هي البوصلة التي يبدأ منها كل تصميم ناجح.</p></div><span class="journal-arrow">←</span></article>
+          <article class="journal-item"><div class="journal-num">02</div><div class="journal-body"><h3>نيّة قبل مؤثرات</h3><p>كل عنصر بصري يجب أن يخدم هدفاً واضحاً، وإلا حذفناه بلا تردد. المؤثر بلا نيّة تشويش لا إثراء.</p></div><span class="journal-arrow">←</span></article>
+          <article class="journal-item"><div class="journal-num">03</div><div class="journal-body"><h3>بساطة مقصودة</h3><p>نؤمن أن التصميم الجيد ليس ما تضيفه، بل ما تختار حذفه. الفراغ لغة بحد ذاتها.</p></div><span class="journal-arrow">←</span></article>
+        </div>
+      </section>
     </div>
     <aside class="sidebar-col">
       <div class="widget">
-        <div class="sec-title"><h2>الأكثر قراءة</h2></div>
-        <div class="hlist">
-          <div class="hitem"><span class="hnum">1</span><div class="htitle"><a href="#news">الذكاء الاصطناعي يغيّر ملامح الصناعة</a><span class="htime">منذ ساعتين</span></div></div>
-          <div class="hitem"><span class="hnum">2</span><div class="htitle"><a href="#news">تأهل مستحق للمنتخب إلى ربع النهائي</a><span class="htime">منذ 3 ساعات</span></div></div>
-          <div class="hitem"><span class="hnum">3</span><div class="htitle"><a href="#news">دراسة تكشف فوائد المشي اليومي</a><span class="htime">منذ 5 ساعات</span></div></div>
-          <div class="hitem"><span class="hnum">4</span><div class="htitle"><a href="#news">الأسواق العالمية تسجّل ارتفاعاً</a><span class="htime">منذ 6 ساعات</span></div></div>
-          <div class="hitem"><span class="hnum">5</span><div class="htitle"><a href="#news">معرض الكتاب يفتح أبوابه</a><span class="htime">منذ يوم</span></div></div>
-        </div>
+        <h3 class="widget-title">التصنيفات</h3>
+        <ul class="cat-list">
+          <li><a href="#identity">الهوية البصرية</a></li>
+          <li><a href="#frontend">تطوير الواجهات</a></li>
+          <li><a href="#ux">تجربة المستخدم</a></li>
+          <li><a href="#journal">الفلسفة</a></li>
+        </ul>
       </div>
       <div class="widget">
-        <div class="sec-title"><h2>بالفيديو</h2></div>
-        <div class="hlist">
-          <div class="hitem"><div class="hthumb"><img src="assets/img/news-1.jpg" alt=""></div><div class="htitle"><a href="#news">لقطات من افتتاح مؤتمر التقنية</a><span class="htime">فيديو</span></div></div>
-          <div class="hitem"><div class="hthumb"><img src="assets/img/news-4.jpg" alt=""></div><div class="htitle"><a href="#news">أبرز لحظات المباراة الحاسمة</a><span class="htime">فيديو</span></div></div>
-          <div class="hitem"><div class="hthumb"><img src="assets/img/news-5.jpg" alt=""></div><div class="htitle"><a href="#news">جولة داخل معرض الكتاب</a><span class="htime">فيديو</span></div></div>
-        </div>
+        <h3 class="widget-title">قيمنا</h3>
+        <ul class="value-list">
+          <li><span class="value-dot"></span> الوضوح</li>
+          <li><span class="value-dot"></span> الذوق</li>
+          <li><span class="value-dot"></span> النيّة</li>
+          <li><span class="value-dot"></span> البساطة</li>
+        </ul>
       </div>
-      <div class="widget">
-        <div class="sec-title"><h2>كتّاب الرأي</h2></div>
-        <div class="editors">
-          <div class="editor"><img src="assets/img/av1.jpg" alt=""><span class="e-name">أ. سعيد العلوي</span></div>
-          <div class="editor"><img src="assets/img/av2.jpg" alt=""><span class="e-name">د. ليلى بناني</span></div>
-          <div class="editor"><img src="assets/img/av3.jpg" alt=""><span class="e-name">أ. كريم الإدريسي</span></div>
-          <div class="editor"><img src="assets/img/av4.jpg" alt=""><span class="e-name">د. حسن التازي</span></div>
-        </div>
+      <div class="widget widget-inverse">
+        <h3 class="widget-title">مبادرة الإطلاق</h3>
+        <p>هذا المشروع لا يزال في مرحلة الإطلاق. يُضاف بريد التواصل وروابط الحسابات ونماذج العمل فور توفّرها.</p>
       </div>
     </aside>
   </div>
-  <div class="sec-title" id="health"><h2><span class="material-symbols-outlined">category</span> أقسام الموقع</h2></div>
-  <div class="cat-blocks">
-    <div class="cat-block" id="tech"><h3>تقنية</h3><ul><li><a href="#news">الذكاء الاصطناعي</a></li><li><a href="#news">الأجهزة الذكية</a></li><li><a href="#news">الأمن السيبراني</a></li><li><a href="#news">تطبيقات</a></li></ul></div>
-    <div class="cat-block"><h3>صحة</h3><ul><li><a href="#news">التغذية</a></li><li><a href="#news">اللياقة البدنية</a></li><li><a href="#news">الصحة النفسية</a></li><li><a href="#news">أبحاث طبية</a></li></ul></div>
-    <div class="cat-block" id="culture"><h3>ثقافة</h3><ul><li><a href="#news">كتب وأدب</a></li><li><a href="#news">فنون</a></li><li><a href="#news">سينما</a></li><li><a href="#news">موسيقى</a></li></ul></div>
-    <div class="cat-block"><h3>منوعات</h3><ul><li><a href="#news">سفر وسياحة</a></li><li><a href="#news">أسلوب حياة</a></li><li><a href="#news">غرائب</a></li><li><a href="#news">مناسبات</a></li></ul></div>
+  <div class="container">
+    <div class="cat-blocks">
+      <section class="cat-block" id="identity"><div class="cat-block-head"><span class="cat-block-tag">01</span><h3>الهوية البصرية</h3></div><p>شعارات وأنظمة تصميم متكاملة بأسلوب أحادي اللون يعكس قوة العلامة ووضوحها.</p></section>
+      <section class="cat-block" id="frontend"><div class="cat-block-head"><span class="cat-block-tag">02</span><h3>تطوير الواجهات</h3></div><p>واجهات سريعة ومدروسة، مبنية بأفضل الممارسات وباحترام تام للأداء وسهولة الاستخدام.</p></section>
+      <section class="cat-block" id="ux"><div class="cat-block-head"><span class="cat-block-tag">03</span><h3>تجربة المستخدم</h3></div><p>تصميم رحلات استخدام واضحة تُرشد المستخدم نحو الهدف بسلاسة ودون تعقيد.</p></section>
+    </div>
   </div>
+  <section class="footer-cta" id="contact">
+    <div class="container">
+      <p class="eyebrow">الخطوة التالية</p>
+      <h2>لنصنع شيئاً ذا معنى<span class="ghost"> معاً</span></h2>
+      <p class="sub">هذا المشروع لا يزال في مرحلة الإطلاق. يُضاف بريد التواصل وروابط الحسابات فور توفّرها.</p>
+    </div>
+  </section>
 </main>
-<footer class="footer">
+<footer class="mocro-footer">
   <div class="container">
     <div class="footer-grid">
-      <div><div class="fbrand">تجربة</div><p class="fbrand-desc">موقع إخباري تجريبي بواجهة عربية عصرية، يجمع بين الأصالة والحداثة.</p></div>
-      <div><h4>الأقسام</h4><a href="#news">أخبار</a><a href="#economy">اقتصاد</a><a href="#tech">تقنية</a><a href="#sport">رياضة</a></div>
-      <div><h4>معلومات</h4><a href="#news">من نحن</a><a href="#news">اتصل بنا</a><a href="#news">سياسة الخصوصية</a></div>
-      <div><h4>تابعنا</h4><a href="#"><span class="material-symbols-outlined">public</span> الموقع</a><a href="#"><span class="material-symbols-outlined">rss_feed</span> الخلاصات</a></div>
+      <div><div class="footer-brand"><span class="dot"></span> MOCRO</div><p class="footer-brand-desc">مجلة رقمية بهوية أبيض وأسود أنيقة حول التصميم.</p></div>
+      <div><h4>الأقسام</h4><a href="#latest">الأحدث</a><a href="#identity">الهوية البصرية</a><a href="#frontend">تطوير الواجهات</a><a href="#ux">تجربة المستخدم</a></div>
+      <div><h4>المصادر</h4><a href="https://github.com/vakelior/mocro">المستودع على GitHub</a></div>
     </div>
-    <div class="footer-bottom"><span>© 2026 تجربة. جميع الحقوق محفوظة.</span><span class="mono">تجربة · 2026</span></div>
+    <div class="footer-bottom"><span>© 2026 MOCRO. جميع الحقوق محفوظة.</span><span class="mono">Black &amp; White · 2026</span></div>
   </div>
 </footer>
 <script src="assets/js/main.js"></script>
