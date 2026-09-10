@@ -34,7 +34,11 @@
     var list = el('div', 'journal-list');
     articles.forEach(function (a) {
       var item = el('article', 'journal-item');
-      item.setAttribute('data-href', url('article.html?slug=' + encodeURIComponent(a.slug)));
+      var href = url('article.html?slug=' + encodeURIComponent(a.slug));
+      item.setAttribute('data-href', href);
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'link');
+      item.setAttribute('aria-label', a.title);
       var thumb = el('div', 'journal-thumb');
       if (a.featured_image) { var img = document.createElement('img'); img.src = a.featured_image; img.alt = a.title; img.loading = 'lazy'; thumb.appendChild(img); }
       var body = el('div', 'journal-body');
@@ -42,9 +46,10 @@
       body.appendChild(el('p', null, a.excerpt));
       body.appendChild(el('span', 'cat', dateStr(a.published_at) + ' · قراءة ' + readingTime(a.content)));
       var arrow = el('a', 'journal-arrow material-symbols-outlined', 'arrow_back');
-      arrow.href = url('article.html?slug=' + encodeURIComponent(a.slug)); arrow.setAttribute('aria-hidden', 'true');
+      arrow.href = href; arrow.setAttribute('aria-hidden', 'true'); arrow.setAttribute('tabindex', '-1');
       item.appendChild(thumb); item.appendChild(body); item.appendChild(arrow);
-      item.addEventListener('click', function () { window.location.href = url('article.html?slug=' + encodeURIComponent(a.slug)); });
+      item.addEventListener('click', function () { window.location.href = href; });
+      item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
       list.appendChild(item);
     });
     grid.appendChild(list);

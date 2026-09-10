@@ -35,7 +35,11 @@
     var list = el('div', 'journal-list');
     articles.forEach(function (a) {
       var item = el('article', 'journal-item');
-      item.setAttribute('data-href', url('article.html?slug=' + encodeURIComponent(a.slug)));
+      var href = url('article.html?slug=' + encodeURIComponent(a.slug));
+      item.setAttribute('data-href', href);
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'link');
+      item.setAttribute('aria-label', a.title);
       var thumb = el('div', 'journal-thumb');
       if (a.featured_image) { var im = document.createElement('img'); im.src = a.featured_image; im.alt = a.title; im.loading = 'lazy'; thumb.appendChild(im); }
       var body = el('div', 'journal-body');
@@ -43,7 +47,8 @@
       body.appendChild(el('p', null, a.excerpt));
       body.appendChild(el('span', 'cat', dateStr(a.published_at)));
       item.appendChild(thumb); item.appendChild(body);
-      item.addEventListener('click', function () { window.location.href = url('article.html?slug=' + encodeURIComponent(a.slug)); });
+      item.addEventListener('click', function () { window.location.href = href; });
+      item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
       list.appendChild(item);
     });
     grid.appendChild(list);
