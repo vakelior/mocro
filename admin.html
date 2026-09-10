@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>لوحة التحكم — مُوكْرُو</title>
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem("mocro-theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t)}else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+<header class="mocro-header" id="top">
+  <div class="masthead"><div class="container masthead-inner">
+    <a href="index.html" class="brand" aria-label="مُوكْرُو">مُوكْرُو</a>
+    <div class="masthead-actions">
+      <a href="index.html" class="search-btn" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:700;text-decoration:none"><span class="material-symbols-outlined">arrow_back</span> الموقع</a>
+      <button class="theme-toggle" data-theme-toggle aria-label="تبديل الوضع" aria-pressed="false"><span class="material-symbols-outlined icon-moon">dark_mode</span><span class="material-symbols-outlined icon-sun">light_mode</span></button>
+      <button class="admin-btn ghost" id="logout-btn">خروج</button>
+    </div>
+  </div></div>
+</header>
+<main class="container admin-shell">
+  <div class="admin-header">
+    <div><div class="brand" style="font-size:1.5rem">لوحة التحكم</div><div style="font-size:.85rem;color:var(--color-muted)" id="admin-user">…</div></div>
+    <button class="admin-btn primary" data-action="new-article"><span class="material-symbols-outlined">add</span> مقال جديد</button>
+  </div>
+  <div class="admin-tabs" id="admin-tabs">
+    <button class="admin-tab is-active" data-tab="articles">المقالات</button>
+    <button class="admin-tab" data-tab="categories">الأقسام</button>
+    <button class="admin-tab" data-tab="authors">الكتّاب</button>
+    <button class="admin-tab" data-tab="tags">الوسوم</button>
+  </div>
+
+  <div class="admin-panel is-active" data-panel="articles">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;gap:1rem;flex-wrap:wrap">
+      <div class="admin-field" style="margin:0;flex:1;min-width:200px"><input type="search" id="articles-filter" placeholder="تصفية المقالات…"></div>
+      <select class="admin-field" id="articles-status-filter" style="max-width:180px;margin:0">
+        <option value="">كل الحالات</option>
+        <option value="published">منشور</option>
+        <option value="draft">مسودة</option>
+        <option value="archived">مؤرشف</option>
+      </select>
+    </div>
+    <div style="overflow-x:auto">
+      <table class="admin-table" id="articles-table">
+        <thead><tr><th>المقال</th><th>القسم</th><th>الحالة</th><th>مميز</th><th>عاجل</th><th>المشاهدات</th><th>إجراءات</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="admin-panel" data-panel="categories">
+    <div style="margin-bottom:1rem"><button class="admin-btn primary" data-action="new-category"><span class="material-symbols-outlined">add</span> قسم جديد</button></div>
+    <table class="admin-table" id="categories-table">
+      <thead><tr><th>الاسم</th><th>Slug</th><th>الترتيب</th><th>نشط</th><th>إجراءات</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="admin-panel" data-panel="authors">
+    <div style="margin-bottom:1rem"><button class="admin-btn primary" data-action="new-author"><span class="material-symbols-outlined">add</span> كاتب جديد</button></div>
+    <table class="admin-table" id="authors-table">
+      <thead><tr><th>الاسم</th><th>Slug</th><th>إجراءات</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="admin-panel" data-panel="tags">
+    <div style="margin-bottom:1rem"><button class="admin-btn primary" data-action="new-tag"><span class="material-symbols-outlined">add</span> وسم جديد</button></div>
+    <div style="display:flex;flex-wrap:wrap;gap:.5rem" id="tags-list"></div>
+  </div>
+</main>
+
+<div class="search-overlay" id="editor-overlay" aria-hidden="true">
+  <div class="admin-form" style="background:var(--color-bg);border:1px solid var(--color-line);padding:2rem;max-width:820px;width:100%;margin:auto">
+    <div class="full" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+      <h2 style="font-size:1.3rem" id="editor-title">مقال جديد</h2>
+      <button class="search-close" style="position:static" data-editor-close aria-label="إغلاق"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div class="admin-field full"><label>العنوان</label><input type="text" id="art-title" placeholder="عنوان المقال"></div>
+    <div class="admin-field"><label>Slug (فارغ = تلقائي)</label><input type="text" id="art-slug" placeholder="auto"></div>
+    <div class="admin-field"><label>القسم</label><select id="art-category"></select></div>
+    <div class="admin-field"><label>الكاتب</label><select id="art-author"></select></div>
+    <div class="admin-field"><label>الحالة</label><select id="art-status"><option value="draft">مسودة</option><option value="published">منشور</option><option value="archived">مؤرشف</option></select></div>
+    <div class="admin-field full"><label>المقتطف (Excerpt)</label><textarea id="art-excerpt" rows="2" placeholder="وصف قصير يظهر في البطاقات"></textarea></div>
+    <div class="admin-field full"><label>المحتوى</label><textarea id="art-content" class="tall" placeholder="اكتب المقال هنا… استعمل ## للعناوين و - للقوائم"></textarea></div>
+    <div class="admin-field full"><label>الصورة المميزة</label><input type="file" id="art-image" accept="image/*"><div class="hint">تُرفع إلى Supabase Storage تلقائياً.</div><img id="art-image-preview" class="img-preview" style="display:none"></div>
+    <div class="admin-field"><label>تاريخ النشر</label><input type="datetime-local" id="art-published"></div>
+    <div class="admin-field"><label>الوسوم</label><div id="art-tags" style="display:flex;flex-wrap:wrap;min-height:2rem"></div></div>
+    <div class="full checkbox-row"><input type="checkbox" id="art-featured"> <label for="art-featured">مقال مميز (Hero)</label></div>
+    <div class="full checkbox-row"><input type="checkbox" id="art-breaking"> <label for="art-breaking">خبر عاجل (Ticker)</label></div>
+    <div class="full" style="display:flex;gap:.75rem;margin-top:1rem;flex-wrap:wrap">
+      <button class="admin-btn primary" id="art-save-publish">حفظ ونشر</button>
+      <button class="admin-btn" id="art-save-draft">حفظ كمسودة</button>
+      <button class="admin-btn ghost" data-editor-close>إلغاء</button>
+      <span class="login-msg" id="editor-msg" style="margin-right:auto"></span>
+    </div>
+  </div>
+</div>
+
+<div class="search-overlay" id="gen-overlay" aria-hidden="true">
+  <div class="admin-form" style="background:var(--color-bg);border:1px solid var(--color-line);padding:2rem;max-width:560px;width:100%;margin:auto">
+    <div class="full" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
+      <h2 style="font-size:1.3rem" id="gen-title">إضافة</h2>
+      <button class="search-close" style="position:static" data-gen-close aria-label="إغلاق"><span class="material-symbols-outlined">close</span></button>
+    </div>
+    <div id="gen-fields" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem"></div>
+    <div class="full" style="display:flex;gap:.75rem;margin-top:1rem">
+      <button class="admin-btn primary" id="gen-save">حفظ</button>
+      <button class="admin-btn ghost" data-gen-close>إلغاء</button>
+      <span class="login-msg" id="gen-msg" style="margin-right:auto"></span>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/admin.js"></script>
+</body>
+</html>

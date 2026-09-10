@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>البحث — مُوكْرُو</title>
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem("mocro-theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t)}else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+<a href="#main" class="skip-link">تخطّى إلى المحتوى</a>
+<header class="mocro-header" id="top">
+  <div class="masthead"><div class="container masthead-inner">
+    <a href="index.html" class="brand" aria-label="مُوكْرُو — الصفحة الرئيسية">مُوكْرُو</a>
+    <div class="masthead-actions">
+      <button class="theme-toggle" data-theme-toggle aria-label="تبديل الوضع" aria-pressed="false"><span class="material-symbols-outlined icon-moon">dark_mode</span><span class="material-symbols-outlined icon-sun">light_mode</span></button>
+      <button class="burger" data-burger aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+    </div>
+  </div></div>
+</header>
+<main id="main" class="container" style="min-height:60vh">
+  <div class="page-head"><h1>البحث</h1></div>
+  <input type="search" id="page-search-input" class="search-input" placeholder="ابحث في المقالات…" autocomplete="off">
+  <div class="search-results" id="page-search-results" style="margin-top:1.5rem"></div>
+</main>
+<footer class="mocro-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">مُوكْرُو</div><p class="footer-brand-desc">مجلة رقمية بهوية أبيض وأسود أنيقة حول التصميم.</p></div>
+      <div><h4>الأقسام</h4><div id="footer-categories"></div></div>
+      <div><h4>المصادر</h4><a href="https://github.com/vakelior/mocro">المستودع على GitHub</a><a href="admin.html">لوحة التحكم</a></div>
+    </div>
+    <div class="footer-bottom"><span>© 2026 مُوكْرُو. جميع الحقوق محفوظة.</span><span class="mono">Black &amp; White · 2026</span></div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/search-page.js"></script>
+</body>
+</html>

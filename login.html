@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تسجيل الدخول — مُوكْرُو</title>
+<meta name="theme-color" content="#000000">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem("mocro-theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t)}else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+</head>
+<body>
+<main class="login-wrap">
+  <div class="login-card">
+    <div class="brand" style="font-size:2rem;margin-bottom:.5rem">مُوكْرُو</div>
+    <div class="sub">لوحة التحكم — الدخول مخصّص للمشرفين فقط.</div>
+    <form id="login-form">
+      <div class="admin-field" style="margin-bottom:1rem">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="username">
+      </div>
+      <div class="admin-field" style="margin-bottom:1.25rem">
+        <label for="password">كلمة المرور</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="admin-btn primary" style="width:100%;justify-content:center" id="login-btn">دخول</button>
+      <div class="login-msg" id="login-msg"></div>
+    </form>
+  </div>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script>
+(function () {
+  var form = document.getElementById('login-form');
+  var msg = document.getElementById('login-msg');
+  var btn = document.getElementById('login-btn');
+  if (!form) return;
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    var email = document.getElementById('email').value.trim();
+    var password = document.getElementById('password').value;
+    msg.className = 'login-msg'; msg.textContent = 'جارٍ تسجيل الدخول…'; btn.disabled = true;
+    try {
+      var sb = window.Mocro.client();
+      var res = await sb.auth.signInWithPassword({ email: email, password: password });
+      if (res.error) { msg.className = 'login-msg err'; msg.textContent = 'فشل الدخول: ' + res.error.message; btn.disabled = false; return; }
+      msg.className = 'login-msg ok'; msg.textContent = 'تم الدخول بنجاح، جارٍ التوجيه…';
+      window.location.href = 'admin.html';
+    } catch (err) { msg.className = 'login-msg err'; msg.textContent = 'حدث خطأ غير متوقع.'; btn.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
