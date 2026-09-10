@@ -14,9 +14,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--color-fg);outline-o
 .skip-link{position:absolute;top:-100%;right:1rem;z-index:200;background:var(--color-bg-inverse);color:var(--color-fg-inverse);padding:0.75rem 1.5rem;border-radius:var(--radius-sm);transition:top var(--duration) var(--ease)}
 .skip-link:focus{top:1rem}
 .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;line-height:1;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
-.theme-toggle{width:40px;height:40px;display:flex;align-items:center;justify-content:center;transition:color var(--duration-fast),transform var(--duration-fast);color:var(--color-muted)}
+.theme-toggle{width:44px;height:44px;display:flex;align-items:center;justify-content:center;transition:color var(--duration-fast),transform var(--duration-fast);color:var(--color-muted)}
 .theme-toggle:hover{color:var(--color-fg);transform:translateY(-1px)}
-.theme-toggle .material-symbols-outlined{font-size:22px}
+.theme-toggle .material-symbols-outlined{font-size:26px}
 .theme-toggle .icon-sun{display:none}
 .theme-toggle .icon-moon{display:flex}
 [data-theme="dark"] .theme-toggle .icon-sun{display:flex}
