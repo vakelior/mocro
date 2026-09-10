@@ -16,7 +16,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--color-fg);outline-o
 .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;line-height:1;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .theme-toggle{width:44px;height:44px;display:flex;align-items:center;justify-content:center;transition:color var(--duration-fast),transform var(--duration-fast);color:var(--color-muted)}
 .theme-toggle:hover{color:var(--color-fg);transform:translateY(-1px)}
-.theme-toggle .material-symbols-outlined{font-size:26px}
+.theme-toggle .material-symbols-outlined{font-size:23px}
 .theme-toggle .icon-sun{display:none}
 .theme-toggle .icon-moon{display:flex}
 [data-theme="dark"] .theme-toggle .icon-sun{display:flex}
