@@ -21,3 +21,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--color-fg);outline-o
 .theme-toggle .icon-moon{display:flex}
 [data-theme="dark"] .theme-toggle .icon-sun{display:flex}
 [data-theme="dark"] .theme-toggle .icon-moon{display:none}
+.news-ticker{background:#000;color:#fff;border-bottom:1px solid #262626;overflow:hidden}
+.ticker-inner{display:flex;align-items:center;gap:1rem;height:2.5rem}
+.ticker-label{display:inline-flex;align-items:center;gap:.4rem;font-size:.78rem;font-weight:700;color:#fff;flex-shrink:0;background:var(--color-accent);padding:.3rem .7rem}
+.ticker-label .material-symbols-outlined{font-size:16px}
+.ticker-text{flex:1;overflow:hidden;white-space:nowrap;display:block}
+.ticker-item{display:inline-block;white-space:nowrap;font-size:.85rem;font-weight:300;color:#d4d4d4;padding-inline-start:4rem}
+@media(max-width:720px){.ticker-label span.material-symbols-outlined{display:none}}
+@keyframes tickerScroll{from{transform:translateX(0)}to{transform:translateX(-100%)}}
+[data-theme="dark"]{scrollbar-color:#333 #000}

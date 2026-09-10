@@ -34,6 +34,11 @@
   --space-12:4.5rem;
   --space-16:6rem;
   --max-width:1240px;
+  /* Fixed ink palette — should NOT invert in dark mode (keeps inverse sections black) */
+  --ink:#000000;
+  --ink-fg:#ffffff;
+  --ink-fg-muted:#a3a3a3;
+  --ink-line:#262626;
   --ease:cubic-bezier(.22,1,.36,1);
   --duration-fast:.2s;
   --duration:.35s;
