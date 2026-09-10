@@ -3,18 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>MOCRO — مجلة التصميم الرقمي</title>
-<meta name="description" content="MOCRO — مجلة رقمية بهوية أبيض وأسود أنيقة حول التصميم: هوية بصرية، تطوير واجهات، وتجربة مستخدم. أفكار ومقالات عن الوضوح والذوق والبساطة.">
+<title>مُوكْرُو — مجلة التصميم الرقمي</title>
+<meta name="description" content="مُوكْرُو — مجلة رقمية بهوية أبيض وأسود أنيقة حول التصميم: هوية بصرية، تطوير واجهات، وتجربة مستخدم. أفكار ومقالات عن الوضوح والذوق والبساطة.">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://vakelior.github.io/mocro/">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="MOCRO">
-<meta property="og:title" content="MOCRO — مجلة التصميم الرقمي">
+<meta property="og:site_name" content="مُوكْرُو">
+<meta property="og:title" content="مُوكْرُو — مجلة التصميم الرقمي">
 <meta property="og:description" content="مجلة رقمية بهوية أبيض وأسود حول التصميم: هوية بصرية، تطوير واجهات، وتجربة مستخدم.">
 <meta property="og:url" content="https://vakelior.github.io/mocro/">
 <meta property="og:locale" content="ar_AR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MOCRO — مجلة التصميم الرقمي">
+<meta name="twitter:title" content="مُوكْرُو — مجلة التصميم الرقمي">
 <meta name="twitter:description" content="مجلة رقمية بهوية أبيض وأسود حول التصميم.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <script>try{var t=localStorage.getItem("mocro-theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t)}else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}</script>
@@ -24,7 +24,7 @@
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/layout.css">
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"MOCRO","url":"https://vakelior.github.io/mocro/","description":"مجلة رقمية بهوية أبيض وأسود أنيقة حول التصميم."}
+{"@context":"https://schema.org","@type":"WebSite","name":"مُوكْرُو","url":"https://vakelior.github.io/mocro/","description":"مُوكْرُو — مجلة رقمية بهوية أبيض وأسود أنيقة حول التصميم."}
 </script>
 </head>
 <body>
@@ -41,13 +41,27 @@
   </div>
   <div class="masthead">
     <div class="container masthead-inner">
-      <a href="#top" class="brand" aria-label="MOCRO — الصفحة الرئيسية"><span class="dot"></span> MOCRO</a>
+      <a href="#top" class="brand" aria-label="مُوكْرُو — الصفحة الرئيسية"><span class="dot"></span> مُوكْرُو</a>
       <nav class="nav-desktop" aria-label="التنقل الرئيسي">
-        <a href="#latest">الأحدث</a>
-        <a href="#identity">الهوية</a>
-        <a href="#frontend">الواجهات</a>
-        <a href="#ux">التجربة</a>
-        <a href="#journal">مقالات</a>
+        <a href="#latest" class="nav-link">الأحدث</a>
+        <div class="nav-item has-sub">
+          <button class="nav-link nav-trigger" aria-haspopup="true" aria-expanded="false">الأقسام <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="submenu" role="menu">
+            <a href="#identity" role="menuitem"><span>الهوية البصرية</span><span class="sub-num">01</span></a>
+            <a href="#frontend" role="menuitem"><span>تطوير الواجهات</span><span class="sub-num">02</span></a>
+            <a href="#ux" role="menuitem"><span>تجربة المستخدم</span><span class="sub-num">03</span></a>
+            <a href="#journal" role="menuitem"><span>الفلسفة</span><span class="sub-num">04</span></a>
+          </div>
+        </div>
+        <a href="#process" class="nav-link">المنهج</a>
+        <div class="nav-item has-sub">
+          <button class="nav-link nav-trigger" aria-haspopup="true" aria-expanded="false">مقالات <svg class="nav-caret" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></button>
+          <div class="submenu" role="menu">
+            <a href="#journal" role="menuitem"><span>الوضوح أولاً</span><span class="sub-num">01</span></a>
+            <a href="#journal" role="menuitem"><span>نيّة قبل مؤثرات</span><span class="sub-num">02</span></a>
+            <a href="#journal" role="menuitem"><span>بساطة مقصودة</span><span class="sub-num">03</span></a>
+          </div>
+        </div>
       </nav>
       <div class="masthead-actions">
         <button class="search-btn" data-search-toggle aria-label="فتح البحث">
@@ -63,7 +77,7 @@
     <span class="ticker-label">آخر المستجدات</span>
     <div class="ticker-viewport">
       <ul class="ticker-track" id="ticker-track">
-        <li><span class="ticker-time">قريباً</span> إطلاق هوية MOCRO البصرية الكاملة</li>
+        <li><span class="ticker-time">قريباً</span> إطلاق هوية مُوكْرُو البصرية الكاملة</li>
         <li><span class="ticker-time">جديد</span> مقال: الوضوح أولاً — لماذا يسبق كل عنصر بصري</li>
         <li><span class="ticker-time">منهج</span> نُفكّر ثم نبني، ولا نبني ثم نُصحّح</li>
         <li><span class="ticker-time">ملاحظة</span> هذا الإصدار تجريبي — المحتوى يتجدّد فور الإطلاق</li>
@@ -73,7 +87,7 @@
 </div>
 <div class="sidebar" id="sidebar" data-sidebar role="dialog" aria-modal="true" aria-hidden="true" aria-label="قائمة التنقل">
   <div class="sidebar-head">
-    <a href="#top" class="brand"><span class="dot"></span> MOCRO</a>
+    <a href="#top" class="brand"><span class="dot"></span> مُوكْرُو</a>
     <button class="sidebar-close" data-sidebar-close aria-label="إغلاق القائمة">✕</button>
   </div>
   <nav class="sidebar-nav" aria-label="قائمة الجوال">
@@ -84,16 +98,16 @@
     <a href="#journal"><span>مقالات</span><span class="num">05</span></a>
   </nav>
   <div class="sidebar-foot">
-    <p>© 2026 MOCRO — مجلة التصميم الرقمي</p>
+    <p>© 2026 مُوكْرُو — مجلة التصميم الرقمي</p>
   </div>
 </div>
 <div class="backdrop" data-backdrop aria-hidden="true"></div>
 <main id="main">
-  <h1 class="sr-only">MOCRO — مجلة التصميم الرقمي بهوية أبيض وأسود</h1>
+  <h1 class="sr-only">مُوكْرُو — مجلة التصميم الرقمي بهوية أبيض وأسود</h1>
   <section class="featured container" aria-label="مقالات مميزة">
     <div class="featured-slider" data-slider>
       <div class="slide is-active" data-slide>
-        <div class="slide-media"><div class="placeholder-art ph-1">MOCRO</div></div>
+        <div class="slide-media"><div class="placeholder-art ph-1">مُوكْرُو</div></div>
         <div class="slide-body">
           <span class="cat">مقال</span>
           <h2>الوضوح أولاً — لماذا يسبق كل عنصر بصري</h2>
@@ -198,11 +212,11 @@
 <footer class="mocro-footer">
   <div class="container">
     <div class="footer-grid">
-      <div><div class="footer-brand"><span class="dot"></span> MOCRO</div><p class="footer-brand-desc">مجلة رقمية بهوية أبيض وأسود أنيقة حول التصميم.</p></div>
+      <div><div class="footer-brand"><span class="dot"></span> مُوكْرُو</div><p class="footer-brand-desc">مجلة رقمية بهوية أبيض وأسود أنيقة حول التصميم.</p></div>
       <div><h4>الأقسام</h4><a href="#latest">الأحدث</a><a href="#identity">الهوية البصرية</a><a href="#frontend">تطوير الواجهات</a><a href="#ux">تجربة المستخدم</a></div>
       <div><h4>المصادر</h4><a href="https://github.com/vakelior/mocro">المستودع على GitHub</a></div>
     </div>
-    <div class="footer-bottom"><span>© 2026 MOCRO. جميع الحقوق محفوظة.</span><span class="mono">Black &amp; White · 2026</span></div>
+    <div class="footer-bottom"><span>© 2026 مُوكْرُو. جميع الحقوق محفوظة.</span><span class="mono">Black &amp; White · 2026</span></div>
   </div>
 </footer>
 <script src="assets/js/main.js"></script>
