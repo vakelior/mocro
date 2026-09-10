@@ -4,29 +4,46 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MOCRO — استوديو تصميم رقمي بهوية أبيض وأسود</title>
-<meta name="description" content="MOCRO استوديو تصميم رقمي متخصص في الهوية البصرية وتطوير الواجهات، بأسلوب أبيض وأسود أنيق وحاد.">
+<meta name="description" content="MOCRO استوديو تصميم رقمي متخصص في الهوية البصرية وتطوير الواجهات، بأسلوب أبيض وأسود أنيق وحاد. بورتفوليو أعمال ومقالات عن التصميم.">
 <meta name="theme-color" content="#000000">
 <link rel="canonical" href="https://vakelior.github.io/mocro/">
+
+<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MOCRO">
 <meta property="og:title" content="MOCRO — تصميم أبيض وأسود أنيق">
-<meta property="og:description" content="استوديو تصميم رقمي بهوية أبيض وأسود حادة وأنيقة.">
+<meta property="og:description" content="استوديو تصميم رقمي بهوية أبيض وأسود حادة وأنيقة. هوية بصرية، تطوير واجهات، وإطلاق منتجات.">
 <meta property="og:url" content="https://vakelior.github.io/mocro/">
 <meta property="og:locale" content="ar_AR">
+
+<!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MOCRO — تصميم أبيض وأسود أنيق">
 <meta name="twitter:description" content="استوديو تصميم رقمي بهوية أبيض وأسود حادة وأنيقة.">
+
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+
+<!-- Styles -->
+<script>try{var t=localStorage.getItem("mocro-theme");if(t==="dark"||t==="light"){document.documentElement.setAttribute("data-theme",t)}else if(window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches){document.documentElement.setAttribute("data-theme","dark")}}catch(e){}</script>
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/layout.css">
+
+<!-- Structured data -->
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Organization","name":"MOCRO","url":"https://vakelior.github.io/mocro/","description":"استوديو تصميم رقمي بهوية أبيض وأسود أنيقة وحادة."}
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "MOCRO",
+  "url": "https://vakelior.github.io/mocro/",
+  "description": "استوديو تصميم رقمي بهوية أبيض وأسود أنيقة وحادة."
+}
 </script>
 </head>
 <body>
+<div class="preloader" id="preloader" aria-hidden="true"><div class="mark">MOCRO<span class="dot"></span></div></div>
 <a href="#main" class="skip-link">تخطّى إلى المحتوى</a>
 
 <header class="mocro-header" id="top">
@@ -39,6 +56,10 @@
       <a href="#journal">المدوّنة</a>
       <a href="#contact" class="is-active">تواصل معنا</a>
     </nav>
+    <button class="theme-toggle" data-theme-toggle aria-label="تبديل الوضع الليلي/النهاري" aria-pressed="false">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+    </button>
     <button class="burger" data-burger aria-label="فتح القائمة" aria-expanded="false" aria-controls="sidebar"><span></span></button>
   </div>
 </header>
@@ -149,35 +170,97 @@
 
   <section class="section" id="process">
     <div class="container">
-      <div class="section-label reveal"><span class="kicker">كيف نعمل</span><span class="index">( 02 )</span></div>
+      <div class="section-label reveal">
+        <span class="kicker">كيف نعمل</span>
+        <span class="index">( 02 )</span>
+      </div>
       <div class="process">
-        <div class="process-step reveal"><div class="num">01</div><h3>اكتشاف</h3><p>نفهم عملك وجمهورك وأهدافك قبل أي تصميم.</p></div>
-        <div class="process-step reveal" data-delay="1"><div class="num">02</div><h3>تصوّر</h3><p>نحوّل الرؤية إلى مفاهيم وهوية بصرية واضحة.</p></div>
-        <div class="process-step reveal" data-delay="2"><div class="num">03</div><h3>تنفيذ</h3><p>نبني التصميم بدقة متناهية وجودة عالية.</p></div>
-        <div class="process-step reveal" data-delay="3"><div class="num">04</div><h3>إطلاق</h3><p>نطلق المشروع ونتابع الأداء والتحسين.</p></div>
+        <div class="process-step reveal">
+          <div class="num">01</div>
+          <h3>اكتشاف</h3>
+          <p>نفهم عملك وجمهورك وأهدافك قبل أي تصميم.</p>
+        </div>
+        <div class="process-step reveal" data-delay="1">
+          <div class="num">02</div>
+          <h3>تصوّر</h3>
+          <p>نحوّل الرؤية إلى مفاهيم وهوية بصرية واضحة.</p>
+        </div>
+        <div class="process-step reveal" data-delay="2">
+          <div class="num">03</div>
+          <h3>تنفيذ</h3>
+          <p>نبني التصميم بدقة متناهية وجودة عالية.</p>
+        </div>
+        <div class="process-step reveal" data-delay="3">
+          <div class="num">04</div>
+          <h3>إطلاق</h3>
+          <p>نطلق المشروع ونتابع الأداء والتحسين.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section section-alt" id="works">
     <div class="container">
-      <div class="section-label reveal"><span class="kicker">أعمال مختارة</span><span class="index">( 03 )</span></div>
+      <div class="section-label reveal">
+        <span class="kicker">أعمال مختارة</span>
+        <span class="index">( 03 )</span>
+      </div>
       <div class="works">
-        <a href="#" class="work reveal"><div class="img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div><div class="info"><div class="cat">هوية بصرية</div><h3>Aurora Brand</h3><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span></div></a>
-        <a href="#" class="work reveal" data-delay="1"><div class="img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div><div class="info"><div class="cat">موقع إلكتروني</div><h3>Nimbus Studio</h3><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span></div></a>
-        <a href="#" class="work reveal" data-delay="1"><div class="img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><div class="info"><div class="cat">تطبيق</div><h3>Forma App</h3><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span></div></a>
-        <a href="#" class="work reveal" data-delay="2"><div class="img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg></div><div class="info"><div class="cat">حملة إطلاق</div><h3>Mono Campaign</h3><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span></div></a>
+        <a href="#" class="work reveal">
+          <div class="img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="M2 2l7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg></div>
+          <div class="info"><div class="cat">هوية بصرية</div><h3>Aurora Brand</h3><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span></div>
+        </a>
+        <a href="#" class="work reveal" data-delay="1">
+          <div class="img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+          <div class="info"><div class="cat">موقع إلكتروني</div><h3>Nimbus Studio</h3><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span></div>
+        </a>
+        <a href="#" class="work reveal" data-delay="1">
+          <div class="img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div>
+          <div class="info"><div class="cat">تطبيق</div><h3>Forma App</h3><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span></div>
+        </a>
+        <a href="#" class="work reveal" data-delay="2">
+          <div class="img"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M16.24 7.76l-2.12 6.36-6.36 2.12 2.12-6.36 6.36-2.12z"/></svg></div>
+          <div class="info"><div class="cat">حملة إطلاق</div><h3>Mono Campaign</h3><span class="arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></span></div>
+        </a>
       </div>
     </div>
   </section>
 
   <section class="section" id="journal">
     <div class="container">
-      <div class="section-head reveal"><div class="eyebrow">المدوّنة</div><h2>آخر المقالات</h2><div class="line"></div></div>
+      <div class="section-head reveal">
+        <div class="eyebrow">المدوّنة</div>
+        <h2>آخر المقالات</h2>
+        <div class="line"></div>
+      </div>
       <div class="grid post-list">
-        <article class="post reveal"><div class="thumb"><span class="tag">تصميم</span></div><div class="body"><div class="meta">10 أكتوبر 2026</div><h3>كيف تبني هوية بصرية لا تُنسى</h3><p>دليل عملي لتصميم هوية قوية تترك أثراً في ذهن جمهورك.</p><a href="#" class="read-link">اقرأ المزيد <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a></div></article>
-        <article class="post reveal" data-delay="1"><div class="thumb"><span class="tag">أسلوب</span></div><div class="body"><div class="meta">2 أكتوبر 2026</div><h3>أساسيات التصميم الأحادي اللون</h3><p>لماذا يعتبر التباين العالي خياراً جريئاً وناجحاً في التصميم الحديث.</p><a href="#" class="read-link">اقرأ المزيد <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a></div></article>
-        <article class="post reveal" data-delay="2"><div class="thumb"><span class="tag">أداء</span></div><div class="body"><div class="meta">25 سبتمبر 2026</div><h3>تحسين سرعة المواقع في 2026</h3><p>نصائح عملية لتقليل زمن التحميل وتحسين تجربة المستخدم.</p><a href="#" class="read-link">اقرأ المزيد <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a></div></article>
+        <article class="post reveal">
+          <div class="thumb"><span class="tag">تصميم</span></div>
+          <div class="body">
+            <div class="meta">10 أكتوبر 2026</div>
+            <h3>كيف تبني هوية بصرية لا تُنسى</h3>
+            <p>دليل عملي لتصميم هوية قوية تترك أثراً في ذهن جمهورك.</p>
+            <a href="#" class="read-link">اقرأ المزيد <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+          </div>
+        </article>
+        <article class="post reveal" data-delay="1">
+          <div class="thumb"><span class="tag">أسلوب</span></div>
+          <div class="body">
+            <div class="meta">2 أكتوبر 2026</div>
+            <h3>أساسيات التصميم الأحادي اللون</h3>
+            <p>لماذا يعتبر التباين العالي خياراً جريئاً وناجحاً في التصميم الحديث.</p>
+            <a href="#" class="read-link">اقرأ المزيد <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+          </div>
+        </article>
+        <article class="post reveal" data-delay="2">
+          <div class="thumb"><span class="tag">أداء</span></div>
+          <div class="body">
+            <div class="meta">25 سبتمبر 2026</div>
+            <h3>تحسين سرعة المواقع في 2026</h3>
+            <p>نصائح عملية لتقليل زمن التحميل وتحسين تجربة المستخدم.</p>
+            <a href="#" class="read-link">اقرأ المزيد <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -194,11 +277,28 @@
 <footer class="mocro-footer">
   <div class="container">
     <div class="footer-grid">
-      <div><div class="footer-brand"><span class="dot"></span> MOCRO</div><p class="footer-brand-desc">استوديو تصميم رقمي بهوية أبيض وأسود أنيقة وحادة.</p></div>
-      <div><h4>روابط</h4><a href="#services">الخدمات</a><a href="#about">من نحن</a><a href="#works">أعمالنا</a><a href="#journal">المدوّنة</a></div>
-      <div><h4>المصادر</h4><a href="https://github.com/vakelior/mocro">المستودع على GitHub</a><a href="#top">سياسة الخصوصية</a><a href="#top">الشروط</a></div>
+      <div>
+        <div class="footer-brand"><span class="dot"></span> MOCRO</div>
+        <p class="footer-brand-desc">استوديو تصميم رقمي بهوية أبيض وأسود أنيقة وحادة.</p>
+      </div>
+      <div>
+        <h4>روابط</h4>
+        <a href="#services">الخدمات</a>
+        <a href="#about">من نحن</a>
+        <a href="#works">أعمالنا</a>
+        <a href="#journal">المدوّنة</a>
+      </div>
+      <div>
+        <h4>المصادر</h4>
+        <a href="https://github.com/vakelior/mocro">المستودع على GitHub</a>
+        <a href="#top">سياسة الخصوصية</a>
+        <a href="#top">الشروط</a>
+      </div>
     </div>
-    <div class="footer-bottom"><span>© 2026 MOCRO. جميع الحقوق محفوظة.</span><span class="mono">Black &amp; White · 2026</span></div>
+    <div class="footer-bottom">
+      <span>© 2026 MOCRO. جميع الحقوق محفوظة.</span>
+      <span class="mono">Black &amp; White · 2026</span>
+    </div>
   </div>
 </footer>
 
