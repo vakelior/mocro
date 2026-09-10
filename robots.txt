@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://vakelior.github.io/mocro/sitemap.xml
