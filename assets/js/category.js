@@ -9,7 +9,7 @@
   function qs(n) { return new URLSearchParams(window.location.search).get(n); }
   function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
   function dateStr(iso) { if (!iso) return ''; try { return new Date(iso).toLocaleDateString('ar-TN', { year: 'numeric', month: 'long', day: 'numeric' }); } catch (e) { return iso.slice(0, 10); } }
-  function readingTime(content) { var w = (content || '').trim().split(/\s+/).length; return Math.max(1, Math.round(w / 180)) + ' دقائق'; }
+  function readingTime(content) { var w = (content || '').trim().split(/\s+/).length; var m = Math.max(1, Math.round(w / 180)); return m + (m === 1 ? ' دقيقة' : ' دقائق'); }
 
   async function render() {
     var slug = qs('slug');
