@@ -1,5 +1,5 @@
 /* ============ LAYOUT & SECTIONS ============ */
-.featured{margin:1rem auto;padding:0 2rem}
+.featured{max-width:var(--max-width);margin:1rem auto 0}
 .featured-slider{position:relative;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-line);border-radius:var(--radius-md);overflow:hidden;background:var(--color-bg)}
 .slide{display:none;grid-template-columns:1fr 1fr;min-height:0;align-items:stretch}
 .slide.is-active{display:grid}
