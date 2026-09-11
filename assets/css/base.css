@@ -34,7 +34,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--color-fg);outline-o
 .ticker-dot{width:6px;height:6px;border-radius:50%;background:#d4d4d4;padding:0;transition:background var(--duration) var(--ease),transform var(--duration) var(--ease)}
 .ticker-dot.is-active{background:#000000;transform:scale(1.35)}
 @media(max-width:720px){
-  .ticker-label span.material-symbols-outlined{display:none}
   .ticker-dots{display:none}
   .ticker-btn{width:30px;height:30px}
 }
