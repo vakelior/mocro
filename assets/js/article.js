@@ -125,7 +125,7 @@
     try { res = await M.articleBySlug(slug); }
     catch (e) { root.innerHTML = '<div class="container empty-state">تعذّر تحميل المقال. حاول مرة أخرى.</div>'; return; }
 
-    var a = M.normalize(((res && res.data) || res));
+    var a = M.normalize(res && res.data ? res.data : null);
     if (!a) { root.innerHTML = '<div class="container empty-state">المقال غير موجود أو غير منشور.</div>'; return; }
 
     document.title = a.title + ' — مُوكْرُو';
