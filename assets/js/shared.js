@@ -49,7 +49,7 @@
     box.innerHTML = '';
     if (!items || !items.length) {
       var none = document.createElement('span');
-      none.className = 'ticker-item'; none.textContent = 'لحظة بلحظة — تابع آخر مقالات التصميم.';
+      none.className = 'ticker-item'; none.textContent = 'لحظة بلحظة — تابع آخر الأخبار.';
       box.appendChild(none);
       return;
     }
