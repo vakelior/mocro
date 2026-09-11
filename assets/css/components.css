@@ -20,9 +20,9 @@
 .submenu a:not(:last-child){border-bottom:1px solid var(--color-line)}
 .submenu a:hover .sub-num{color:var(--color-accent)}
 .masthead-actions{display:flex;align-items:center;gap:.15rem}
-.menu-search{padding:var(--sp-3) 0 var(--sp-4);border-bottom:1px solid var(--color-line);margin-bottom:var(--sp-3)}
+.menu-search{padding:var(--sp-3) 0 var(--sp-3);border-bottom:1px solid var(--color-line);margin-bottom:var(--sp-3)}
 .menu-search .search-input{width:100%}
-.menu-search-results{max-height:300px;overflow-y:auto;margin-top:var(--sp-3)}
+.menu-search-results{max-height:280px;overflow-y:auto;margin-top:var(--sp-2);padding-inline-end:2px;-webkit-overflow-scrolling:touch}
 .burger{display:none;width:44px;height:44px;position:relative;z-index:110;background:none;border:none}
 .burger span,.burger span::before,.burger span::after{content:"";display:block;width:24px;height:2px;background:var(--color-fg);position:absolute;right:20px;transition:all var(--duration) var(--ease)}
 .burger span{top:50%;transform:translateY(-50%);background:var(--color-fg)}

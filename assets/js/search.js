@@ -1,19 +1,25 @@
 /**
  * MOCRO — search.js | live search inside the mobile menu.
- * Clean B&W search field with a search icon inside; results appear below as you type.
+ * Results appear below the field as you type (max 6, scrollable).
  */
 (function () {
   'use strict';
   if (!window.Mocro) return;
   var M = window.Mocro;
 
+  var MAX_RESULTS = 6;
+
   function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
   function url(p) { var b = window.MOCRO_CONFIG.SITE_BASE; if (b.slice(-1) !== '/') b += '/'; return b + p; }
 
   function renderInto(results, container) {
     container.innerHTML = '';
-    if (!results || !results.length) { container.innerHTML = '<div class="search-empty">لا نتائج مطابقة.</div>'; return; }
-    results.forEach(function (a) {
+    if (!results || !results.length) {
+      container.innerHTML = '<div class="search-empty">لا نتائج مطابقة.</div>';
+      return;
+    }
+    var list = results.slice(0, MAX_RESULTS);
+    list.forEach(function (a) {
       var row = el('a', 'search-result');
       row.href = url('article.html?slug=' + encodeURIComponent(a.slug));
       if (a.featured_image) { var img = document.createElement('img'); img.src = a.featured_image; img.alt = a.title; row.appendChild(img); }
@@ -33,10 +39,9 @@
       var q = input.value.trim();
       if (!q) { results.innerHTML = ''; return; }
       debounce = setTimeout(function () {
-        results.innerHTML = '<div class="search-empty">جارٍ البحث…</div>';
-        M.search(q, 30).then(function (res) { renderInto(res.data || [], results); })
+        M.search(q, 20).then(function (res) { renderInto(res.data || [], results); })
           .catch(function () { results.innerHTML = '<div class="search-empty">حدث خطأ.</div>'; });
-      }, 300);
+      }, 250);
     });
   }
 
