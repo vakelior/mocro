@@ -32,7 +32,11 @@
   function handleEscape(e) { if (e.key === 'Escape') closeMenu(); }
   if (burger) burger.addEventListener('click', function (e) { e.stopPropagation(); menu && menu.classList.contains('is-open') ? closeMenu() : openMenu(); });
   if (menu) {
-    menu.addEventListener('click', function (e) { e.stopPropagation(); });
+    menu.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var link = e.target && e.target.closest ? e.target.closest('a') : null;
+      if (link) closeMenu();
+    });
     document.addEventListener('click', function (e) { if (menu.classList.contains('is-open') && !menu.contains(e.target) && e.target !== burger) closeMenu(); });
   }
 
