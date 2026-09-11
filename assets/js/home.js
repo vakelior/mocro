@@ -126,8 +126,6 @@
       item.setAttribute('tabindex', '0');
       item.setAttribute('role', 'link');
       item.setAttribute('aria-label', a.title);
-      var thumb = el('div', 'journal-thumb');
-      if (a.featured_image) { var img = document.createElement('img'); img.src = a.featured_image; img.alt = a.title; img.loading = 'lazy'; thumb.appendChild(img); }
       var body = el('div', 'journal-body');
       body.appendChild(el('h3', null, a.title));
       body.appendChild(el('p', null, a.excerpt));
@@ -135,7 +133,7 @@
       var arrow = document.createElement('a');
       arrow.className = 'journal-arrow material-symbols-outlined';
       arrow.href = href; arrow.textContent = 'arrow_back'; arrow.setAttribute('aria-hidden', 'true'); arrow.setAttribute('tabindex', '-1');
-      item.appendChild(thumb); item.appendChild(body); item.appendChild(arrow);
+      item.appendChild(body); item.appendChild(arrow);
       item.addEventListener('click', function () { window.location.href = href; });
       item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
       list.appendChild(item);
