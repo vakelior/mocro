@@ -54,17 +54,12 @@
   }
 
   function renderTicker(breaking) {
-    var box = document.querySelector('.ticker-text');
-    if (!box) return;
-    var items = breaking && breaking.length ? breaking : [];
-    if (!items.length) return;
-    box.innerHTML = '';
-    items.forEach(function (a) {
-      var s = el('span', 'ticker-item'); s.textContent = a.title; box.appendChild(s);
+    var items = (breaking && breaking.length ? breaking : []).map(function (a) {
+      return { title: a.title, slug: a.slug };
     });
-    box.innerHTML = box.innerHTML + box.innerHTML;
-    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if (!reduced) { box.style.whiteSpace = 'nowrap'; box.style.animation = 'tickerScroll 40s linear infinite'; }
+    if (typeof window.MocroShared === 'object' && window.MocroShared.buildTicker) {
+      window.MocroShared.buildTicker(items.length ? items : [{ title: 'لحظة بلحظة — تابع آخر الأخبار.' }]);
+    }
   }
 
   function renderSlider(featured) {

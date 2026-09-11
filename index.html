@@ -34,7 +34,17 @@
 <div class="news-ticker" aria-label="شريط الأخبار">
   <div class="container ticker-inner">
     <span class="ticker-label"><span class="material-symbols-outlined" aria-hidden="true">bolt</span>الآن</span>
-    <span class="ticker-text"><span class="ticker-item">جارٍ تحميل الأخبار…</span></span>
+    <div class="ticker-viewport" tabindex="0" role="region" aria-roledescription="شريط تمرير" aria-label="عناوين الأخبار العاجلة">
+      <div class="ticker-track">
+        <span class="ticker-item">جارٍ تحميل الأخبار…</span>
+      </div>
+    </div>
+    <div class="ticker-controls" aria-hidden="false">
+      <button class="ticker-btn ticker-prev" type="button" aria-label="العنوان السابق"><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>
+      <button class="ticker-btn ticker-play" type="button" aria-label="إيقاف مؤقت"><span class="material-symbols-outlined ticker-play-icon" aria-hidden="true">pause</span></button>
+      <button class="ticker-btn ticker-next" type="button" aria-label="العنوان التالي"><span class="material-symbols-outlined" aria-hidden="true">chevron_left</span></button>
+    </div>
+    <div class="ticker-dots" aria-hidden="true"></div>
   </div>
 </div>
 <header class="mocro-header" id="top">
@@ -125,6 +135,7 @@
 <script src="assets/js/api.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="assets/js/search.js"></script>
+<script src="assets/js/shared.js"></script>
 <script src="assets/js/home.js"></script>
 </body>
 </html>
