@@ -153,13 +153,13 @@
     if (catUl) {
       catUl.innerHTML = '';
       categories.forEach(function (c) {
-        var li = document.createElement('li'); var a = document.createElement('a'); a.href = catUrl(c); a.textContent = c.name; li.appendChild(a); catUl.appendChild(li);
+        var li = document.createElement('li'); var link = document.createElement('a'); link.href = catUrl(c); link.textContent = c.name; li.appendChild(link); catUl.appendChild(li);
       });
     }
     if (popUl) {
       popUl.innerHTML = '';
-      popular.slice(0, 5).forEach(function (a) {
-        var li = document.createElement('li'); var a = document.createElement('a'); a.href = artUrl(a); a.textContent = a.title; li.appendChild(a); popUl.appendChild(li);
+      popular.slice(0, 5).forEach(function (art) {
+        var li = document.createElement('li'); var link = document.createElement('a'); link.href = artUrl(art); link.textContent = art.title; li.appendChild(link); popUl.appendChild(li);
       });
     }
   }
