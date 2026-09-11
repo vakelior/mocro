@@ -1,6 +1,8 @@
 /* ============================================================================
    MOCRO — pages.css | dynamic pages (article/category/author/search/admin)
    Same monochrome system + unified global spacing tokens.
+   Every top-level block below uses padding-inline:var(--gutter) so its
+   left/right edges align to the SAME invisible axis as header/footer.
    ============================================================================ */
 
 .search-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding:8vh var(--gutter) var(--sp-6);overflow-y:auto}
@@ -20,10 +22,11 @@
 .search-result .sr-meta{font-size:.78rem;color:var(--color-muted)}
 .search-empty{color:var(--color-muted);padding:var(--sp-6);text-align:center}
 
+.article-back{max-width:var(--max-width);margin:var(--sp-5) auto 0;padding-inline:var(--gutter)}
 .article-hero{max-width:var(--max-width);margin-inline:auto;padding-inline:var(--gutter)}
 .article-hero-media{aspect-ratio:16/9;overflow:hidden;border:1px solid var(--color-line);background:var(--color-bg-soft)}
 .article-hero-media img{width:100%;height:100%;object-fit:cover}
-.article-head{max-width:var(--content-width);margin-inline:auto;padding-block:var(--sp-7) var(--sp-5)}
+.article-head{max-width:var(--max-width);margin-inline:auto;padding:var(--sp-7) var(--gutter) var(--sp-5)}
 .article-head .cat{font-size:.8rem}
 .article-head h1{font-size:var(--text-3xl);font-weight:700;line-height:1.25;letter-spacing:-.01em;margin:.5rem 0 var(--sp-4)}
 .article-meta-row{display:flex;flex-wrap:wrap;align-items:center;gap:var(--sp-4);font-size:.85rem;color:var(--color-muted)}
@@ -45,24 +48,25 @@
 .tag-chip:hover{border-color:var(--color-accent);color:var(--color-accent)}
 .article-share{margin-top:var(--sp-6);padding-top:var(--sp-5);border-top:1px solid var(--color-line);display:flex;gap:var(--sp-2);align-items:center;font-size:.85rem;color:var(--color-muted);flex-wrap:wrap}
 
-.related-section{max-width:var(--max-width);margin-inline:auto;padding:var(--sp-6) 0 var(--section-gap)}
+.related-section{max-width:var(--max-width);margin-inline:auto;padding:var(--sp-6) var(--gutter) var(--section-gap)}
 .related-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-5);margin-top:var(--sp-5)}
 @media(max-width:980px){.related-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:560px){.related-grid{grid-template-columns:1fr}}
 
-.page-head{max-width:var(--max-width);margin:var(--sp-6) auto var(--sp-4);padding-block:var(--sp-6) var(--sp-6);border-bottom:3px solid var(--ink)}
+.page-head{max-width:var(--max-width);margin:var(--sp-6) auto var(--sp-4);padding:var(--sp-6) var(--gutter);border-bottom:3px solid var(--ink)}
 .page-head h1{font-size:var(--text-3xl);font-weight:700;margin-bottom:var(--sp-2)}
 .page-head .page-desc{color:var(--color-muted);font-size:1rem;max-width:640px}
-.listing{max-width:var(--max-width);margin-inline:auto;padding-bottom:var(--section-gap)}
+.listing{max-width:var(--max-width);margin-inline:auto;padding:0 var(--gutter) var(--section-gap)}
 .listing-grid{display:grid;grid-template-columns:1fr;gap:0;margin-top:var(--sp-4)}
 .empty-state{padding:var(--sp-9) var(--sp-6);text-align:center;color:var(--color-muted);border:1px dashed var(--color-line)}
 
-.author-hero{display:flex;align-items:center;gap:var(--sp-5);padding:var(--sp-2) 0}
-.author-avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;border:2px solid var(--color-line)}
+/* Author */
+.author-hero{max-width:var(--max-width);margin:var(--sp-6) auto var(--sp-4);padding-inline:var(--gutter);display:flex;align-items:center;gap:var(--sp-5)}
+.author-avatar{width:88px;height:88px;border-radius:50%;object-fit:cover;border:2px solid var(--color-line);flex-shrink:0}
 .author-bio{color:var(--color-muted);max-width:640px;margin-top:var(--sp-2)}
 
 /* Admin */
-.admin-shell{padding:var(--sp-6) 0 var(--sp-10)}
+.admin-shell{max-width:var(--max-width);margin-inline:auto;padding:var(--sp-6) var(--gutter) var(--sp-10)}
 .admin-header{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4);margin-bottom:var(--sp-6);padding-bottom:var(--sp-4);border-bottom:3px solid var(--ink)}
 .admin-tabs{display:flex;gap:0;margin-bottom:var(--sp-5);border-bottom:1px solid var(--color-line);overflow-x:auto}
 .admin-tab{padding:var(--sp-4) var(--sp-5);font-weight:700;font-size:.9rem;color:var(--color-muted);border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer}
@@ -109,7 +113,6 @@
 .login-msg.ok{color:var(--color-accent)}
 
 /* Article refinements (consistency + a11y) */
-.article-back{max-width:var(--max-width);margin:var(--sp-5) auto 0;padding-inline:var(--gutter)}
 .back-btn{display:inline-flex;align-items:center;gap:var(--sp-2);font-family:inherit;font-size:.95rem;font-weight:700;color:#000000;background:#ffffff;border:1px solid #000000;padding:var(--sp-3) var(--sp-5);cursor:pointer;transition:all var(--duration-fast)}
 .back-btn:hover{background:#000000;color:#ffffff}
 .back-btn:hover .material-symbols-outlined{color:inherit}
