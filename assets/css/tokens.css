@@ -34,10 +34,10 @@
   --space-12:4.5rem;
   --space-16:6rem;
   --max-width:1240px;
-  --ink:#000000;
-  --ink-fg:#ffffff;
-  --ink-fg-muted:#a3a3a3;
-  --ink-line:#262626;
+  --ink:#ffffff;
+  --ink-fg:#0a0a0a;
+  --ink-fg-muted:#666666;
+  --ink-line:#e8e8e8;
   --ease:cubic-bezier(.22,1,.36,1);
   --duration-fast:.2s;
   --duration:.35s;
