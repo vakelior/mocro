@@ -30,7 +30,7 @@
     ticker.setAttribute('aria-label', 'شريط الأخبار');
     ticker.innerHTML =
       '<div class="container ticker-inner">' +
-        '<span class="ticker-label"><span class="material-symbols-outlined" aria-hidden="true">bolt</span>الآن</span>' +
+        '<span class="ticker-label"><span class="material-symbols-outlined" aria-hidden="true">trending_up</span>الآن</span>' +
         '<div class="ticker-viewport" tabindex="0" role="region" aria-roledescription="شريط تمرير" aria-label="عناوين الأخبار العاجلة">' +
           '<div class="ticker-track"><span class="ticker-item">جارٍ تحميل الأخبار…</span></div>' +
         '</div>' +
@@ -166,10 +166,19 @@
       viewport.addEventListener('mouseleave', resume);
       viewport.addEventListener('focusin', pause);
       viewport.addEventListener('focusout', resume);
-      var startX = null, startY = null, dragging = false, prevSlide = 0, dragLocked = false;
+
+      // Drag / swipe — whole track follows the finger; release commits next/prev.
+      // Natural direction: swipe LEFT -> next, swipe RIGHT -> previous.
+      var startX = null, startY = null, dragging = false, dragLocked = false, prevSlide = 0;
+      function commitDrag(dx) {
+        track.style.transform = '';
+        track.classList.remove('dragging');
+        if (Math.abs(dx) > 60) { goTo(prevSlide + (dx < 0 ? 1 : -1), false); }
+        else { goTo(prevSlide, false); }
+      }
       viewport.addEventListener('pointerdown', function (ev) {
         if (ev.pointerType === 'mouse' && ev.button !== 0) return;
-        dragging = true; startX = ev.clientX; startY = ev.clientY; prevSlide = index;
+        dragging = true; dragLocked = false; startX = ev.clientX; startY = ev.clientY; prevSlide = index;
         pause();
         try { viewport.setPointerCapture(ev.pointerId); } catch (e) {}
       });
@@ -178,33 +187,23 @@
         var dx = ev.clientX - startX;
         var dy = ev.clientY - startY;
         if (!dragLocked && Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
-        if (dragLocked === false && Math.abs(dy) > Math.abs(dx)) return;
-        var locked = Math.abs(dx) >= Math.abs(dy);
-        if (locked) { dragLocked = true; track.classList.add('dragging'); }
-        if (dragLocked) {
-          var base = prevSlide;
-          var off = (dx / viewport.clientWidth) * NEXT_SIGN;
-          var list = slides();
-          list.forEach(function (el, i) {
-            el.style.transform = 'translateX(' + ((i - base) * 100 * NEXT_SIGN + off * 100) + '%)';
-          });
+        if (!dragLocked) {
+          if (Math.abs(dy) > Math.abs(dx)) { dragging = false; startX = null; startY = null; track.style.transform = ''; resume(); return; }
+          dragLocked = true; track.classList.add('dragging');
         }
+        track.style.transform = 'translateX(' + dx + 'px)';
       });
       viewport.addEventListener('pointerup', function (ev) {
         if (!dragging) return;
         dragging = false;
         var dx = ev.clientX - startX;
-        if (dragLocked) {
-          track.classList.remove('dragging');
-          if (Math.abs(dx) > 60) { goTo(prevSlide + (dx * NEXT_SIGN < 0 ? 1 : -1), false); }
-          else { goTo(prevSlide, false); }
-        }
-        dragLocked = false; startX = null; startY = null;
+        commitDrag(dragLocked ? dx : 0);
+        startX = null; startY = null; dragLocked = false;
         resume();
       });
       viewport.addEventListener('pointercancel', function () {
         dragging = false; dragLocked = false; startX = null; startY = null;
-        track.classList.remove('dragging');
+        track.style.transform = ''; track.classList.remove('dragging');
         goTo(prevSlide, false); resume();
       });
     }
