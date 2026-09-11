@@ -12,8 +12,9 @@
 .slide-link .material-symbols-outlined{font-size:20px}
 .slide-link:hover{gap:1rem}
 .slider-nav{display:flex;gap:.6rem;margin-top:1.25rem;justify-content:center}
-.slider-dot{width:36px;height:4px;border-radius:0;background:var(--color-line);transition:background var(--duration) var(--ease),width var(--duration) var(--ease)}
-.slider-dot.is-active{background:var(--color-accent);width:52px}
+.slider-dot{position:relative;width:36px;height:24px;border-radius:0;background:transparent;border:none;padding:0;cursor:pointer}
+.slider-dot::before{content:"";position:absolute;right:0;top:50%;transform:translateY(-50%);width:100%;height:4px;background:var(--color-line);transition:background var(--duration) var(--ease),width var(--duration) var(--ease)}
+.slider-dot.is-active::before{background:var(--color-accent);width:52px}
 .main-grid{display:grid;grid-template-columns:1fr 320px;gap:2rem;margin-top:2rem;margin-bottom:2rem}
 .content-col{min-width:0}
 .content-col section{margin-bottom:3.5rem}
