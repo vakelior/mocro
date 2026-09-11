@@ -1,9 +1,12 @@
 /* ============ LAYOUT & SECTIONS ============ */
 /*
-   All top-level sections use the global --gutter and --section-gap
-   tokens so their vertical rhythm and horizontal alignment are unified.
+   Global alignment rule:
+   - .container is the SINGLE source of horizontal gutter (padding-inline).
+   - Sections that ARE a .container must NOT add their own gutter.
+   - Full-width sections that CONTAIN a .container must NOT add gutter either.
+   This keeps header, ticker, featured, content and footer on the same axis.
 */
-.featured{max-width:var(--max-width);margin-inline:auto;margin-block:var(--sp-4) 0;padding-inline:var(--gutter)}
+.featured{max-width:var(--max-width);margin-inline:auto;margin-block:var(--sp-4) 0}
 .featured-slider{position:relative;display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--color-line);border-radius:var(--radius-md);overflow:hidden;background:var(--color-bg)}
 .slide{display:none;grid-template-columns:1fr 1fr;min-height:0;align-items:stretch}
 .slide.is-active{display:grid}
@@ -27,12 +30,12 @@
 .journal-list{border:1px solid var(--color-line);border-radius:var(--radius-md);padding:0 var(--sp-5)}
 .sidebar-col{min-width:0}
 .cat-blocks{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);border-bottom:1px solid var(--color-line);padding-bottom:var(--section-gap);margin-bottom:0}
-.footer-cta{background:#ffffff;color:#000000;padding-block:var(--sp-9);padding-inline:var(--gutter);text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--color-line)}
+.footer-cta{background:#ffffff;color:#000000;padding-block:var(--sp-9);text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--color-line)}
 .footer-cta h2{font-size:clamp(2rem,5.5vw,3.5rem);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:var(--sp-3);color:#000000}
 .footer-cta h2 .accent-word{color:#000000}
 .footer-cta .eyebrow{font-family:var(--font-sans);font-size:.95rem;font-weight:700;letter-spacing:.02em;color:#000000;margin-bottom:var(--sp-5)}
 .footer-cta .sub{color:#000000;margin:var(--sp-5) auto 0;font-size:1.2rem;font-weight:400;max-width:600px;line-height:1.9}
-.mocro-footer{background:#ffffff;color:#000000;padding-block:var(--sp-8) var(--sp-5);padding-inline:var(--gutter);border-top:1px solid var(--color-line)}
+.mocro-footer{background:#ffffff;color:#000000;padding-block:var(--sp-8) var(--sp-5);border-top:1px solid var(--color-line)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr;gap:var(--sp-6);margin-bottom:var(--sp-7);align-items:start}
 .footer-grid h4{font-size:1rem;font-weight:700;margin-bottom:var(--sp-5);letter-spacing:0;color:#000000}
 .footer-grid a{display:block;color:#000000;font-size:1.0625rem;margin-bottom:var(--sp-3);font-weight:400;transition:color var(--duration-fast) var(--ease)}
