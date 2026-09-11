@@ -1,7 +1,7 @@
 /* ============ COMPONENTS ============ */
 .mocro-header{position:sticky;top:0;left:0;right:0;z-index:80;background:var(--color-bg);border-bottom:1px solid var(--color-line)}
 .masthead{position:relative;background:var(--color-header-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
-.masthead-inner{display:flex;align-items:center;justify-content:space-between;height:4.5rem;gap:var(--sp-4);padding-inline:var(--gutter)}
+.masthead-inner{display:flex;align-items:center;justify-content:space-between;height:4.5rem;gap:var(--sp-4)}
 .brand{display:flex;align-items:center;gap:.7rem;font-size:1.5rem;font-weight:700;letter-spacing:.03em}
 .nav-desktop{display:flex;align-items:center;gap:var(--sp-5)}
 .nav-link{font-size:1rem;font-weight:500;color:var(--color-muted);transition:color var(--duration-fast);position:relative;display:inline-flex;align-items:center;gap:.35rem;line-height:1}
