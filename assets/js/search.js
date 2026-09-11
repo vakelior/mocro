@@ -1,28 +1,16 @@
 /**
- * MOCRO — search.js | shared overlay search (every page).
+ * MOCRO — search.js | inline search (desktop masthead + mobile menu).
+ * Clean B&W search field with a search icon inside; live results below.
  */
 (function () {
   'use strict';
   if (!window.Mocro) return;
   var M = window.Mocro;
-  var debounce = null;
-  var lastFocused = null;
-  function url(p) { var b = window.MOCRO_CONFIG.SITE_BASE; if (b.slice(-1) !== '/') b += '/'; return b + p; }
+
   function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
+  function url(p) { var b = window.MOCRO_CONFIG.SITE_BASE; if (b.slice(-1) !== '/') b += '/'; return b + p; }
 
-  function openOverlay() {
-    var ov = document.getElementById('search-overlay'); if (!ov) return;
-    lastFocused = document.activeElement;
-    ov.classList.add('is-open'); ov.setAttribute('aria-hidden', 'false');
-    var inp = document.getElementById('search-input'); if (inp) setTimeout(function () { inp.focus(); }, 50);
-  }
-  function closeOverlay() {
-    var ov = document.getElementById('search-overlay'); if (!ov) return;
-    ov.classList.remove('is-open'); ov.setAttribute('aria-hidden', 'true');
-    if (lastFocused) { lastFocused.focus(); lastFocused = null; }
-  }
-
-  function render(results, container) {
+  function renderInto(results, container) {
     container.innerHTML = '';
     if (!results || !results.length) { container.innerHTML = '<div class="search-empty">لا نتائج مطابقة.</div>'; return; }
     results.forEach(function (a) {
@@ -37,42 +25,43 @@
     });
   }
 
-  function run(q) {
-    var c = document.getElementById('search-results'); if (!c) return;
-    c.innerHTML = '<div class="search-empty">جارٍ البحث…</div>';
-    M.search(q, 30).then(function (res) { render(res.data || [], c); }).catch(function () { c.innerHTML = '<div class="search-empty">حدث خطأ.</div>'; });
-  }
-
-  function trapFocus(e) {
-    if (e.key !== 'Tab') return;
-    var ov = document.getElementById('search-overlay');
-    if (!ov || !ov.classList.contains('is-open')) return;
-    var focusables = ov.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-    if (!focusables.length) return;
-    var first = focusables[0];
-    var last = focusables[focusables.length - 1];
-    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
-    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  function bind(input, results) {
+    if (!input || !results) return null;
+    var debounce = null;
+    input.addEventListener('input', function () {
+      clearTimeout(debounce);
+      var q = input.value.trim();
+      if (!q) { results.innerHTML = ''; return; }
+      debounce = setTimeout(function () {
+        results.innerHTML = '<div class="search-empty">جارٍ البحث…</div>';
+        M.search(q, 30).then(function (res) { renderInto(res.data || [], results); })
+          .catch(function () { results.innerHTML = '<div class="search-empty">حدث خطأ.</div>'; });
+      }, 300);
+    });
+    return { input: input, results: results };
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    var toggle = document.querySelector('[data-search-toggle]');
-    var close = document.querySelector('[data-search-close]');
-    var input = document.getElementById('search-input');
-    if (toggle) toggle.addEventListener('click', openOverlay);
-    if (close) close.addEventListener('click', closeOverlay);
-    var ov = document.getElementById('search-overlay');
-    if (ov) ov.addEventListener('click', function (e) { if (e.target === ov) closeOverlay(); });
-    if (input) input.addEventListener('input', function () {
-      clearTimeout(debounce);
-      var q = input.value.trim();
-      if (!q) { document.getElementById('search-results').innerHTML = ''; return; }
-      debounce = setTimeout(function () { run(q); }, 300);
-    });
-    document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeOverlay(); });
-    document.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openOverlay(); } });
-    document.addEventListener('keydown', trapFocus);
-  });
+    var desktopInput = document.getElementById('desktop-search-input');
+    var desktopResults = document.getElementById('desktop-search-results');
+    var menuInput = document.getElementById('menu-search-input');
+    var menuResults = document.getElementById('menu-search-results');
 
-  window.MocroSearch = { open: openOverlay, close: closeOverlay };
+    var desktop = bind(desktopInput, desktopResults);
+    bind(menuInput, menuResults);
+
+    document.addEventListener('keydown', function (e) {
+      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
+        e.preventDefault();
+        var t = desktop && desktop.input ? desktop.input : menuInput;
+        if (t) t.focus();
+      }
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!desktopResults || !desktopResults.contains(e.target)) {
+        desktopResults && (desktopResults.innerHTML = '');
+      }
+    });
+  });
 })();

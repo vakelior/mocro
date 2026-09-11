@@ -31,27 +31,30 @@
         <a href="index.html#journal" class="nav-link">مقالات</a>
       </nav>
       <div class="masthead-actions">
-        <button class="search-btn" data-search-toggle aria-label="فتح البحث"><span class="material-symbols-outlined" aria-hidden="true">search</span></button>
+        <div class="desktop-search">
+          <div class="search-field">
+            <span class="material-symbols-outlined search-field-icon" aria-hidden="true">search</span>
+            <input type="search" class="search-input" id="desktop-search-input" placeholder="ابحث…" autocomplete="off">
+          </div>
+          <div class="search-results" id="desktop-search-results"></div>
+        </div>
         <button class="burger" data-burger aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
       </div>
     </div>
     <nav class="mobile-menu" id="mobile-menu" aria-label="قائمة الجوال" aria-hidden="true">
+      <div class="menu-search">
+        <div class="search-field">
+          <span class="material-symbols-outlined search-field-icon" aria-hidden="true">search</span>
+          <input type="search" class="search-input" id="menu-search-input" placeholder="ابحث في الأخبار…" autocomplete="off">
+        </div>
+        <div class="search-results" id="menu-search-results"></div>
+      </div>
       <a href="index.html#latest"><span>الأحدث</span><span class="material-symbols-outlined menu-arrow" aria-hidden="true">arrow_back</span></a>
       <a href="index.html#journal"><span>مقالات</span><span class="material-symbols-outlined menu-arrow" aria-hidden="true">arrow_back</span></a>
     </nav>
   </div>
 </header>
 
-<div class="search-overlay" id="search-overlay" aria-hidden="true">
-  <div class="search-panel">
-    <button class="search-close" data-search-close aria-label="إغلاق البحث"><span class="material-symbols-outlined" aria-hidden="true">close</span></button>
-    <div class="search-field">
-      <span class="material-symbols-outlined search-field-icon" aria-hidden="true">search</span>
-      <input type="search" class="search-input" id="search-input" placeholder="اكتب كلمة مثل: سياسة، اقتصاد، رياضة…" autocomplete="off">
-    </div>
-    <div class="search-results" id="search-results"></div>
-  </div>
-</div>
 <main id="main" class="container" style="min-height:60vh">
   <div class="page-head"><h1>البحث</h1></div>
   <input type="search" id="page-search-input" class="search-input" placeholder="ابحث في الأخبار…" autocomplete="off">

@@ -23,6 +23,13 @@
 .search-btn{width:44px;height:44px;display:flex;align-items:center;justify-content:center;transition:color var(--duration-fast);color:var(--color-fg)}
 .search-btn:hover{color:var(--color-accent)}
 .search-btn .material-symbols-outlined{font-size:23px}
+.desktop-search{position:relative;display:none;align-items:center}
+.desktop-search .search-input{width:230px;padding:var(--sp-3) var(--sp-4);padding-inline-start:2.75rem;font-size:.95rem}
+.desktop-search .search-field-icon{inset-inline-start:var(--sp-3);font-size:20px}
+.desktop-search-results{position:absolute;top:calc(100% + .5rem);left:0;min-width:340px;max-width:90vw;background:var(--color-bg);border:1px solid var(--color-line);box-shadow:0 24px 60px rgba(0,0,0,.14);max-height:70vh;overflow-y:auto;padding:var(--sp-2)}
+.menu-search{padding:var(--sp-3) 0 var(--sp-4);border-bottom:1px solid var(--color-line);margin-bottom:var(--sp-3)}
+.menu-search .search-input{width:100%}
+.menu-search-results{max-height:300px;overflow-y:auto;margin-top:var(--sp-3)}
 .burger{display:none;width:44px;height:44px;position:relative;z-index:110;background:none;border:none}
 .burger span,.burger span::before,.burger span::after{content:"";display:block;width:24px;height:2px;background:var(--color-fg);position:absolute;right:20px;transition:all var(--duration) var(--ease)}
 .burger span{top:50%;transform:translateY(-50%);background:var(--color-fg)}
@@ -88,6 +95,7 @@
 .cat-block h3{font-size:1.3rem;font-weight:700}
 .cat-block p{color:var(--color-muted);font-size:1rem;line-height:1.8;font-weight:300;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
 @media(max-width:980px){.nav-desktop{display:none}.burger{display:block}}
+@media(min-width:981px){.desktop-search{display:flex}}
 @media(max-width:720px){.masthead-inner{height:3.75rem}.section-title{font-size:1.25rem}}
 .trend-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;font-weight:700;color:#0a0a0a;background:var(--color-accent);padding:.2rem .55rem;margin-inline-start:.5rem;letter-spacing:.02em}
 .trend-badge .material-symbols-outlined{font-size:14px}
