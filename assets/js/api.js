@@ -73,10 +73,23 @@
     authorBySlug: function (slug) {
       return getClient().from('authors').select('id,name,slug,avatar,bio,social_links').eq('slug', slug).maybeSingle();
     },
-    relatedArticles: function (article, limit) {
-      var q = getClient().from('articles').select(ARTICLE_SELECT).eq('status', 'published').neq('id', article.id);
-      if (article.category_id) q = q.eq('category_id', article.category_id);
-      return q.order('published_at', { ascending: false, nullsFirst: false }).limit(limit || 4);
+    relatedArticles: async function (article, limit) {
+      var n = limit || 4;
+      // 1) try same-category articles first (excluding current)
+      if (article && article.category_id) {
+        var same = await getClient().from('articles').select(ARTICLE_SELECT)
+          .eq('status', 'published').neq('id', article.id)
+          .eq('category_id', article.category_id)
+          .order('published_at', { ascending: false, nullsFirst: false })
+          .limit(n);
+        if (same.data && same.data.length) return same;
+        if (same.error) return same;
+      }
+      // 2) fall back to latest published articles across all categories
+      return getClient().from('articles').select(ARTICLE_SELECT)
+        .eq('status', 'published').neq('id', article.id)
+        .order('published_at', { ascending: false, nullsFirst: false })
+        .limit(n);
     },
     search: function (query, limit) {
       var q = getClient().from('articles').select('id,title,slug,excerpt,featured_image,published_at,categories(id,name,slug)').eq('status', 'published');
