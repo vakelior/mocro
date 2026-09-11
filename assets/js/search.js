@@ -1,5 +1,5 @@
 /**
- * MOCRO — search.js | inline search (desktop masthead + mobile menu).
+ * MOCRO — search.js | inline search inside the mobile menu.
  * Clean B&W search field with a search icon inside; live results below.
  */
 (function () {
@@ -42,26 +42,8 @@
   }
 
   document.addEventListener('DOMContentLoaded', function () {
-    var desktopInput = document.getElementById('desktop-search-input');
-    var desktopResults = document.getElementById('desktop-search-results');
     var menuInput = document.getElementById('menu-search-input');
     var menuResults = document.getElementById('menu-search-results');
-
-    var desktop = bind(desktopInput, desktopResults);
     bind(menuInput, menuResults);
-
-    document.addEventListener('keydown', function (e) {
-      if ((e.ctrlKey || e.metaKey) && e.key === 'k') {
-        e.preventDefault();
-        var t = desktop && desktop.input ? desktop.input : menuInput;
-        if (t) t.focus();
-      }
-    });
-
-    document.addEventListener('click', function (e) {
-      if (!desktopResults || !desktopResults.contains(e.target)) {
-        desktopResults && (desktopResults.innerHTML = '');
-      }
-    });
   });
 })();
