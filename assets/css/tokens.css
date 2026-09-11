@@ -11,8 +11,8 @@
   --color-line:#e8e8e8;
   --color-line-inverse:#262626;
   --color-header-bg:rgba(255,255,255,.88);
-  --color-accent:#1E5BD6;
-  --color-accent-soft:rgba(30,91,214,.12);
+  --color-accent:#000000;
+  --color-accent-soft:rgba(0,0,0,.08);
   --font-sans:'Al-Jazeera-Arabic',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --font-mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
   --text-xs:0.75rem;
@@ -34,7 +34,6 @@
   --space-12:4.5rem;
   --space-16:6rem;
   --max-width:1240px;
-  /* Fixed ink palette — used for the black footer/CTA sections */
   --ink:#000000;
   --ink-fg:#ffffff;
   --ink-fg-muted:#a3a3a3;
