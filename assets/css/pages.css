@@ -7,9 +7,9 @@
    zero out the .container gutter (this was the 'مقالات ذات صلة' bug).
    ============================================================================ */
 
-.search-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,.88);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);display:none;align-items:flex-start;justify-content:center;padding:8vh var(--gutter) var(--sp-6);overflow-y:auto}
-.search-overlay.is-open{display:flex}
-.search-panel{width:100%;max-width:720px;background:var(--color-bg);border:1px solid var(--color-line);padding:var(--sp-7) var(--sp-6);position:relative;border-radius:var(--radius-md)}
+.search-overlay{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--color-bg);border-bottom:3px solid var(--ink);box-shadow:0 30px 50px rgba(0,0,0,.15);display:none;padding:var(--sp-6) var(--gutter) var(--sp-7);overflow-y:auto;max-height:85vh}
+.search-overlay.is-open{display:block}
+.search-panel{width:100%;max-width:720px;margin-inline:auto;position:relative}
 .search-close{position:absolute;top:var(--sp-4);left:var(--sp-4);width:44px;height:44px;display:flex;align-items:center;justify-content:center;color:var(--color-fg)}
 .search-close:hover{color:var(--color-accent)}
 .search-title{font-size:1.4rem;margin-bottom:var(--sp-5);border-bottom:3px solid var(--ink);padding-bottom:var(--sp-3);display:inline-block}
