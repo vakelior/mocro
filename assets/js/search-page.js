@@ -25,7 +25,7 @@
   function run(q) {
     var c = document.getElementById('page-search-results'); if (!c) return;
     c.innerHTML = '<div class="search-empty">جارٍ البحث…</div>';
-    M.search(q, 40).then(function (res) { render(res.data || [], c); });
+    M.search(q, 40).then(function (res) { render(res.data || [], c); }).catch(function () { c.innerHTML = '<div class="search-empty">حدث خطأ أثناء البحث.</div>'; });
   }
   document.addEventListener('DOMContentLoaded', function () {
     var input = document.getElementById('page-search-input');
