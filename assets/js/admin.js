@@ -50,8 +50,8 @@
       tr.appendChild(el('td', null, cat ? cat.name : '—'));
       var b = el('span', 'badge badge-' + a.status); b.textContent = { published: 'منشور', draft: 'مسودة', archived: 'مؤرشف' }[a.status] || a.status;
       var tds = el('td', null); tds.appendChild(b); tr.appendChild(tds);
-      tr.appendChild(el('td', null, a.is_featured ? '★' : '—'));
-      tr.appendChild(el('td', null, a.is_breaking ? '⚡' : '—'));
+      tr.appendChild(el('td', null, a.is_featured ? 'مميز' : '—'));
+      tr.appendChild(el('td', null, a.is_breaking ? 'عاجل' : '—'));
       tr.appendChild(el('td', null, String(a.views)));
       var td = el('td', null); var acts = el('div', 'admin-actions');
       acts.appendChild(btn('تعديل', function () { openArticleEditor(a); }));
@@ -181,7 +181,7 @@
     else { result = await sb.from('articles').insert(payload).select().single(); if (result.data) await syncTags(result.data.id, tags); }
 
     if (result.error) { msg.className = 'login-msg err'; msg.textContent = 'خطأ: ' + result.error.message; return; }
-    msg.className = 'login-msg ok'; msg.textContent = 'تم الحفظ بنجاح ✓';
+    msg.className = 'login-msg ok'; msg.textContent = 'تم الحفظ بنجاح';
     closeOverlay('editor-overlay'); await loadAll();
   }
 
@@ -248,7 +248,7 @@
       res = await sb.from('tags').insert(payload);
     }
     if (res.error) { msg.className = 'login-msg err'; msg.textContent = res.error.message; return; }
-    msg.className = 'login-msg ok'; msg.textContent = 'تم الحفظ ✓';
+    msg.className = 'login-msg ok'; msg.textContent = 'تم الحفظ';
     closeOverlay('gen-overlay'); await loadAll();
   }
 
