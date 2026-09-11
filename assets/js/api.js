@@ -55,12 +55,16 @@
     articleBySlug: function (slug) {
       return getClient().from('articles').select(ARTICLE_SELECT).eq('slug', slug).eq('status', 'published').maybeSingle();
     },
-    articlesByCategory: function (slug, limit) {
-      return getClient().from('articles').select(ARTICLE_SELECT).eq('categories.slug', slug).eq('status', 'published')
+    articlesByCategory: async function (slug, limit) {
+      var c = await getClient().from('categories').select('id').eq('slug', slug).maybeSingle();
+      if (!c.data) return { data: [], error: c.error };
+      return getClient().from('articles').select(ARTICLE_SELECT).eq('category_id', c.data.id).eq('status', 'published')
         .order('published_at', { ascending: false, nullsFirst: false }).limit(limit || 50);
     },
-    articlesByAuthor: function (slug, limit) {
-      return getClient().from('articles').select(ARTICLE_SELECT).eq('authors.slug', slug).eq('status', 'published')
+    articlesByAuthor: async function (slug, limit) {
+      var a = await getClient().from('authors').select('id').eq('slug', slug).maybeSingle();
+      if (!a.data) return { data: [], error: a.error };
+      return getClient().from('articles').select(ARTICLE_SELECT).eq('author_id', a.data.id).eq('status', 'published')
         .order('published_at', { ascending: false, nullsFirst: false }).limit(limit || 50);
     },
     categoryBySlug: function (slug) {
