@@ -25,9 +25,6 @@
         '<div class="ticker-viewport" tabindex="0" role="region" aria-roledescription="شريط تمرير" aria-label="عناوين الأخبار العاجلة">' +
           '<div class="ticker-track"><span class="ticker-item">جارٍ تحميل الأخبار…</span></div>' +
         '</div>' +
-        '<div class="ticker-controls">' +
-          '<button class="ticker-btn ticker-play" type="button" aria-label="إيقاف مؤقت"><span class="material-symbols-outlined ticker-play-icon" aria-hidden="true">pause</span></button>' +
-        '</div>' +
         '<div class="ticker-dots" aria-hidden="true"></div>' +
       '</div>';
     var header = document.querySelector('.mocro-header');
