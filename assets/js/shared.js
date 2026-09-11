@@ -6,9 +6,9 @@
  *   1. inject the news ticker (same structure as index.html), and
  *   2. populate dynamic categories (nav dropdown, mobile menu, footer) + ticker.
  *
- * The ticker is a fully touch/click-controllable carousel (RTL): one headline
- * at a time, prev/next arrows, play/pause, clickable headline, drag/swipe,
- * keyboard + autoplay (pauses on hover/touch, respects prefers-reduced-motion).
+ * The ticker is a touch/click-controllable carousel (RTL): one headline at a
+ * time, play/pause, clickable headline, drag/swipe, keyboard + autoplay
+ * (pauses on hover/touch, respects prefers-reduced-motion).
  */
 (function () {
   'use strict';
@@ -35,9 +35,7 @@
           '<div class="ticker-track"><span class="ticker-item">جارٍ تحميل الأخبار…</span></div>' +
         '</div>' +
         '<div class="ticker-controls">' +
-          '<button class="ticker-btn ticker-prev" type="button" aria-label="العنوان السابق"><span class="material-symbols-outlined" aria-hidden="true">chevron_right</span></button>' +
           '<button class="ticker-btn ticker-play" type="button" aria-label="إيقاف مؤقت"><span class="material-symbols-outlined ticker-play-icon" aria-hidden="true">pause</span></button>' +
-          '<button class="ticker-btn ticker-next" type="button" aria-label="العنوان التالي"><span class="material-symbols-outlined" aria-hidden="true">chevron_left</span></button>' +
         '</div>' +
         '<div class="ticker-dots" aria-hidden="true"></div>' +
       '</div>';
@@ -46,10 +44,6 @@
     else document.body.insertBefore(ticker, document.body.firstChild);
   }
 
-  /**
-   * Build the controllable carousel into an existing .news-ticker.
-   * items: array of { title, slug } (slug optional -> non-link heading).
-   */
   function buildTicker(items) {
     var root = document.querySelector('.news-ticker');
     if (!root) return;
@@ -62,7 +56,6 @@
     var playIcon = root.querySelector('.ticker-play-icon');
     if (!track) return;
 
-    // Populate slides
     track.innerHTML = '';
     items.forEach(function (a) {
       var s = document.createElement('span');
@@ -98,16 +91,12 @@
     var paused = false;
     var timer = null;
 
-    // RTL detection: in Arabic, "next" slides in from the left, "prev" from the right.
     var isRTL = (document.documentElement.getAttribute('dir') === 'rtl') ||
                 (document.body && document.body.getAttribute('dir') === 'rtl') ||
                 (getComputedStyle && getComputedStyle(viewport).direction === 'rtl');
     var NEXT_SIGN = isRTL ? -1 : 1;
 
-    function posFor(i) {
-      return ((i - index) * 100 * NEXT_SIGN) + '%';
-    }
-
+    function posFor(i) { return ((i - index) * 100 * NEXT_SIGN) + '%'; }
     function slides() { return Array.prototype.slice.call(track.children); }
 
     function apply() {
@@ -134,22 +123,18 @@
     function prev() { goTo(index - 1, true); }
 
     function stop() { if (timer) { clearInterval(timer); timer = null; } }
-
     function start() {
       stop();
       if (count <= 1 || reduced || paused) return;
       timer = setInterval(function () { goTo(index + 1, false); }, 5000);
     }
-
     function restart() { stop(); start(); }
 
     function setPlayIcon() {
       if (playIcon) playIcon.textContent = paused ? 'play_arrow' : 'pause';
       if (playBtn) playBtn.setAttribute('aria-label', paused ? 'تشغيل' : 'إيقاف مؤقت');
     }
-
     function togglePause() { paused = !paused; setPlayIcon(); restart(); }
-
     function pause() { if (!paused && !reduced) { paused = true; setPlayIcon(); stop(); } }
     function resume() { if (paused) { paused = false; setPlayIcon(); start(); } }
 
@@ -167,8 +152,6 @@
       viewport.addEventListener('focusin', pause);
       viewport.addEventListener('focusout', resume);
 
-      // Drag / swipe — whole track follows the finger; release commits next/prev.
-      // Natural direction: swipe LEFT -> next, swipe RIGHT -> previous.
       var startX = null, startY = null, dragging = false, dragLocked = false, prevSlide = 0;
       function commitDrag(dx) {
         track.style.transform = '';
