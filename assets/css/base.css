@@ -8,14 +8,20 @@ ul,ol{list-style:none}
 .mono{font-family:var(--font-mono)}
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 ::selection{background:var(--color-bg-inverse);color:var(--color-fg-inverse)}
-.container{max-width:var(--max-width);margin:0 auto;padding:0 clamp(1.25rem,4vw,2rem)}
+/*
+   GLOBAL CONTAINER — single horizontal alignment axis.
+   Every full-width section (header, ticker, featured, main,
+   cat blocks, footer-cta, footer) uses this same gutter so
+   their left/right edges align to one invisible grid.
+*/
+.container{max-width:var(--max-width);margin:0 auto;padding-inline:var(--gutter)}
 :focus-visible{outline:2px solid currentColor;outline-offset:3px}
 a:focus-visible,button:focus-visible{outline:2px solid var(--color-fg);outline-offset:3px}
 .skip-link{position:absolute;top:-100%;right:1rem;z-index:200;background:var(--color-bg-inverse);color:var(--color-fg-inverse);padding:0.75rem 1.5rem;border-radius:var(--radius-sm);transition:top var(--duration) var(--ease)}
 .skip-link:focus{top:1rem}
 .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;line-height:1;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .news-ticker{max-width:var(--max-width);margin:0 auto;background:#ffffff;color:#0a0a0a;border:1px solid #e8e8e8;border-top:none;overflow:hidden}
-.ticker-inner{display:flex;align-items:center;gap:1rem;height:3rem;margin:0 auto;padding:0 clamp(1.25rem,4vw,2rem)}
+.ticker-inner{display:flex;align-items:center;gap:var(--sp-4);height:3rem;margin:0 auto;padding-inline:var(--gutter)}
 .ticker-label{display:inline-flex;align-items:center;gap:.4rem;font-size:.875rem;font-weight:700;color:#ffffff;flex-shrink:0;background:#000000;padding:.4rem .75rem;border-radius:var(--radius-sm)}
 .ticker-label .material-symbols-outlined{font-size:17px}
 .ticker-viewport{flex:1;overflow:hidden;position:relative;height:100%;display:flex;align-items:center}
