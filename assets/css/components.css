@@ -70,6 +70,8 @@
 .widget{border:1px solid var(--color-line);border-radius:var(--radius-md);padding:var(--sp-5) var(--sp-5) var(--sp-6);margin-bottom:var(--sp-5)}
 .widget-title{font-size:.95rem;font-weight:700;letter-spacing:.05em;margin-bottom:var(--sp-5);padding-bottom:var(--sp-3);border-bottom:2px solid var(--ink);position:relative;display:inline-block}
 .widget-title-icon{font-size:1.15rem;vertical-align:-3px;margin-inline-end:var(--sp-2);color:var(--color-accent)}
+.widget-title-lg{font-size:1.5rem}
+.widget-title-lg .widget-title-icon{font-size:1.5rem;vertical-align:-4px}
 .widget-title::after{content:"";position:absolute;bottom:-2px;right:0;width:40%;height:2px;background:var(--color-accent)}
 .cat-list li{border-bottom:1px solid var(--color-line)}
 .cat-list li:last-child{border-bottom:none}
