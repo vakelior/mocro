@@ -6,11 +6,21 @@
   if (!window.Mocro) return;
   var M = window.Mocro;
   var debounce = null;
+  var lastFocused = null;
   function url(p) { var b = window.MOCRO_CONFIG.SITE_BASE; if (b.slice(-1) !== '/') b += '/'; return b + p; }
   function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
 
-  function openOverlay() { var ov = document.getElementById('search-overlay'); if (!ov) return; ov.classList.add('is-open'); ov.setAttribute('aria-hidden', 'false'); var inp = document.getElementById('search-input'); if (inp) setTimeout(function () { inp.focus(); }, 50); }
-  function closeOverlay() { var ov = document.getElementById('search-overlay'); if (!ov) return; ov.classList.remove('is-open'); ov.setAttribute('aria-hidden', 'true'); }
+  function openOverlay() {
+    var ov = document.getElementById('search-overlay'); if (!ov) return;
+    lastFocused = document.activeElement;
+    ov.classList.add('is-open'); ov.setAttribute('aria-hidden', 'false');
+    var inp = document.getElementById('search-input'); if (inp) setTimeout(function () { inp.focus(); }, 50);
+  }
+  function closeOverlay() {
+    var ov = document.getElementById('search-overlay'); if (!ov) return;
+    ov.classList.remove('is-open'); ov.setAttribute('aria-hidden', 'true');
+    if (lastFocused) { lastFocused.focus(); lastFocused = null; }
+  }
 
   function render(results, container) {
     container.innerHTML = '';
@@ -33,6 +43,18 @@
     M.search(q, 30).then(function (res) { render(res.data || [], c); }).catch(function () { c.innerHTML = '<div class="search-empty">حدث خطأ.</div>'; });
   }
 
+  function trapFocus(e) {
+    if (e.key !== 'Tab') return;
+    var ov = document.getElementById('search-overlay');
+    if (!ov || !ov.classList.contains('is-open')) return;
+    var focusables = ov.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+    if (!focusables.length) return;
+    var first = focusables[0];
+    var last = focusables[focusables.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
+
   document.addEventListener('DOMContentLoaded', function () {
     var toggle = document.querySelector('[data-search-toggle]');
     var close = document.querySelector('[data-search-close]');
@@ -49,6 +71,7 @@
     });
     document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeOverlay(); });
     document.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 'k') { e.preventDefault(); openOverlay(); } });
+    document.addEventListener('keydown', trapFocus);
   });
 
   window.MocroSearch = { open: openOverlay, close: closeOverlay };
