@@ -1,28 +1,8 @@
 /* ============ MOCRO — Main JavaScript (production, DB-driven) ============ */
 (function () {
   'use strict';
-  var THEME_KEY = 'mocro-theme';
-  var root = document.documentElement;
-  function getStoredTheme() { try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; } }
-  function storeTheme(v) { try { localStorage.setItem(THEME_KEY, v); } catch (e) {} }
-  function resolveTheme() {
-    var s = getStoredTheme();
-    if (s === 'dark' || s === 'light') return s;
-    if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
-    return 'light';
-  }
-  function applyTheme(t) {
-    root.setAttribute('data-theme', t);
-    var tg = document.querySelector('[data-theme-toggle]');
-    if (tg) tg.setAttribute('aria-pressed', t === 'dark' ? 'true' : 'false');
-  }
-  applyTheme(resolveTheme());
 
-  var toggleBtn = document.querySelector('[data-theme-toggle]');
-  if (toggleBtn) toggleBtn.addEventListener('click', function () {
-    var next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    applyTheme(next); storeTheme(next);
-  });
+  // Theme is intentionally hard-locked to light (القالب نهار/أبيض فقط).
 
   var burger = document.querySelector('[data-burger]');
   var menu = document.getElementById('mobile-menu');
@@ -46,13 +26,48 @@
     var dots = Array.prototype.slice.call(document.querySelectorAll('[data-slider-dot]'));
     if (!slides.length) return;
     var current = 0;
+    var sliderRoot = slides[0].parentElement || null;
     function showSlide(i) { current = (i + slides.length) % slides.length; slides.forEach(function (s, x) { s.classList.toggle('is-active', x === current); }); dots.forEach(function (d, x) { d.classList.toggle('is-active', x === current); }); }
     function nextSlide() { showSlide(current + 1); }
+    function prevSlide() { showSlide(current - 1); }
     showSlide(0);
     dots.forEach(function (dot) { dot.onclick = function () { showSlide(parseInt(dot.getAttribute('data-slider-dot'), 10)); restartAuto(); }; });
     function startAuto() { if (slides.length <= 1) return; if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; sliderAuto = setInterval(nextSlide, 6000); }
     function restartAuto() { clearInterval(sliderAuto); startAuto(); }
     startAuto();
+
+    // Touch / pointer swipe for the featured slider (RTL aware).
+    if (sliderRoot) {
+      var sx = null, sy = null, swiping = false, lock = false;
+      sliderRoot.style.touchAction = 'pan-y';
+      sliderRoot.addEventListener('pointerdown', function (ev) {
+        if (ev.pointerType === 'mouse' && ev.button !== 0) return;
+        swiping = true; lock = false; sx = ev.clientX; sy = ev.clientY;
+        clearInterval(sliderAuto);
+        try { sliderRoot.setPointerCapture(ev.pointerId); } catch (e) {}
+      });
+      sliderRoot.addEventListener('pointermove', function (ev) {
+        if (!swiping || sx === null) return;
+        var dx = ev.clientX - sx; var dy = ev.clientY - sy;
+        if (!lock && Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+        if (Math.abs(dy) > Math.abs(dx)) { swiping = false; lock = false; sx = null; sy = null; restartAuto(); return; }
+        lock = true;
+      });
+      sliderRoot.addEventListener('pointerup', function (ev) {
+        if (!swiping || sx === null) { restartAuto(); return; }
+        swiping = false;
+        var dx = ev.clientX - sx;
+        var isRTL = (document.documentElement.getAttribute('dir') === 'rtl') || (getComputedStyle && getComputedStyle(document.body).direction === 'rtl');
+        if (Math.abs(dx) > 50) {
+          // In RTL, swiping left (negative dx) advances to the next slide.
+          if ((dx < 0 && !isRTL) || (dx > 0 && isRTL)) nextSlide();
+          else prevSlide();
+        }
+        sx = null; sy = null; lock = false;
+        restartAuto();
+      });
+      sliderRoot.addEventListener('pointercancel', function () { swiping = false; sx = null; sy = null; lock = false; restartAuto(); });
+    }
   }
   initSlider();
   window.MocroInitSlider = initSlider;

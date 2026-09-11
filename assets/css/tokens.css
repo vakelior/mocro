@@ -11,8 +11,8 @@
   --color-line:#e8e8e8;
   --color-line-inverse:#262626;
   --color-header-bg:rgba(255,255,255,.88);
-  --color-accent:#b8952e;
-  --color-accent-soft:rgba(184,149,46,.12);
+  --color-accent:#1E5BD6;
+  --color-accent-soft:rgba(30,91,214,.12);
   --font-sans:'Al-Jazeera-Arabic',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
   --font-mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
   --text-xs:0.75rem;
@@ -34,7 +34,7 @@
   --space-12:4.5rem;
   --space-16:6rem;
   --max-width:1240px;
-  /* Fixed ink palette — should NOT invert in dark mode (keeps inverse sections black) */
+  /* Fixed ink palette — used for the black footer/CTA sections */
   --ink:#000000;
   --ink-fg:#ffffff;
   --ink-fg-muted:#a3a3a3;
@@ -46,17 +46,4 @@
   --radius-sm:0px;
   --radius-md:0px;
   --radius-full:0px;
-}
-[data-theme="dark"]{
-  --color-bg:#0a0a0a;
-  --color-bg-soft:#151515;
-  --color-bg-inverse:#ffffff;
-  --color-surface:#141414;
-  --color-fg:#ffffff;
-  --color-fg-inverse:#0a0a0a;
-  --color-muted:#999999;
-  --color-muted-inverse:#666666;
-  --color-line:#262626;
-  --color-line-inverse:#e8e8e8;
-  --color-header-bg:rgba(10,10,10,.88);
 }
