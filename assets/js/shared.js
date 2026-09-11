@@ -1,14 +1,5 @@
 /**
  * MOCRO — shared.js | Cross-page ticker (carousel) + category nav filler.
- * The static HTML of every inner page already carries the identical header
- * (brand, nav-desktop, masthead actions, mobile-menu) and search overlay as
- * index.html — so this file only needs to:
- *   1. inject the news ticker (same structure as index.html), and
- *   2. populate dynamic categories (nav dropdown, mobile menu, footer) + ticker.
- *
- * The ticker is a touch/click-controllable carousel (RTL): one headline at a
- * time, play/pause, clickable headline, drag/swipe, keyboard + autoplay
- * (pauses on hover/touch, respects prefers-reduced-motion).
  */
 (function () {
   'use strict';
@@ -29,7 +20,7 @@
     ticker.className = 'news-ticker';
     ticker.setAttribute('aria-label', 'شريط الأخبار');
     ticker.innerHTML =
-      '<div class="container ticker-inner">' +
+      '<div class="ticker-inner">' +
         '<span class="ticker-label"><span class="material-symbols-outlined" aria-hidden="true">trending_up</span>الآن</span>' +
         '<div class="ticker-viewport" tabindex="0" role="region" aria-roledescription="شريط تمرير" aria-label="عناوين الأخبار العاجلة">' +
           '<div class="ticker-track"><span class="ticker-item">جارٍ تحميل الأخبار…</span></div>' +
@@ -63,9 +54,6 @@
       if (a.slug) {
         var link = document.createElement('a');
         link.href = artUrl(a.slug);
-        var arrow = document.createElement('span');
-        arrow.className = 'material-symbols-outlined'; arrow.setAttribute('aria-hidden', 'true'); arrow.textContent = 'arrow_back';
-        link.appendChild(arrow);
         link.appendChild(document.createTextNode(a.title));
         s.appendChild(link);
       } else {
