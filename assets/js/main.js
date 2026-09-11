@@ -28,9 +28,13 @@
   var menu = document.getElementById('mobile-menu');
   var lastFocused = null;
   function openMenu() { if (!menu) return; lastFocused = document.activeElement; menu.classList.add('is-open'); menu.setAttribute('aria-hidden', 'false'); if (burger) { burger.classList.add('is-active'); burger.setAttribute('aria-expanded', 'true'); } document.addEventListener('keydown', handleEscape); }
-  function closeMenu() { if (!menu) return; menu.classList.remove('is-open'); menu.setAttribute('aria-hidden', 'true'); if (burger) { burger.classList.remove('is-active'); burger.setAttribute('aria-expanded', 'false'); } document.removeEventListener('keydown', handleEscape); if (lastFocused) lastFocused.focus(); }
+  function closeMenu() { if (!menu) return; menu.classList.remove('is-open'); menu.setAttribute('aria-hidden', 'true'); if (burger) { burger.classList.remove('is-active'); burger.setAttribute('aria-expanded', 'false'); } document.removeEventListener('keydown', handleEscape); if (lastFocused) { lastFocused.focus(); lastFocused = null; } }
   function handleEscape(e) { if (e.key === 'Escape') closeMenu(); }
-  if (burger) burger.addEventListener('click', function () { menu && menu.classList.contains('is-open') ? closeMenu() : openMenu(); });
+  if (burger) burger.addEventListener('click', function (e) { e.stopPropagation(); menu && menu.classList.contains('is-open') ? closeMenu() : openMenu(); });
+  if (menu) {
+    menu.addEventListener('click', function (e) { e.stopPropagation(); });
+    document.addEventListener('click', function (e) { if (menu.classList.contains('is-open') && !menu.contains(e.target) && e.target !== burger) closeMenu(); });
+  }
 
   var sliderAuto = null;
   function initSlider() {
