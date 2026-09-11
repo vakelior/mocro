@@ -24,7 +24,7 @@
 .search-btn:hover{color:var(--color-accent)}
 .search-btn .material-symbols-outlined{font-size:23px}
 .burger{display:none;width:44px;height:44px;position:relative;z-index:110;background:none;border:none}
-.burger span,.burger span::before,.burger span::after{content:"";display:block;width:24px;height:2px;background:var(--color-fg);position:absolute;right:10px;transition:all var(--duration) var(--ease)}
+.burger span,.burger span::before,.burger span::after{content:"";display:block;width:24px;height:2px;background:var(--color-fg);position:absolute;right:20px;transition:all var(--duration) var(--ease)}
 .burger span{top:50%;transform:translateY(-50%);background:var(--color-fg)}
 .burger span::before{top:-8px;right:0}
 .burger span::after{top:8px;right:0}
