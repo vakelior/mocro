@@ -83,27 +83,22 @@
     grid.innerHTML = '';
     if (!articles.length) { grid.innerHTML = '<div class="empty-state">لا توجد مقالات ذات صلة بعد.</div>'; return; }
     articles.forEach(function (a) {
-      var card = el('article', 'post');
+      var item = el('article', 'journal-item');
       var href = url('article.html?slug=' + encodeURIComponent(a.slug));
-      card.setAttribute('data-href', href);
-      card.setAttribute('tabindex', '0');
-      card.setAttribute('role', 'link');
-      card.setAttribute('aria-label', a.title);
-      var thumb = el('div', 'post-thumb');
-      if (a.featured_image) { var img = document.createElement('img'); img.src = a.featured_image; img.alt = a.title; img.loading = 'lazy'; thumb.appendChild(img); }
-      var body = el('div', 'post-body');
+      item.setAttribute('data-href', href);
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'link');
+      item.setAttribute('aria-label', a.title);
+      var body = el('div', 'journal-body');
       if (a.category) body.appendChild(el('span', 'cat', a.category.name));
       body.appendChild(el('h3', null, a.title));
       if (a.excerpt) body.appendChild(el('p', null, a.excerpt));
-      var meta = el('div', 'meta');
-      meta.appendChild(el('time', null, dateStr(a.published_at)));
-      meta.appendChild(document.createTextNode(' · ' + readingTime(a.content)));
-      body.appendChild(meta);
-      card.appendChild(thumb); card.appendChild(body);
-      function go() { window.location.href = href; }
-      card.addEventListener('click', go);
-      card.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); go(); } });
-      grid.appendChild(card);
+      var arrow = el('span', 'journal-arrow material-symbols-outlined', 'arrow_back');
+      arrow.setAttribute('aria-hidden', 'true');
+      item.appendChild(body); item.appendChild(arrow);
+      item.addEventListener('click', function () { window.location.href = href; });
+      item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
+      grid.appendChild(item);
     });
   }
 
@@ -241,7 +236,7 @@
     root.appendChild(body);
 
     var rel;
-    try { rel = await M.relatedArticles(a, 4); } catch (e) { rel = { data: [] }; }
+    try { rel = await M.relatedArticles(a, 6); } catch (e) { rel = { data: [] }; }
     renderRelated((rel.data || []).map(M.normalize));
 
     registerView(a.slug);
