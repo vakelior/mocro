@@ -133,17 +133,6 @@
     back.appendChild(backBtn);
     root.appendChild(back);
 
-    var hero = el('div', 'article-hero container');
-    if (a.featured_image) {
-      var media = el('div', 'article-hero-media');
-      var himg = document.createElement('img');
-      himg.src = a.featured_image; himg.alt = a.title;
-      himg.setAttribute('fetchpriority', 'high'); himg.decoding = 'async';
-      media.appendChild(himg);
-      hero.appendChild(media);
-    }
-    root.appendChild(hero);
-
     var head = el('div', 'article-head container');
     if (a.category) {
       var catLink = el('a', 'cat', a.category.name);
@@ -167,6 +156,17 @@
     metaRow.appendChild(dt);
     head.appendChild(metaRow);
     root.appendChild(head);
+
+    var hero = el('div', 'article-hero container');
+    if (a.featured_image) {
+      var media = el('div', 'article-hero-media');
+      var himg = document.createElement('img');
+      himg.src = a.featured_image; himg.alt = a.title;
+      himg.setAttribute('fetchpriority', 'high'); himg.decoding = 'async';
+      media.appendChild(himg);
+      hero.appendChild(media);
+    }
+    root.appendChild(hero);
 
     var body = el('div', 'article-body container');
     var content = el('div', 'article-content');
