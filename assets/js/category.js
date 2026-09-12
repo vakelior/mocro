@@ -43,7 +43,7 @@
       body.appendChild(el('h3', null, a.title));
       body.appendChild(el('p', null, a.excerpt));
       body.appendChild(el('span', 'cat', dateStr(a.published_at) + ' · قراءة ' + readingTime(a.content)));
-      var arrow = el('a', 'journal-arrow material-symbols-outlined', 'arrow_back');
+      var arrow = el('a', 'journal-arrow material-symbols-outlined', 'chevron_backward');
       arrow.href = href; arrow.setAttribute('aria-hidden', 'true'); arrow.setAttribute('tabindex', '-1');
       item.appendChild(body); item.appendChild(arrow);
       item.addEventListener('click', function () { window.location.href = href; });
