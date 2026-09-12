@@ -13,14 +13,6 @@
   function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
   function icon(name) { var s = document.createElement('span'); s.className = 'material-symbols-outlined'; s.setAttribute('aria-hidden', 'true'); s.textContent = name; return s; }
   function dateStr(iso) { if (!iso) return ''; try { return new Date(iso).toLocaleDateString('ar-TN', { year: 'numeric', month: 'long', day: 'numeric' }); } catch (e) { return iso.slice(0, 10); } }
-  function readingTime(content) {
-    if (!content) return '1 دقيقة';
-    var text = (content || '').trim();
-    var words = text.split(/\s+/).filter(Boolean).length;
-    if (!words) words = Math.ceil(text.length / 6);
-    var mins = Math.max(1, Math.round(words / 180));
-    return mins + (mins === 1 ? ' دقيقة' : ' دقائق');
-  }
 
   function esc(s) {
     return String(s == null ? '' : s)
@@ -165,18 +157,14 @@
     if (a.author) {
       var chip = el('span', 'author-chip');
       if (a.author.avatar) { var av = document.createElement('img'); av.src = a.author.avatar; av.alt = a.author.name; chip.appendChild(av); }
+      chip.appendChild(icon('person'));
       var al = el('a', null, a.author.name); al.href = url('author.html?slug=' + encodeURIComponent(a.author.slug)); chip.appendChild(al);
       metaRow.appendChild(chip);
     }
-    metaRow.appendChild(el('time', null, dateStr(a.published_at)));
-    var rt = el('span', 'meta-item');
-    rt.appendChild(icon('schedule'));
-    rt.appendChild(document.createTextNode(readingTime(a.content)));
-    metaRow.appendChild(rt);
-    var vw = el('span', 'meta-item');
-    vw.appendChild(icon('visibility'));
-    vw.appendChild(document.createTextNode((a.views || 0) + ' مشاهدة'));
-    metaRow.appendChild(vw);
+    var dt = el('span', 'meta-item');
+    dt.appendChild(icon('calendar_today'));
+    dt.appendChild(document.createTextNode(dateStr(a.published_at)));
+    metaRow.appendChild(dt);
     head.appendChild(metaRow);
     root.appendChild(head);
 
