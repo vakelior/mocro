@@ -158,25 +158,85 @@
     }
     if (popUl) {
       popUl.innerHTML = '';
-      popular.slice(0, 5).forEach(function (art) {
-        var li = document.createElement('li'); var link = document.createElement('a'); link.href = artUrl(art); link.textContent = art.title; li.appendChild(link); popUl.appendChild(li);
+      popular.slice(0, 10).forEach(function (art, i) {
+        var li = document.createElement('li');
+        li.className = 'popular-item';
+        var num = document.createElement('span');
+        num.className = 'popular-num';
+        num.textContent = String(i + 1).padStart(2, '0');
+        var link = document.createElement('a'); link.href = artUrl(art);
+        var title = document.createTextNode(art.title);
+        link.appendChild(title);
+        li.appendChild(num); li.appendChild(link);
+        popUl.appendChild(li);
       });
     }
   }
 
-  function renderCatBlocks(categories) {
-    var wrap = document.querySelector('.cat-blocks');
+  // قسم مواضيعي: يعرض مقالات فعلية داخل كل تصنيف (نظام الجزيرة).
+  function renderThemeSection(c, articles, featured) {
+    var sec = el('section', 'theme-section');
+    sec.setAttribute('aria-label', c.name);
+
+    var bar = el('div', 'section-bar');
+    bar.appendChild(el('h2', 'section-title', c.name));
+    var more = document.createElement('a');
+    more.className = 'section-more';
+    more.href = catUrl(c);
+    more.textContent = 'عرض الكل';
+    more.setAttribute('aria-label', 'عرض كل مقالات ' + c.name);
+    bar.appendChild(more);
+    sec.appendChild(bar);
+
+    if (!articles.length) {
+      sec.appendChild(el('p', 'theme-empty', 'لا توجد مقالات منشورة في هذا القسم بعد.'));
+      return sec;
+    }
+
+    var lead = articles[0];
+    var rest = articles.slice(1, 4);
+
+    var grid = el('div', 'theme-grid');
+    var leadCard = el('article', 'theme-lead');
+    var href = artUrl(lead);
+    leadCard.setAttribute('data-href', href); leadCard.setAttribute('tabindex', '0'); leadCard.setAttribute('role', 'link'); leadCard.setAttribute('aria-label', lead.title);
+    if (lead.featured_image) { var tv = el('div', 'theme-lead-media'); var img = document.createElement('img'); img.src = lead.featured_image; img.alt = lead.title; img.loading = 'lazy'; tv.appendChild(img); leadCard.appendChild(tv); }
+    var lb = el('div', 'theme-lead-body');
+    lb.appendChild(el('h3', null, lead.title));
+    if (lead.excerpt) lb.appendChild(el('p', null, lead.excerpt));
+    lb.appendChild(el('time', 'meta', dateStr(lead.published_at)));
+    leadCard.appendChild(lb);
+    leadCard.addEventListener('click', function () { window.location.href = href; });
+    leadCard.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
+    grid.appendChild(leadCard);
+
+    var side = el('div', 'theme-side');
+    rest.forEach(function (a) {
+      var item = el('article', 'theme-item');
+      var ih = artUrl(a);
+      item.setAttribute('data-href', ih); item.setAttribute('tabindex', '0'); item.setAttribute('role', 'link'); item.setAttribute('aria-label', a.title);
+      item.appendChild(el('h4', null, a.title));
+      item.appendChild(el('time', 'meta', dateStr(a.published_at)));
+      item.addEventListener('click', function () { window.location.href = ih; });
+      item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = ih; } });
+      side.appendChild(item);
+    });
+    grid.appendChild(side);
+    sec.appendChild(grid);
+    return sec;
+  }
+
+  async function renderThemeSections(categories) {
+    var wrap = document.getElementById('theme-sections');
     if (!wrap) return;
     wrap.innerHTML = '';
-    categories.slice(0, 6).forEach(function (c, i) {
-      var sec = el('section', 'cat-block');
-      var head = el('div', 'cat-block-head');
-      head.appendChild(el('span', 'cat-block-tag', String(i + 1).padStart(2, '0')));
-      head.appendChild(el('h3', null, c.name));
-      sec.appendChild(head);
-      sec.appendChild(el('p', null, c.description || ''));
-      var link = document.createElement('a'); link.href = catUrl(c); link.className = 'slide-link'; link.textContent = 'تصفح القسم'; sec.appendChild(link);
-      wrap.appendChild(sec);
+    var cats = categories.slice(0, 6);
+    // جلب مقالات كل قسم بالتوازي
+    var results = await Promise.all(cats.map(function (c) {
+      return M.articlesByCategory(c.slug, 4).then(function (r) { return (r.data || []).map(M.normalize); }).catch(function () { return []; });
+    }));
+    cats.forEach(function (c, i) {
+      wrap.appendChild(renderThemeSection(c, results[i] || [], null));
     });
   }
 
@@ -199,8 +259,8 @@
       renderPosts(latest.slice(0, 6));
       renderJournal(latest.slice(0, 5));
       renderWidgets(categories, popular);
-      renderCatBlocks(categories);
       renderTicker(breaking.length ? breaking : latest);
+      renderThemeSections(categories);
 
       if (typeof window.MocroInitSlider === 'function') window.MocroInitSlider();
     } catch (err) {
