@@ -168,7 +168,7 @@
     var wrap = document.querySelector('.cat-blocks');
     if (!wrap) return;
     wrap.innerHTML = '';
-    categories.slice(0, 3).forEach(function (c, i) {
+    categories.slice(0, 6).forEach(function (c, i) {
       var sec = el('section', 'cat-block');
       var head = el('div', 'cat-block-head');
       head.appendChild(el('span', 'cat-block-tag', String(i + 1).padStart(2, '0')));
@@ -191,11 +191,11 @@
       var popular = (results[3].data || []).map(M.normalize);
       var breaking = results[4].data || [];
 
-      if (!featured.length) featured = latest.slice(0, 3);
+      if (!featured.length) featured = latest.slice(0, 6);
       if (!popular.length) popular = latest;
 
       renderNav(categories);
-      renderSlider(featured);
+      renderSlider(featured.slice(0, 6));
       renderPosts(latest.slice(0, 6));
       renderJournal(latest.slice(0, 5));
       renderWidgets(categories, popular);
