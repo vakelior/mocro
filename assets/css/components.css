@@ -12,7 +12,7 @@
 .nav-item{position:relative}
 .nav-item.has-sub.open .nav-caret{transform:rotate(180deg)}
 .nav-item.has-sub.open .nav-trigger{color:var(--color-fg)}
-.submenu{position:absolute;top:calc(100% + 1rem);right:0;min-width:240px;background:var(--color-bg);border:1px solid var(--color-line);border-radius:var(--radius-sm);box-shadow:0 24px 60px rgba(0,0,0,.12);padding:.5rem;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity var(--duration) var(--ease),transform var(--duration) var(--ease),visibility var(--duration);z-index:90}
+.submenu{position:absolute;top:calc(100% + 1rem);right:0;min-width:240px;max-height:70vh;overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--color-bg);border:1px solid var(--color-line);border-radius:var(--radius-sm);box-shadow:0 24px 60px rgba(0,0,0,.12);padding:.5rem;opacity:0;visibility:hidden;transform:translateY(-8px);transition:opacity var(--duration) var(--ease),transform var(--duration) var(--ease),visibility var(--duration);z-index:90}
 .nav-item.has-sub.open .submenu{opacity:1;visibility:visible;transform:translateY(0)}
 .submenu a{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border-radius:0;font-size:var(--fs-2);font-weight:500;color:var(--color-muted);transition:all var(--duration-fast)}
 .submenu a:hover{background:var(--color-bg-soft);color:var(--color-fg)}
@@ -31,7 +31,7 @@
 .burger.is-active span{background:transparent}
 .burger.is-active span::before{top:0;transform:rotate(45deg)}
 .burger.is-active span::after{top:0;transform:rotate(-45deg)}
-.mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;background:var(--color-bg);border-bottom:1px solid var(--color-line);box-shadow:0 24px 40px rgba(0,0,0,.06);padding:.5rem var(--gutter) var(--sp-5);z-index:80}
+.mobile-menu{display:none;position:absolute;top:100%;left:0;right:0;max-height:calc(100vh - 4.5rem);overflow-y:auto;-webkit-overflow-scrolling:touch;background:var(--color-bg);border-bottom:1px solid var(--color-line);box-shadow:0 24px 40px rgba(0,0,0,.06);padding:.5rem var(--gutter) var(--sp-5);z-index:80}
 .mobile-menu.is-open{display:block}
 .mobile-menu a{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4);padding:var(--sp-4) 0;font-size:var(--fs-3);font-weight:600;color:var(--color-fg);border-bottom:1px solid var(--color-line);transition:padding var(--duration) var(--ease),color var(--duration-fast)}
 .mobile-menu a:last-child{border-bottom:none}
