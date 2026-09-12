@@ -22,12 +22,12 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--color-fg);outline-o
 .material-symbols-outlined{font-variation-settings:'FILL' 0,'wght' 400,'GRAD' 0,'opsz' 24;line-height:1;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0}
 .news-ticker{max-width:var(--max-width);margin:0 auto;background:#ffffff;color:#0a0a0a;border:1px solid #e8e8e8;border-top:none;overflow:hidden}
 .ticker-inner{display:flex;align-items:center;gap:var(--sp-4);height:3rem;margin:0 auto;padding-inline:var(--gutter)}
-.ticker-label{display:inline-flex;align-items:center;gap:.4rem;font-size:.875rem;font-weight:700;color:#ffffff;flex-shrink:0;background:#000000;padding:.4rem .75rem;border-radius:var(--radius-sm)}
+.ticker-label{display:inline-flex;align-items:center;gap:.4rem;font-size:var(--fs-1);font-weight:700;color:#ffffff;flex-shrink:0;background:#000000;padding:.4rem .75rem;border-radius:var(--radius-sm)}
 .ticker-label .material-symbols-outlined{font-size:17px}
 .ticker-viewport{flex:1;overflow:hidden;position:relative;height:100%;display:flex;align-items:center}
 .ticker-track{position:relative;display:block;height:100%;width:100%;touch-action:pan-y;cursor:grab}
 .ticker-track:active{cursor:grabbing}
-.ticker-item{position:absolute;inset:0;width:100%;display:flex;align-items:center;gap:.5rem;white-space:nowrap;overflow:hidden;font-size:.95rem;font-weight:400;color:#000000;padding-inline:.25rem;transition:transform .5s cubic-bezier(.4,0,.2,1),opacity .5s ease;will-change:transform,opacity}
+.ticker-item{position:absolute;inset:0;width:100%;display:flex;align-items:center;gap:.5rem;white-space:nowrap;overflow:hidden;font-size:var(--fs-2);font-weight:400;color:#000000;padding-inline:.25rem;transition:transform .5s cubic-bezier(.4,0,.2,1),opacity .5s ease;will-change:transform,opacity}
 .ticker-track.dragging .ticker-item{transition:none}
 .ticker-item a{display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:inherit;transition:color var(--duration) var(--ease)}
 .ticker-item a:hover{color:#000000}
