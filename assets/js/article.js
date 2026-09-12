@@ -85,7 +85,7 @@
       if (a.category) body.appendChild(el('span', 'cat', a.category.name));
       body.appendChild(el('h3', null, a.title));
       if (a.excerpt) body.appendChild(el('p', null, a.excerpt));
-      var arrow = el('span', 'journal-arrow material-symbols-outlined', 'arrow_back');
+      var arrow = el('span', 'journal-arrow material-symbols-outlined', 'chevron_backward');
       arrow.setAttribute('aria-hidden', 'true');
       item.appendChild(body); item.appendChild(arrow);
       item.addEventListener('click', function () { window.location.href = href; });
@@ -123,7 +123,7 @@
     var back = el('div', 'article-back container');
     var backBtn = el('button', 'back-btn');
     backBtn.type = 'button';
-    backBtn.appendChild(icon('arrow_back'));
+    backBtn.appendChild(icon('chevron_backward'));
     backBtn.appendChild(document.createTextNode('رجوع'));
     backBtn.setAttribute('aria-label', 'الرجوع إلى الصفحة السابقة');
     backBtn.addEventListener('click', function () {
