@@ -1,1 +1,117 @@
-$zaroRawData["index_html"].content$
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مُوكْرُو — منصة الأخبار العربية</title>
+<meta name="description" content="مُوكْرُو — منصة أخبار عربية تغطي السياسة والاقتصاد والرياضة والثقافة والتكنولوجيا والأخبار المحلية والعالمية والصحة، بمهنية وموضوعية وبتصميم عصري أنيق.">
+<meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://vakelior.github.io/mocro/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="مُوكْرُو">
+<meta property="og:title" content="مُوكْرُو — منصة الأخبار العربية">
+<meta property="og:description" content="منصة أخبار عربية تغطي الأحداث المحلية والعالمية أولاً بأول.">
+<meta property="og:url" content="https://vakelior.github.io/mocro/">
+<meta property="og:locale" content="ar_AR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
+<link rel="stylesheet" href="assets/css/fonts.css">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/layout.css">
+<link rel="stylesheet" href="assets/css/pages.css">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"مُوكْرُو","url":"https://vakelior.github.io/mocro/","description":"مُوكْرُو — منصة أخبار عربية تغطي الأحداث المحلية والعالمية."}
+</script>
+</head>
+<body>
+<a href="#main" class="skip-link">تخطّى إلى المحتوى</a>
+<div class="news-ticker" aria-label="شريط الأخبار">
+  <div class="ticker-inner">
+    <span class="ticker-label"><span class="material-symbols-outlined" aria-hidden="true">trending_up</span>الآن</span>
+    <div class="ticker-viewport" tabindex="0" role="region" aria-roledescription="شريط تمرير" aria-label="عناوين الأخبار العاجلة">
+      <div class="ticker-track">
+        <span class="ticker-item">جارٍ تحميل الأخبار…</span>
+      </div>
+    </div>
+    <div class="ticker-dots" aria-hidden="true"></div>
+  </div>
+</div>
+<header class="mocro-header" id="top">
+  <div class="masthead">
+    <div class="container masthead-inner">
+      <a href="index.html" class="brand" aria-label="مُوكْرُو — الصفحة الرئيسية">مُوكْرُو</a>
+      <nav class="nav-desktop" aria-label="التنقل الرئيسي">
+        <div class="nav-item has-sub">
+          <button class="nav-link nav-trigger" aria-haspopup="true" aria-expanded="false">الأقسام <span class="material-symbols-outlined nav-caret" aria-hidden="true">expand_more</span></button>
+          <div class="submenu" role="menu" id="nav-categories-desktop"></div>
+        </div>
+        <a href="#journal" class="nav-link">مقالات</a>
+      </nav>
+      <div class="masthead-actions">
+        <button class="burger" data-burger aria-label="فتح القائمة" aria-expanded="false" aria-controls="mobile-menu"><span></span></button>
+      </div>
+    </div>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="قائمة الجوال" aria-hidden="true">
+      <div class="menu-search">
+        <div class="search-field">
+          <span class="material-symbols-outlined search-field-icon" aria-hidden="true">search</span>
+          <input type="text" class="search-input" id="menu-search-input" placeholder="ابحث" autocomplete="off">
+        </div>
+        <div class="search-results" id="menu-search-results"></div>
+      </div>
+      <a href="#journal"><span>مقالات</span><span class="material-symbols-outlined menu-arrow" aria-hidden="true">chevron_backward</span></a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <h1 class="sr-only">مُوكْرُو — منصة الأخبار العربية</h1>
+  <section class="featured container" aria-label="أهم الأخبار">
+    <div class="featured-slider" data-slider></div>
+    <div class="slider-nav" role="tablist" aria-label="التنقل بين الأخبار"></div>
+  </section>
+  <div class="container main-grid">
+    <div class="content-col">
+      <section id="journal">
+        <div class="section-bar"><h2 class="section-title">مقالات</h2><span class="section-rule"></span></div>
+        <div class="journal-list"></div>
+      </section>
+    </div>
+    <aside class="sidebar-col">
+      <div class="widget">
+        <h3 class="widget-title widget-title-lg"><span class="material-symbols-outlined widget-title-icon" aria-hidden="true">trending_up</span>رائج</h3>
+        <ul class="cat-list" id="widget-popular"></ul>
+      </div>
+    </aside>
+  </div>
+  <section class="footer-cta" id="contact">
+    <div class="container">
+      <p class="eyebrow">نشرة مُوكْرُو الإخبارية</p>
+      <h2>ابقَ على اطلاع <span class="accent-word">دائم</span></h2>
+      <p class="sub">تابع آخر الأخبار والتحديثات العاجلة أولاً بأول على منصة مُوكْرُو.</p>
+    </div>
+  </section>
+</main>
+<footer class="mocro-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div><div class="footer-brand">مُوكْرُو</div><p class="footer-brand-desc">منصة أخبار عربية تغطي الأحداث المحلية والعالمية بمهنية وموضوعية.</p></div>
+      <div><h4>الأقسام</h4><div id="footer-categories"></div></div>
+    </div>
+    <div class="footer-bottom"><span>ⓒ 2026 مُوكْرُو. جميع الحقوق محفوظة.</span></div>
+  </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/api.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/search.js"></script>
+<script src="assets/js/shared.js"></script>
+<script src="assets/js/home.js"></script>
+</body>
+</html>
