@@ -215,7 +215,7 @@
         a.href = catUrl(c); a.setAttribute('data-cat', '');
         var span = document.createElement('span'); span.textContent = c.name; a.appendChild(span);
         var ar = document.createElement('span');
-        ar.className = 'material-symbols-outlined menu-arrow'; ar.setAttribute('aria-hidden', 'true'); ar.textContent = 'arrow_back';
+        ar.className = 'material-symbols-outlined menu-arrow'; ar.setAttribute('aria-hidden', 'true'); ar.textContent = 'chevron_backward';
         a.appendChild(ar);
         if (insertAfter && insertAfter.nextSibling) mobileMenu.insertBefore(a, insertAfter.nextSibling);
         else mobileMenu.appendChild(a);
