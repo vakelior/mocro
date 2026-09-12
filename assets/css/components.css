@@ -2,7 +2,7 @@
 .mocro-header{position:sticky;top:0;left:0;right:0;z-index:80;background:var(--color-bg);border-bottom:1px solid var(--color-line)}
 .masthead{position:relative;background:var(--color-header-bg);-webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px)}
 .masthead-inner{display:flex;align-items:center;justify-content:space-between;height:4.5rem;gap:var(--sp-4)}
-.brand{display:flex;align-items:center;gap:.7rem;font-size:var(--fs-3);font-weight:700;letter-spacing:.03em}
+.brand{display:flex;align-items:center;gap:.7rem;font-size:var(--fs-4);font-weight:700;letter-spacing:.03em}
 .nav-desktop{display:flex;align-items:center;gap:var(--sp-5)}
 .nav-link{font-size:var(--fs-2);font-weight:500;color:var(--color-muted);transition:color var(--duration-fast);position:relative;display:inline-flex;align-items:center;gap:.35rem;line-height:1}
 .nav-desktop > a.nav-link::after,.nav-trigger::after{content:"";position:absolute;bottom:-8px;right:0;width:0;height:2px;background:var(--color-accent);transition:width var(--duration) var(--ease)}
