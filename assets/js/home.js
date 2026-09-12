@@ -71,6 +71,10 @@
     featured.forEach(function (a, i) {
       var slide = el('div', 'slide' + (i === 0 ? ' is-active' : ''));
       slide.setAttribute('data-slide', '');
+      slide.setAttribute('data-href', artUrl(a));
+      slide.setAttribute('tabindex', '0');
+      slide.setAttribute('role', 'link');
+      slide.setAttribute('aria-label', a.title);
       var media = el('div', 'slide-media');
       if (a.featured_image) { var img = document.createElement('img'); img.src = a.featured_image; img.alt = a.title; img.loading = i === 0 ? 'eager' : 'lazy'; media.appendChild(img); }
       var body = el('div', 'slide-body');
@@ -82,8 +86,11 @@
       link.appendChild(document.createTextNode('اقرأ المقال '));
       var ar = el('span', 'material-symbols-outlined', 'arrow_back'); ar.setAttribute('aria-hidden', 'true');
       link.appendChild(ar);
+      link.addEventListener('click', function (e) { e.stopPropagation(); });
       body.appendChild(link);
       slide.appendChild(media); slide.appendChild(body);
+      slide.addEventListener('click', function () { window.location.href = artUrl(a); });
+      slide.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = artUrl(a); } });
       slider.appendChild(slide);
       dotsHtml += '<button class="slider-dot' + (i === 0 ? ' is-active' : '') + '" data-slider-dot="' + i + '" aria-label="المقال ' + (i + 1) + '"></button>';
     });
