@@ -23,7 +23,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--color-fg);outline-o
 .news-ticker{max-width:var(--max-width);margin:0 auto;background:#ffffff;color:#0a0a0a;border:1px solid #e8e8e8;border-top:none;overflow:hidden}
 .ticker-inner{display:flex;align-items:center;gap:var(--sp-4);height:3rem;margin:0 auto;padding-inline:var(--gutter)}
 .ticker-label{display:inline-flex;align-items:center;gap:.4rem;font-size:var(--fs-1);font-weight:700;color:#ffffff;flex-shrink:0;background:#000000;padding:.4rem .75rem;border-radius:var(--radius-sm)}
-.ticker-label .material-symbols-outlined{font-size:17px}
+.ticker-label .material-symbols-outlined{font-size:var(--icon-sm)}
 .ticker-viewport{flex:1;overflow:hidden;position:relative;height:100%;display:flex;align-items:center}
 .ticker-track{position:relative;display:block;height:100%;width:100%;touch-action:pan-y;cursor:grab}
 .ticker-track:active{cursor:grabbing}
@@ -31,11 +31,11 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--color-fg);outline-o
 .ticker-track.dragging .ticker-item{transition:none}
 .ticker-item a{display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:inherit;transition:color var(--duration) var(--ease)}
 .ticker-item a:hover{color:#000000}
-.ticker-item .material-symbols-outlined{font-size:15px;color:#000000}
+.ticker-item .material-symbols-outlined{font-size:var(--icon-md);color:#000000}
 .ticker-controls{display:inline-flex;align-items:center;gap:.25rem;flex-shrink:0}
 .ticker-btn{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;color:#000000;border-radius:var(--radius-sm);transition:background var(--duration) var(--ease),color var(--duration) var(--ease)}
 .ticker-btn:hover{background:rgba(0,0,0,.06);color:#000000}
-.ticker-btn .material-symbols-outlined{font-size:19px}
+.ticker-btn .material-symbols-outlined{font-size:var(--icon-md)}
 .ticker-dots{display:inline-flex;align-items:center;gap:.3rem;flex-shrink:0;padding-inline-end:.35rem}
 .ticker-dot{width:7px;height:7px;border-radius:50%;background:#d4d4d4;padding:0;transition:background var(--duration) var(--ease),transform var(--duration) var(--ease)}
 .ticker-dot.is-active{background:#000000;transform:scale(1.35)}
