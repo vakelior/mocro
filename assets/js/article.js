@@ -188,7 +188,7 @@
     function brandSvg(pathData) {
       var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
       svg.setAttribute('viewBox', '0 0 24 24');
-      svg.setAttribute('width', '18'); svg.setAttribute('height', '18');
+      svg.setAttribute('width', '22'); svg.setAttribute('height', '22');
       svg.setAttribute('fill', 'currentColor'); svg.setAttribute('aria-hidden', 'true');
       var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
       path.setAttribute('d', pathData);

@@ -62,7 +62,7 @@
 .share-btn{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;border:1px solid var(--color-line);color:var(--color-fg);background:none;cursor:pointer;transition:all var(--duration-fast)}
 .share-btn:hover{border-color:var(--color-accent);color:var(--color-accent)}
 .share-btn .material-symbols-outlined{font-size:var(--icon-lg)}
-.share-btn svg{width:18px;height:18px;flex-shrink:0}
+.share-btn svg{width:var(--icon-lg);height:var(--icon-lg);flex-shrink:0}
 .share-btn.copied{border-color:var(--color-accent);color:var(--color-accent)}
 
 .article-back{max-width:var(--max-width);margin:var(--sp-5) auto 0;padding-inline:var(--gutter)}
