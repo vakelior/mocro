@@ -37,7 +37,7 @@
         var a = document.createElement('a');
         a.href = catUrl(c); a.setAttribute('data-cat', '');
         a.appendChild(el('span', null, c.name));
-        var arrow = el('span', 'material-symbols-outlined menu-arrow', 'arrow_back');
+        var arrow = el('span', 'material-symbols-outlined menu-arrow', 'chevron_backward');
         arrow.setAttribute('aria-hidden', 'true');
         a.appendChild(arrow);
         if (first && first.nextSibling) mobileMenu.insertBefore(a, first.nextSibling);
@@ -84,7 +84,7 @@
       var link = document.createElement('a');
       link.href = artUrl(a); link.className = 'slide-link';
       link.appendChild(document.createTextNode('اقرأ المقال '));
-      var ar = el('span', 'material-symbols-outlined', 'arrow_back'); ar.setAttribute('aria-hidden', 'true');
+      var ar = el('span', 'material-symbols-outlined', 'chevron_backward'); ar.setAttribute('aria-hidden', 'true');
       link.appendChild(ar);
       link.addEventListener('click', function (e) { e.stopPropagation(); });
       body.appendChild(link);
@@ -139,7 +139,7 @@
       body.appendChild(el('span', 'cat', (a.category ? a.category.name + ' · ' : '') + readingTime(a.content)));
       var arrow = document.createElement('a');
       arrow.className = 'journal-arrow material-symbols-outlined';
-      arrow.href = href; arrow.textContent = 'arrow_back'; arrow.setAttribute('aria-hidden', 'true'); arrow.setAttribute('tabindex', '-1');
+      arrow.href = href; arrow.textContent = 'chevron_backward'; arrow.setAttribute('aria-hidden', 'true'); arrow.setAttribute('tabindex', '-1');
       item.appendChild(body); item.appendChild(arrow);
       item.addEventListener('click', function () { window.location.href = href; });
       item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
@@ -231,7 +231,6 @@
     if (!wrap) return;
     wrap.innerHTML = '';
     var cats = categories.slice(0, 6);
-    // جلب مقالات كل قسم بالتوازي
     var results = await Promise.all(cats.map(function (c) {
       return M.articlesByCategory(c.slug, 4).then(function (r) { return (r.data || []).map(M.normalize); }).catch(function () { return []; });
     }));
