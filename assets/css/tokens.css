@@ -30,14 +30,14 @@
   --text-4xl:clamp(2.25rem,5vw,3.5rem);
   --text-hero:clamp(2.25rem,6vw,4.5rem);
   /* Unified 4-tier type scale — every text maps to one of these */
-  --fs-1:clamp(0.7rem,1.235vw,0.8125rem);   /* ثانوي / ميتا  11.2→13px */
-  --fs-2:clamp(0.875rem,1.52vw,1rem);        /* النص الأساسي  14→16px */
-  --fs-3:clamp(1.15rem,2.09vw,1.375rem);     /* عناوين فرعية   18.4→22px */
-  --fs-4:clamp(1.625rem,3.8vw,2.5rem);       /* عناوين رئيسية  26→40px */
-  /* Icon scale — synced to the text scale so icons stay proportional on every screen */
-  --icon-sm:clamp(0.7rem,1.235vw,0.8125rem);   /* 13px — ميتا */
-  --icon-md:clamp(0.875rem,1.52vw,1rem);       /* 16px — نص أساسي */
-  --icon-lg:clamp(1.15rem,2.09vw,1.375rem);    /* 22px — عناوين */
+  --fs-1:clamp(0.8125rem,0.225vw,0.9375rem);   /* ثانوي / ميتا  13→15px */
+  --fs-2:clamp(0.9375rem,0.337vw,1.125rem);    /* النص الأساسي + روابط التنقل  15→18px */
+  --fs-3:clamp(1.1875rem,0.562vw,1.5rem);      /* عناوين فرعية   19→24px */
+  --fs-4:clamp(1.625rem,1.798vw,2.625rem);     /* عناوين رئيسية  26→42px */
+  /* Icon scale — icons lead the text scale slightly so they read clearly at every size */
+  --icon-sm:clamp(1rem,0.449vw,1.25rem);        /* 16→20px — ميتا */
+  --icon-md:clamp(1.25rem,0.449vw,1.5rem);      /* 20→24px — نص أساسي */
+  --icon-lg:clamp(1.5rem,0.449vw,1.75rem);      /* 24→28px — عناوين */
   --sp-1:0.25rem;
   --sp-2:0.5rem;
   --sp-3:0.75rem;
