@@ -120,52 +120,20 @@
     });
   }
 
-  function renderWidgets(categories, popular) {
-    var catUl = document.getElementById('widget-categories');
-    var popUl = document.getElementById('widget-popular');
-    if (catUl) {
-      catUl.innerHTML = '';
-      categories.forEach(function (c) {
-        var li = document.createElement('li'); var link = document.createElement('a'); link.href = catUrl(c); link.textContent = c.name; li.appendChild(link); catUl.appendChild(li);
-      });
-    }
-    if (popUl) {
-      popUl.innerHTML = '';
-      popular.slice(0, 10).forEach(function (art) {
-        var li = document.createElement('li');
-        li.className = 'popular-item';
-        var link = document.createElement('a'); link.href = artUrl(art); link.className = 'popular-link';
-        link.textContent = art.title;
-        li.appendChild(link);
-        var meta = document.createElement('span');
-        meta.className = 'popular-meta';
-        var clock = el('span', 'material-symbols-outlined', 'schedule'); clock.setAttribute('aria-hidden', 'true');
-        meta.appendChild(clock);
-        meta.appendChild(document.createTextNode(readingTime(art.content)));
-        li.appendChild(meta);
-        popUl.appendChild(li);
-      });
-    }
-  }
-
   async function renderHome() {
     try {
       var results = await Promise.all([
-        M.listCategories(), M.featuredArticles(), M.latestArticles(), M.popularArticles(), M.breakingArticles()
+        M.listCategories(), M.featuredArticles(), M.latestArticles(), M.breakingArticles()
       ]);
       var categories = results[0].data || [];
       var featured = (results[1].data || []).map(M.normalize);
       var latest = (results[2].data || []).map(M.normalize);
-      var popular = (results[3].data || []).map(M.normalize);
-      var breaking = results[4].data || [];
+      var breaking = results[3].data || [];
 
       if (!featured.length) featured = latest.slice(0, 6);
-      if (!popular.length) popular = latest;
-
       renderNav(categories);
       renderSlider(featured.slice(0, 6));
       renderJournal(latest.slice(0, 5));
-      renderWidgets(categories, popular);
       renderTicker(breaking.length ? breaking : latest);
 
       if (typeof window.MocroInitSlider === 'function') window.MocroInitSlider();
