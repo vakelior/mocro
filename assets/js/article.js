@@ -12,7 +12,6 @@
   function qs(n) { return new URLSearchParams(window.location.search).get(n); }
   function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
   function icon(name) { var s = document.createElement('span'); s.className = 'material-symbols-outlined'; s.setAttribute('aria-hidden', 'true'); s.textContent = name; return s; }
-  function dateStr(iso) { if (!iso) return ''; try { return new Date(iso).toLocaleDateString('ar-TN', { year: 'numeric', month: 'long', day: 'numeric' }); } catch (e) { return iso.slice(0, 10); } }
 
   function esc(s) {
     return String(s == null ? '' : s)
@@ -142,19 +141,6 @@
     head.appendChild(el('h1', null, a.title));
     if (a.excerpt) head.appendChild(el('p', 'article-deck', a.excerpt));
 
-    var metaRow = el('div', 'article-meta-row');
-    if (a.author) {
-      var chip = el('span', 'author-chip');
-      if (a.author.avatar) { var av = document.createElement('img'); av.src = a.author.avatar; av.alt = a.author.name; chip.appendChild(av); }
-      chip.appendChild(icon('person'));
-      var al = el('a', null, a.author.name); al.href = url('author.html?slug=' + encodeURIComponent(a.author.slug)); chip.appendChild(al);
-      metaRow.appendChild(chip);
-    }
-    var dt = el('span', 'meta-item');
-    dt.appendChild(icon('calendar_today'));
-    dt.appendChild(document.createTextNode(dateStr(a.published_at)));
-    metaRow.appendChild(dt);
-    head.appendChild(metaRow);
     root.appendChild(head);
 
     var hero = el('div', 'article-hero container');
@@ -180,47 +166,6 @@
       body.appendChild(tagWrap);
     }
 
-    var share = el('div', 'article-share');
-    share.appendChild(el('span', 'share-label', 'شارك'));
-    var pageUrl = window.location.href;
-    var enc = encodeURIComponent;
-
-    function brandSvg(pathData) {
-      var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-      svg.setAttribute('viewBox', '0 0 24 24');
-      svg.setAttribute('width', '22'); svg.setAttribute('height', '22');
-      svg.setAttribute('fill', 'currentColor'); svg.setAttribute('aria-hidden', 'true');
-      var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-      path.setAttribute('d', pathData);
-      svg.appendChild(path);
-      return svg;
-    }
-
-    var X_PATH = 'M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z';
-    var tw = el('button', 'share-btn');
-    tw.type = 'button'; tw.title = 'المشاركة على X'; tw.setAttribute('aria-label', 'المشاركة على X');
-    tw.appendChild(brandSvg(X_PATH));
-    tw.addEventListener('click', function () { window.open('https://twitter.com/intent/tweet?url=' + enc(pageUrl) + '&text=' + enc(a.title), '_blank', 'noopener'); });
-    share.appendChild(tw);
-
-    var FB_PATH = 'M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z';
-    var fb = el('button', 'share-btn');
-    fb.type = 'button'; fb.title = 'المشاركة على فيسبوك'; fb.setAttribute('aria-label', 'المشاركة على فيسبوك');
-    fb.appendChild(brandSvg(FB_PATH));
-    fb.addEventListener('click', function () { window.open('https://www.facebook.com/sharer/sharer.php?u=' + enc(pageUrl), '_blank', 'noopener'); });
-    share.appendChild(fb);
-
-    var cp = el('button', 'share-btn');
-    cp.type = 'button'; cp.title = 'نسخ الرابط'; cp.setAttribute('aria-label', 'نسخ رابط المقال');
-    cp.appendChild(icon('link'));
-    cp.addEventListener('click', function () {
-      try {
-        navigator.clipboard.writeText(pageUrl).then(function () { cp.classList.add('copied'); cp.querySelector('.material-symbols-outlined').textContent = 'check'; setTimeout(function () { cp.classList.remove('copied'); cp.querySelector('.material-symbols-outlined').textContent = 'link'; }, 1800); }).catch(function () {});
-      } catch (e) {}
-    });
-    share.appendChild(cp);
-
-    body.appendChild(share);
     root.appendChild(body);
 
     var rel;

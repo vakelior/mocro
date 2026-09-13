@@ -51,15 +51,6 @@
     }
   }
 
-  function renderTicker(breaking) {
-    var items = (breaking && breaking.length ? breaking : []).map(function (a) {
-      return { title: a.title, slug: a.slug };
-    });
-    if (typeof window.MocroShared === 'object' && window.MocroShared.buildTicker) {
-      window.MocroShared.buildTicker(items.length ? items : [{ title: 'لحظة بلحظة — تابع آخر الأخبار.' }]);
-    }
-  }
-
   function renderSlider(featured) {
     var slider = document.querySelector('.featured-slider');
     var nav = document.querySelector('.slider-nav');
@@ -123,18 +114,16 @@
   async function renderHome() {
     try {
       var results = await Promise.all([
-        M.listCategories(), M.featuredArticles(), M.latestArticles(), M.breakingArticles()
+        M.listCategories(), M.featuredArticles(), M.latestArticles()
       ]);
       var categories = results[0].data || [];
       var featured = (results[1].data || []).map(M.normalize);
       var latest = (results[2].data || []).map(M.normalize);
-      var breaking = results[3].data || [];
 
       if (!featured.length) featured = latest.slice(0, 6);
       renderNav(categories);
       renderSlider(featured.slice(0, 6));
       renderJournal(latest.slice(0, 5));
-      renderTicker(breaking.length ? breaking : latest);
 
       if (typeof window.MocroInitSlider === 'function') window.MocroInitSlider();
     } catch (err) {
