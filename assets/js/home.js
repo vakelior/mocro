@@ -131,16 +131,18 @@
     }
     if (popUl) {
       popUl.innerHTML = '';
-      popular.slice(0, 10).forEach(function (art, i) {
+      popular.slice(0, 10).forEach(function (art) {
         var li = document.createElement('li');
         li.className = 'popular-item';
-        var num = document.createElement('span');
-        num.className = 'popular-num';
-        num.textContent = String(i + 1).padStart(2, '0');
-        var link = document.createElement('a'); link.href = artUrl(art);
-        var title = document.createTextNode(art.title);
-        link.appendChild(title);
-        li.appendChild(num); li.appendChild(link);
+        var link = document.createElement('a'); link.href = artUrl(art); link.className = 'popular-link';
+        link.textContent = art.title;
+        li.appendChild(link);
+        var meta = document.createElement('span');
+        meta.className = 'popular-meta';
+        var clock = el('span', 'material-symbols-outlined', 'schedule'); clock.setAttribute('aria-hidden', 'true');
+        meta.appendChild(clock);
+        meta.appendChild(document.createTextNode(readingTime(art.content)));
+        li.appendChild(meta);
         popUl.appendChild(li);
       });
     }
