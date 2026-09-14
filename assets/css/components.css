@@ -66,8 +66,8 @@
 .process-step h3{font-size:var(--fs-2);font-weight:700;margin-bottom:.5rem;line-height:1.4}
 .process-step p{font-size:var(--fs-2);color:var(--color-muted);line-height:1.65;font-weight:300;transition:color var(--duration)}
 .process-step:hover p{color:var(--ink-fg-muted)}
-.journal-item{display:flex;align-items:center;gap:var(--sp-5);padding:var(--sp-5) 0;border-bottom:1px solid var(--color-line);transition:all var(--duration);cursor:pointer}
-.journal-item:last-child{border-bottom:none}
+.journal-item{display:flex;align-items:center;gap:var(--sp-5);padding:var(--sp-5);border:1px solid var(--color-line);border-radius:var(--radius-md);background:var(--color-bg);transition:all var(--duration);cursor:pointer}
+.journal-item:hover{border-color:var(--color-line);box-shadow:0 6px 20px rgba(0,0,0,.06);transform:translateY(-2px)}
 .journal-body{flex:1;min-width:0}
 .journal-body h3{font-size:var(--fs-3);font-weight:700;margin-bottom:.4rem;transition:color var(--duration);display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
 .journal-body p{color:var(--color-muted);font-size:var(--fs-2);line-height:1.7;font-weight:400;margin-bottom:.6rem;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}

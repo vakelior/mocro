@@ -42,7 +42,7 @@
     },
     featuredArticles: function (limit) {
       return getClient().from('articles').select(ARTICLE_SELECT).eq('status', 'published')
-        .eq('is_featured', true).order('published_at', { ascending: false, nullsFirst: false }).limit(limit || 3);
+        .eq('is_featured', true).order('published_at', { ascending: false, nullsFirst: false }).limit(limit || 6);
     },
     popularArticles: function (limit) {
       return getClient().from('articles').select('id,title,slug,excerpt,featured_image,views,published_at,categories(id,name,slug)')
