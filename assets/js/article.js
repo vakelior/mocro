@@ -93,7 +93,18 @@
     });
   }
 
-  function renderAuthorCard(author) {
+  function formatDate(iso) {
+    if (!iso) return '';
+    var d = new Date(iso);
+    if (isNaN(d.getTime())) return '';
+    try {
+      return new Intl.DateTimeFormat('ar-MA', { day: 'numeric', month: 'long', year: 'numeric' }).format(d);
+    } catch (e) {
+      return d.toLocaleDateString('ar-MA', { day: 'numeric', month: 'long', year: 'numeric' });
+    }
+  }
+
+  function renderAuthorCard(author, publishedAt) {
     if (!author) return '';
     var wrap = el('div', 'author-card container');
     var inner = el('div', 'author-card-inner');
@@ -123,6 +134,15 @@
     }
     body.appendChild(nameWrap);
     if (author.bio) body.appendChild(el('div', 'author-card-bio', author.bio));
+
+    var dateStr = formatDate(publishedAt);
+    if (dateStr) {
+      var dateRow = el('div', 'author-card-date');
+      dateRow.appendChild(icon('schedule'));
+      dateRow.appendChild(el('span', null, dateStr));
+      body.appendChild(dateRow);
+    }
+
     inner.appendChild(body);
 
     wrap.appendChild(inner);
@@ -204,7 +224,7 @@
 
     root.appendChild(body);
 
-    if (a.author) root.appendChild(renderAuthorCard(a.author));
+    if (a.author) root.appendChild(renderAuthorCard(a.author, a.published_at));
 
     var rel;
     try { rel = await M.relatedArticles(a, 6); } catch (e) { rel = { data: [] }; }
