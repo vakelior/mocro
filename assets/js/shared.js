@@ -31,9 +31,17 @@
     }
 
     if (mobileMenu) {
-      Array.prototype.forEach.call(mobileMenu.querySelectorAll('a[data-cat]'), function (a) { a.remove(); });
-      var ref = mobileMenu.querySelector('a[href="index.html#latest"], a[href="#latest"]');
-      var insertAfter = ref || null;
+      var catBox = mobileMenu.querySelector('#menu-categories');
+      var menuSearch = mobileMenu.querySelector('.menu-search');
+      if (!catBox) {
+        catBox = document.createElement('div');
+        catBox.id = 'menu-categories';
+        catBox.className = 'menu-categories';
+        // place right after .menu-search block
+        if (menuSearch && menuSearch.nextSibling) mobileMenu.insertBefore(catBox, menuSearch.nextSibling);
+        else mobileMenu.appendChild(catBox);
+      }
+      catBox.innerHTML = '';
       categories.forEach(function (c) {
         var a = document.createElement('a');
         a.href = catUrl(c); a.setAttribute('data-cat', '');
@@ -41,9 +49,7 @@
         var ar = document.createElement('span');
         ar.className = 'material-symbols-outlined menu-arrow'; ar.setAttribute('aria-hidden', 'true'); ar.textContent = 'chevron_backward';
         a.appendChild(ar);
-        if (insertAfter && insertAfter.nextSibling) mobileMenu.insertBefore(a, insertAfter.nextSibling);
-        else mobileMenu.appendChild(a);
-        insertAfter = a;
+        catBox.appendChild(a);
       });
     }
 

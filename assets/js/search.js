@@ -33,11 +33,22 @@
 
   function bind(input, results) {
     if (!input || !results) return;
+    var catBox = document.getElementById('menu-categories');
     var debounce = null;
+    function syncVisibility(q) {
+      var hasQuery = q && q.length > 0;
+      if (catBox) catBox.style.display = hasQuery ? 'none' : '';
+      if (results) results.style.display = hasQuery ? '' : 'none';
+    }
     input.addEventListener('input', function () {
       clearTimeout(debounce);
       var q = input.value.trim();
-      if (!q) { results.innerHTML = ''; return; }
+      if (!q) {
+        results.innerHTML = '';
+        syncVisibility('');
+        return;
+      }
+      syncVisibility(q);
       debounce = setTimeout(function () {
         M.search(q, 20).then(function (res) { renderInto(res.data || [], results); })
           .catch(function () { results.innerHTML = '<div class="search-empty">حدث خطأ.</div>'; });
