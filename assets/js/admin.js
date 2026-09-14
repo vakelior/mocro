@@ -19,8 +19,26 @@
     currentUser = res.data && res.data.session ? res.data.session.user : null;
     if (!currentUser) { window.location.href = 'login.html'; return; }
     document.getElementById('admin-user').textContent = currentUser.email || 'مشرف';
-    wireTabs(); wireGlobalActions(); wireEditor();
+    wireTabs(); wireGlobalActions(); wireEditor(); wireTheme();
     await loadAll();
+  }
+
+  function wireTheme() {
+    var btn = document.getElementById('theme-toggle');
+    var icon = document.getElementById('theme-icon');
+    if (!btn || !icon) return;
+    function sync() {
+      var t = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      icon.textContent = t === 'dark' ? 'light_mode' : 'dark_mode';
+    }
+    btn.addEventListener('click', function () {
+      var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+      var next = cur === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', next);
+      try { localStorage.setItem('mocro-theme', next); } catch (e) {}
+      sync();
+    });
+    sync();
   }
 
   async function loadAll() {
@@ -45,7 +63,10 @@
     list.forEach(function (a) {
       var cat = cache.categories.find(function (c) { return c.id === a.category_id; });
       var tr = document.createElement('tr');
-      var td1 = el('td', null); td1.appendChild(el('strong', null, a.title)); td1.appendChild(document.createElement('br')); td1.appendChild(el('small', null, a.slug));
+      var td1 = el('td', null);
+      var strong = el('span', 'cell-title', a.title);
+      var sub = el('span', 'cell-sub', a.slug);
+      td1.appendChild(strong); td1.appendChild(sub);
       tr.appendChild(td1);
       tr.appendChild(el('td', null, cat ? cat.name : '—'));
       var b = el('span', 'badge badge-' + a.status); b.textContent = { published: 'منشور', draft: 'مسودة', archived: 'مؤرشف' }[a.status] || a.status;
@@ -106,7 +127,7 @@
   function renderTagCheckboxes(selected) {
     selected = selected || []; var box = document.getElementById('art-tags'); box.innerHTML = '';
     cache.tags.forEach(function (t) {
-      var wrap = el('span', 'checkbox-row'); wrap.style.marginLeft = '1rem';
+      var wrap = el('span', 'checkbox-row');
       var cb = document.createElement('input'); cb.type = 'checkbox'; cb.value = t.id; cb.checked = selected.indexOf(t.id) !== -1;
       wrap.appendChild(cb); wrap.appendChild(document.createTextNode(t.name)); box.appendChild(wrap);
     });
