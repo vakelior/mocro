@@ -61,10 +61,9 @@
 .share-btn.copied{border-color:var(--color-accent);color:var(--color-accent)}
 
 .article-back{max-width:var(--max-width);margin:var(--sp-5) auto 0;padding-inline:var(--gutter)}
-.back-btn{display:inline-flex;align-items:center;gap:var(--sp-2);font-family:inherit;font-size:var(--fs-2);font-weight:700;color:#000000;background:#ffffff;border:1px solid #000000;padding:var(--sp-3) var(--sp-5);cursor:pointer;transition:all var(--duration-fast)}
-.back-btn:hover{background:#000000;color:#ffffff}
-.back-btn:hover .material-symbols-outlined{color:inherit}
-.back-btn .material-symbols-outlined{font-size:var(--icon-lg)}
+.back-btn{display:inline-flex;align-items:center;gap:.3rem;font-family:inherit;font-size:var(--fs-2);font-weight:700;color:#000000;background:transparent;border:none;padding:0;cursor:pointer;transition:all var(--duration-fast)}
+.back-btn:hover{color:#555555}
+.back-btn .material-symbols-outlined{font-size:var(--icon-lg);line-height:1}
 
 /* Author card — بطاقة الكاتب أسفل المقال */
 .author-card{max-width:var(--max-width);margin-inline:auto;margin-bottom:var(--sp-8);padding-inline:0}
@@ -74,8 +73,8 @@
 .author-card-avatar.placeholder .material-symbols-outlined{font-size:var(--icon-lg)}
 .author-card-body{flex:1;min-width:0}
 .author-card-eyebrow{font-size:var(--fs-1);font-weight:700;letter-spacing:.03em;color:var(--color-muted);margin-bottom:.25rem}
-.author-card-name{font-size:var(--fs-3);font-weight:700;margin-bottom:.4rem;color:var(--color-fg);display:flex;align-items:center;gap:.4rem}
-.author-card-name .material-symbols-outlined{font-size:var(--fs-3);color:var(--color-accent)}
+.author-card-name{font-size:var(--fs-3);font-weight:700;margin-bottom:.4rem;color:var(--color-fg);display:flex;align-items:center;gap:.2rem}
+.author-card-name .material-symbols-outlined{font-size:var(--fs-3);color:var(--color-accent);line-height:1}
 .author-card-bio{font-size:var(--fs-2);color:var(--color-muted);line-height:1.8}
 .author-card-date{display:flex;align-items:center;gap:.5rem;font-size:var(--fs-1);color:var(--color-muted);margin-top:.5rem}
 .author-card-date .material-symbols-outlined{font-size:var(--icon-sm)}
