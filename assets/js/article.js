@@ -70,27 +70,101 @@
 
   function renderRelated(articles) {
     var grid = document.getElementById('related-grid');
+    var nav = document.getElementById('related-nav');
     if (!grid) return;
     grid.innerHTML = '';
+    if (nav) nav.innerHTML = '';
     if (!articles.length) { grid.innerHTML = '<div class="empty-state">لا توجد مقالات ذات صلة بعد.</div>'; return; }
-    articles.forEach(function (a) {
-      var item = el('article', 'journal-item');
+    articles.forEach(function (a, i) {
+      var item = el('article', 'related-item');
       var href = url('article.html?slug=' + encodeURIComponent(a.slug));
+      item.setAttribute('data-rslide', '');
       item.setAttribute('data-href', href);
       item.setAttribute('tabindex', '0');
       item.setAttribute('role', 'link');
       item.setAttribute('aria-label', a.title);
+      if (a.featured_image) {
+        var thumb = el('div', 'related-thumb');
+        var img = document.createElement('img');
+        img.src = a.featured_image; img.alt = a.title; img.loading = 'lazy';
+        thumb.appendChild(img);
+        item.appendChild(thumb);
+      }
       var body = el('div', 'journal-body');
       if (a.category) body.appendChild(el('span', 'cat', a.category.name));
       body.appendChild(el('h3', null, a.title));
       if (a.excerpt) body.appendChild(el('p', null, a.excerpt));
-      var arrow = el('span', 'journal-arrow material-symbols-outlined', 'chevron_backward');
-      arrow.setAttribute('aria-hidden', 'true');
-      item.appendChild(body); item.appendChild(arrow);
+      item.appendChild(body);
       item.addEventListener('click', function () { window.location.href = href; });
       item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
       grid.appendChild(item);
     });
+    initRelatedSlider();
+  }
+
+  function initRelatedSlider() {
+    var grid = document.getElementById('related-grid');
+    var nav = document.getElementById('related-nav');
+    if (!grid || !nav) return;
+    var slides = Array.prototype.slice.call(grid.querySelectorAll('[data-rslide]'));
+    var dots = Array.prototype.slice.call(nav.querySelectorAll('[data-rdot]'));
+    if (!slides.length) return;
+
+    var perView = function () {
+      return window.matchMedia('(min-width: 900px)').matches ? 3 : 1;
+    };
+    var page = 0;
+    function update() {
+      var n = perView();
+      var maxPage = Math.max(0, Math.ceil(slides.length / n) - 1);
+      if (page > maxPage) page = maxPage;
+      var start = page * n;
+      var end = start + n;
+      slides.forEach(function (s, x) { s.classList.toggle('is-visible', x >= start && x < end); });
+      dots.forEach(function (d, p) { d.classList.toggle('is-active', p === page); });
+    }
+    function nextPage() { page = Math.min(page + 1, Math.max(0, Math.ceil(slides.length / perView()) - 1)); update(); }
+    function prevPage() { page = Math.max(page - 1, 0); update(); }
+    function goToPage(p) { page = Math.max(0, Math.min(p, Math.ceil(slides.length / perView()) - 1)); update(); }
+
+    function buildDots() {
+      var pages = Math.ceil(slides.length / perView());
+      var html = '';
+      for (var p = 0; p < pages; p++) html += '<button class="related-dot' + (p === 0 ? ' is-active' : '') + '" data-rpage="' + p + '" aria-label="صفحة ' + (p + 1) + '"></button>';
+      nav.innerHTML = html;
+      dots = Array.prototype.slice.call(nav.querySelectorAll('[data-rpage]'));
+      dots.forEach(function (d) { d.onclick = function () { goToPage(parseInt(d.getAttribute('data-rpage'), 10)); }; });
+    }
+    buildDots();
+    page = 0; update();
+    window.addEventListener('resize', function () { buildDots(); update(); });
+
+    var sx = null, sy = null, swiping = false, lock = false;
+    grid.style.touchAction = 'pan-y';
+    grid.addEventListener('pointerdown', function (ev) {
+      if (ev.pointerType === 'mouse' && ev.button !== 0) return;
+      swiping = true; lock = false; sx = ev.clientX; sy = ev.clientY;
+      try { grid.setPointerCapture(ev.pointerId); } catch (e) {}
+    });
+    grid.addEventListener('pointermove', function (ev) {
+      if (!swiping || sx === null) return;
+      var dx = ev.clientX - sx; var dy = ev.clientY - sy;
+      if (!lock && Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      if (Math.abs(dy) > Math.abs(dx)) { swiping = false; lock = false; sx = null; sy = null; return; }
+      lock = true;
+    });
+    grid.addEventListener('pointerup', function (ev) {
+      if (!swiping || sx === null) { swiping = false; sx = null; sy = null; return; }
+      swiping = false;
+      var dx = ev.clientX - sx;
+      var isRTL = document.documentElement.getAttribute('dir') === 'rtl' || (getComputedStyle && getComputedStyle(document.body).direction === 'rtl');
+      if (Math.abs(dx) > 50) {
+        if ((dx < 0 && !isRTL) || (dx > 0 && isRTL)) nextPage();
+        else prevPage();
+      }
+      sx = null; sy = null; lock = false;
+    });
+    grid.addEventListener('pointercancel', function () { swiping = false; sx = null; sy = null; lock = false; });
   }
 
   function formatDate(iso) {
