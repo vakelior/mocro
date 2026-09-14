@@ -125,9 +125,9 @@
     var body = el('div', 'author-card-body');
     body.appendChild(el('div', 'author-card-eyebrow', 'الكاتب'));
     var nameWrap = el('div', 'author-card-name');
-    nameWrap.appendChild(icon('verified'));
     var nameSpan = el('span', null, author.name || '');
     nameWrap.appendChild(nameSpan);
+    nameWrap.appendChild(icon('verified'));
     body.appendChild(nameWrap);
     if (author.bio) body.appendChild(el('div', 'author-card-bio', author.bio));
 
@@ -174,8 +174,8 @@
     var back = el('div', 'article-back container');
     var backBtn = el('button', 'back-btn');
     backBtn.type = 'button';
-    backBtn.appendChild(icon('chevron_backward'));
     backBtn.appendChild(document.createTextNode('رجوع'));
+    backBtn.appendChild(icon('chevron_backward'));
     backBtn.setAttribute('aria-label', 'الرجوع إلى الصفحة السابقة');
     backBtn.addEventListener('click', function () {
       if (window.history.length > 1 && document.referrer) { window.history.back(); }
