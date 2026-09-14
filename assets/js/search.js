@@ -33,10 +33,10 @@
 
   function bind(input, results) {
     if (!input || !results) return;
-    var catBox = document.getElementById('menu-categories');
     var debounce = null;
     function syncVisibility(q) {
       var hasQuery = q && q.length > 0;
+      var catBox = document.getElementById('menu-categories');
       if (catBox) catBox.style.display = hasQuery ? 'none' : '';
       if (results) results.style.display = hasQuery ? '' : 'none';
     }
@@ -59,6 +59,7 @@
   document.addEventListener('DOMContentLoaded', function () {
     var menuInput = document.getElementById('menu-search-input');
     var menuResults = document.getElementById('menu-search-results');
+    if (menuResults) menuResults.style.display = 'none';
     bind(menuInput, menuResults);
   });
 })();
