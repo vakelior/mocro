@@ -14,9 +14,10 @@
     results.forEach(function (a) {
       var row = el('a', 'search-result');
       row.href = url('article.html?slug=' + encodeURIComponent(a.slug));
+      if (a.featured_image) { var img = document.createElement('img'); img.src = a.featured_image; img.alt = a.title; row.appendChild(img); }
       var body = el('div', 'sr-body');
       body.appendChild(el('div', 'sr-title', a.title));
-      if (a.excerpt) body.appendChild(el('div', 'sr-meta', a.excerpt));
+      body.appendChild(el('div', 'sr-meta', a.categories ? a.categories.name : ''));
       row.appendChild(body);
       container.appendChild(row);
     });
