@@ -30,7 +30,6 @@
   --text-4xl:clamp(2.25rem,5vw,3.5rem);
   --text-hero:clamp(2.25rem,6vw,4.5rem);
   /* Unified 4-tier type scale — every text maps to one of these */
-  --fs-1:clamp(0.8125rem,1.172vw,0.9375rem);   /* ثانوي / ميتا  13→15px */
   --fs-2:clamp(0.9375rem,1.406vw,1.125rem);    /* النص الأساسي + روابط التنقل  15→18px */
   --fs-3:clamp(1.1875rem,1.875vw,1.5rem);      /* عناوين فرعية   19→24px */
   --fs-4:clamp(1.625rem,3.281vw,2.625rem);     /* عناوين رئيسية  26→42px */
