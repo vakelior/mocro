@@ -64,7 +64,7 @@
 
 .article-back{max-width:var(--max-width);margin:var(--sp-5) auto 0;padding-inline:var(--gutter)}
 .back-btn{position:relative;display:inline-flex;align-items:center;gap:.3rem;font-family:inherit;font-size:var(--fs-3);font-weight:700;color:#000000;background:transparent;border:none;padding:0;padding-inline-start:var(--sp-4);cursor:pointer;transition:all var(--duration-fast)}
-.back-btn::before{content:"";position:absolute;inset-inline-start:3px;top:.08em;bottom:.08em;width:3px;background:var(--color-accent)}
+.back-btn::before{content:"";position:absolute;inset-inline-start:0;top:0;bottom:0;width:3px;background:var(--color-accent)}
 .back-btn:hover{color:#555555}
 .back-btn .material-symbols-outlined{font-size:var(--icon-lg);line-height:1}
 
