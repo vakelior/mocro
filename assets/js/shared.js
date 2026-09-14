@@ -66,9 +66,6 @@
   async function init() {
     if (!M) return;
 
-    var isHome = !!document.querySelector('#latest, .featured-slider');
-    if (isHome) return;
-
     var categories = [];
     try { var cr = await M.listCategories(); categories = cr.data || []; populateCategoryNav(categories); } catch (e) {}
   }
