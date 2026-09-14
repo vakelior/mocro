@@ -93,6 +93,42 @@
     });
   }
 
+  function renderAuthorCard(author) {
+    if (!author) return '';
+    var wrap = el('div', 'author-card container');
+    var inner = el('div', 'author-card-inner');
+
+    var avatar;
+    if (author.avatar) {
+      avatar = document.createElement('img');
+      avatar.className = 'author-card-avatar';
+      avatar.src = author.avatar;
+      avatar.alt = author.name || 'الكاتب';
+      avatar.loading = 'lazy';
+    } else {
+      avatar = el('span', 'author-card-avatar placeholder');
+      avatar.appendChild(icon('person'));
+    }
+    inner.appendChild(avatar);
+
+    var body = el('div', 'author-card-body');
+    body.appendChild(el('div', 'author-card-eyebrow', 'الكاتب'));
+    var nameWrap = el('div', 'author-card-name');
+    if (author.slug) {
+      var a = el('a', null, author.name || '');
+      a.href = url('author.html?slug=' + encodeURIComponent(author.slug));
+      nameWrap.appendChild(a);
+    } else {
+      nameWrap.textContent = author.name || '';
+    }
+    body.appendChild(nameWrap);
+    if (author.bio) body.appendChild(el('div', 'author-card-bio', author.bio));
+    inner.appendChild(body);
+
+    wrap.appendChild(inner);
+    return wrap;
+  }
+
   function registerView(slug) {
     try {
       var key = 'mocro-viewed:' + slug; var last = localStorage.getItem(key); var now = Date.now();
@@ -167,6 +203,8 @@
     }
 
     root.appendChild(body);
+
+    if (a.author) root.appendChild(renderAuthorCard(a.author));
 
     var rel;
     try { rel = await M.relatedArticles(a, 6); } catch (e) { rel = { data: [] }; }

@@ -7,15 +7,6 @@
 <meta name="theme-color" content="#000000">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<script>
-  (function () {
-    try {
-      var t = localStorage.getItem('mocro-theme');
-      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-      document.documentElement.setAttribute('data-theme', t);
-    } catch (e) { document.documentElement.setAttribute('data-theme', 'light'); }
-  })();
-</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/tokens.css">
@@ -30,7 +21,6 @@
     <a href="index.html" class="brand" aria-label="مُوكْرُو">مُوكْرُو</a>
     <div class="masthead-actions">
       <a href="index.html" class="search-btn" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:700;text-decoration:none"><span class="material-symbols-outlined">arrow_back</span> الموقع</a>
-      <button class="admin-btn ghost" id="theme-toggle" type="button" aria-label="تبديل الوضع"><span class="material-symbols-outlined" id="theme-icon">dark_mode</span></button>
       <button class="admin-btn ghost" id="logout-btn">خروج</button>
     </div>
   </div></div>
@@ -87,7 +77,7 @@
     <div style="margin-bottom:1rem"><button class="admin-btn primary" data-action="new-author"><span class="material-symbols-outlined">add</span> كاتب جديد</button></div>
     <div style="overflow-x:auto">
       <table class="admin-table" id="authors-table">
-        <thead><tr><th>الاسم</th><th>Slug</th><th>إجراءات</th></tr></thead>
+        <thead><tr><th>الكاتب</th><th>إجراءات</th></tr></thead>
         <tbody></tbody>
       </table>
     </div>

@@ -19,26 +19,8 @@
     currentUser = res.data && res.data.session ? res.data.session.user : null;
     if (!currentUser) { window.location.href = 'login.html'; return; }
     document.getElementById('admin-user').textContent = currentUser.email || 'مشرف';
-    wireTabs(); wireGlobalActions(); wireEditor(); wireTheme();
+    wireTabs(); wireGlobalActions(); wireEditor();
     await loadAll();
-  }
-
-  function wireTheme() {
-    var btn = document.getElementById('theme-toggle');
-    var icon = document.getElementById('theme-icon');
-    if (!btn || !icon) return;
-    function sync() {
-      var t = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      icon.textContent = t === 'dark' ? 'light_mode' : 'dark_mode';
-    }
-    btn.addEventListener('click', function () {
-      var cur = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
-      var next = cur === 'dark' ? 'light' : 'dark';
-      document.documentElement.setAttribute('data-theme', next);
-      try { localStorage.setItem('mocro-theme', next); } catch (e) {}
-      sync();
-    });
-    sync();
   }
 
   async function loadAll() {
@@ -102,13 +84,23 @@
     var tbody = document.querySelector('#authors-table tbody'); tbody.innerHTML = '';
     cache.authors.forEach(function (a) {
       var tr = document.createElement('tr');
-      tr.appendChild(el('td', null, a.name)); tr.appendChild(el('td', null, a.slug));
+      var tdName = el('td', null);
+      var cell = el('div', 'author-cell');
+      var av;
+      if (a.avatar) { av = document.createElement('img'); av.className = 'author-cell-avatar'; av.src = a.avatar; av.alt = ''; }
+      else { av = el('span', 'author-cell-avatar placeholder'); av.appendChild(icon('person')); }
+      cell.appendChild(av);
+      cell.appendChild(el('span', 'cell-title', a.name));
+      cell.appendChild(el('span', 'cell-sub', a.slug));
+      tdName.appendChild(cell);
+      tr.appendChild(tdName);
       var td = el('td', null); var acts = el('div', 'admin-actions');
       acts.appendChild(btn('تعديل', function () { openAuthorEditor(a); }));
       acts.appendChild(btn('حذف', function () { deleteAuthor(a); }, 'danger'));
       td.appendChild(acts); tr.appendChild(td); tbody.appendChild(tr);
     });
   }
+  function icon(name) { var s = document.createElement('span'); s.className = 'material-symbols-outlined'; s.setAttribute('aria-hidden', 'true'); s.textContent = name; return s; }
   function renderTags() {
     var box = document.getElementById('tags-list'); box.innerHTML = '';
     cache.tags.forEach(function (t) {
@@ -210,10 +202,10 @@
     await sb.from('article_tags').delete().eq('article_id', articleId);
     if (tagIds.length) await sb.from('article_tags').insert(tagIds.map(function (t) { return { article_id: articleId, tag_id: t }; }));
   }
-  async function uploadImage(file) {
+  async function uploadImage(file, folder) {
     var bucket = window.MOCRO_CONFIG.STORAGE_BUCKET || 'images';
     var ext = (file.name.split('.').pop() || 'jpg').toLowerCase();
-    var path = 'articles/' + uid() + '.' + ext;
+    var path = (folder || 'articles') + '/' + uid() + '.' + ext;
     var res = await sb.storage.from(bucket).upload(path, file, { upsert: false });
     if (res.error) { console.error(res.error); return null; }
     return sb.storage.from(bucket).getPublicUrl(path).data.publicUrl;
@@ -239,7 +231,18 @@
     f.appendChild(field('الاسم', 'gen-name', a ? a.name : ''));
     f.appendChild(field('Slug', 'gen-slug', a ? a.slug : ''));
     f.appendChild(fieldArea('السيرة الذاتية', 'gen-bio', a ? a.bio : ''));
-    f.appendChild(field('الصورة (URL)', 'gen-avatar', a ? a.avatar : ''));
+    var avatarWrap = el('div', 'admin-field full');
+    avatarWrap.appendChild(el('label', null, 'صورة الكاتب'));
+    var fileInput = document.createElement('input'); fileInput.type = 'file'; fileInput.id = 'gen-avatar-file'; fileInput.accept = 'image/*';
+    avatarWrap.appendChild(fileInput);
+    avatarWrap.appendChild(el('div', 'hint', 'تُرفع إلى التخزين تلقائياً. اتركها فارغة للإبقاء على الصورة الحالية.'));
+    var preview = document.createElement('img'); preview.id = 'gen-avatar-preview'; preview.className = 'img-preview';
+    if (a && a.avatar) { preview.src = a.avatar; preview.style.display = 'block'; } else { preview.style.display = 'none'; }
+    avatarWrap.appendChild(preview);
+    f.appendChild(avatarWrap);
+    fileInput.addEventListener('change', function (e) {
+      if (e.target.files && e.target.files[0]) { var r = new FileReader(); r.onload = function (ev) { preview.src = ev.target.result; preview.style.display = 'block'; }; r.readAsDataURL(e.target.files[0]); }
+    });
     openOverlay('gen-overlay');
   }
   function openTagEditor() {
@@ -263,7 +266,14 @@
       payload.sort_order = parseInt(document.getElementById('gen-order').value || '0', 10); payload.is_active = true;
       res = genEditing ? await sb.from('categories').update(payload).eq('id', genEditing.id) : await sb.from('categories').insert(payload);
     } else if (genType === 'author') {
-      payload.bio = document.getElementById('gen-bio').value.trim(); payload.avatar = document.getElementById('gen-avatar').value.trim();
+      payload.bio = document.getElementById('gen-bio').value.trim();
+      var avatarFile = document.getElementById('gen-avatar-file');
+      if (avatarFile && avatarFile.files && avatarFile.files[0]) {
+        var up = await uploadImage(avatarFile.files[0], 'authors');
+        if (up) payload.avatar = up;
+      } else if (genEditing && genEditing.avatar) {
+        payload.avatar = genEditing.avatar;
+      }
       res = genEditing ? await sb.from('authors').update(payload).eq('id', genEditing.id) : await sb.from('authors').insert(payload);
     } else {
       res = await sb.from('tags').insert(payload);
