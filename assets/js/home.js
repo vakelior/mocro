@@ -106,18 +106,52 @@
       item.setAttribute('tabindex', '0');
       item.setAttribute('role', 'link');
       item.setAttribute('aria-label', a.title);
+      if (a.featured_image) {
+        var thumb = el('div', 'journal-thumb');
+        var img = document.createElement('img');
+        img.src = a.featured_image; img.alt = a.title; img.loading = 'lazy';
+        thumb.appendChild(img);
+        item.appendChild(thumb);
+      }
       var body = el('div', 'journal-body');
       body.appendChild(el('h3', null, a.title));
       body.appendChild(el('p', null, a.excerpt));
       body.appendChild(el('span', 'cat', (a.category ? a.category.name + ' · ' : '') + readingTime(a.content)));
-      var arrow = document.createElement('a');
-      arrow.className = 'journal-arrow material-symbols-outlined';
-      arrow.href = href; arrow.textContent = 'chevron_backward'; arrow.setAttribute('aria-hidden', 'true'); arrow.setAttribute('tabindex', '-1');
-      item.appendChild(body); item.appendChild(arrow);
+      item.appendChild(body);
       item.addEventListener('click', function () { window.location.href = href; });
       item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
       list.appendChild(item);
     });
+  }
+
+  function initJournalSlider() {
+    var section = document.getElementById('journal');
+    if (!section) return;
+    var list = section.querySelector('.journal-list');
+    var prev = section.querySelector('[data-journal-prev]');
+    var next = section.querySelector('[data-journal-next]');
+    if (!list || !prev || !next) return;
+
+    var isRTL = document.documentElement.getAttribute('dir') === 'rtl' ||
+      (getComputedStyle && getComputedStyle(document.body).direction === 'rtl');
+
+    function updateButtons() {
+      var maxScroll = list.scrollWidth - list.clientWidth;
+      var pos = isRTL ? Math.abs(list.scrollLeft) : list.scrollLeft;
+      prev.disabled = pos <= 1;
+      next.disabled = pos >= maxScroll - 1;
+    }
+    function step() {
+      var first = list.querySelector('.journal-item');
+      if (!first) return 300;
+      var gap = parseFloat(getComputedStyle(list).columnGap) || parseFloat(getComputedStyle(list).gap) || 0;
+      return first.offsetWidth + gap;
+    }
+    prev.addEventListener('click', function () { list.scrollBy({ left: isRTL ? step() : -step(), behavior: 'smooth' }); });
+    next.addEventListener('click', function () { list.scrollBy({ left: isRTL ? -step() : step(), behavior: 'smooth' }); });
+    list.addEventListener('scroll', updateButtons, { passive: true });
+    window.addEventListener('resize', updateButtons);
+    updateButtons();
   }
 
   async function renderHome() {
@@ -132,7 +166,8 @@
       if (!featured.length) featured = latest.slice(0, 6);
       renderNav(categories);
       renderSlider(featured.slice(0, 6));
-      renderJournal(latest.slice(0, 5));
+      renderJournal(latest.slice(0, 8));
+      initJournalSlider();
 
       if (typeof window.MocroInitSlider === 'function') window.MocroInitSlider();
     } catch (err) {
