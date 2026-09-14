@@ -125,7 +125,9 @@
     var body = el('div', 'author-card-body');
     body.appendChild(el('div', 'author-card-eyebrow', 'الكاتب'));
     var nameWrap = el('div', 'author-card-name');
-    nameWrap.textContent = author.name || '';
+    nameWrap.appendChild(icon('verified'));
+    var nameSpan = el('span', null, author.name || '');
+    nameWrap.appendChild(nameSpan);
     body.appendChild(nameWrap);
     if (author.bio) body.appendChild(el('div', 'author-card-bio', author.bio));
 

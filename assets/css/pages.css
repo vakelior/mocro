@@ -74,8 +74,8 @@
 .author-card-avatar.placeholder .material-symbols-outlined{font-size:var(--icon-lg)}
 .author-card-body{flex:1;min-width:0}
 .author-card-eyebrow{font-size:var(--fs-1);font-weight:700;letter-spacing:.03em;color:var(--color-muted);margin-bottom:.25rem}
-.author-card-name{font-size:var(--fs-3);font-weight:700;margin-bottom:.4rem;color:var(--color-fg)}
-.author-card-name a:hover{color:var(--color-accent)}
+.author-card-name{font-size:var(--fs-3);font-weight:700;margin-bottom:.4rem;color:var(--color-fg);display:flex;align-items:center;gap:.4rem}
+.author-card-name .material-symbols-outlined{font-size:var(--fs-3);color:var(--color-accent)}
 .author-card-bio{font-size:var(--fs-2);color:var(--color-muted);line-height:1.8}
 .author-card-date{display:flex;align-items:center;gap:.5rem;font-size:var(--fs-1);color:var(--color-muted);margin-top:.5rem}
 .author-card-date .material-symbols-outlined{font-size:var(--icon-sm)}
