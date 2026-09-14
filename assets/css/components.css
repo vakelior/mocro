@@ -22,7 +22,7 @@
 .masthead-actions{display:flex;align-items:center;gap:.15rem}
 .menu-search{padding:var(--sp-3) 0 var(--sp-3);border-bottom:1px solid var(--color-line);margin-bottom:var(--sp-3)}
 .menu-search .search-input{width:100%}
-.menu-search-results{max-height:280px;overflow-y:auto;margin-top:2rem;padding-inline-end:2px;-webkit-overflow-scrolling:touch}
+.menu-search-results{max-height:280px;overflow-y:auto;margin-top:var(--sp-2);padding-inline-end:2px;-webkit-overflow-scrolling:touch;display:none}
 .burger{display:none;width:44px;height:44px;position:relative;z-index:110;background:none;border:none}
 .burger span,.burger span::before,.burger span::after{content:"";display:block;width:24px;height:2px;background:var(--color-fg);position:absolute;right:20px;transition:all var(--duration) var(--ease)}
 .burger span{top:50%;transform:translateY(-50%);background:var(--color-fg)}
@@ -38,6 +38,10 @@
 .mobile-menu a .menu-arrow{font-size:var(--icon-lg);color:var(--color-muted);transition:all var(--duration-fast)}
 .mobile-menu a:hover{color:var(--color-accent);padding-right:.5rem}
 .mobile-menu a:hover .menu-arrow{color:var(--color-accent);transform:translateX(-5px)}
+.menu-categories{display:flex;flex-direction:column;gap:var(--sp-2);margin-top:var(--sp-2)}
+.menu-categories a{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);border:1px solid var(--color-line);border-radius:var(--radius-sm);font-size:var(--fs-2);font-weight:600;color:var(--color-fg);background:var(--color-bg);transition:all var(--duration-fast)}
+.menu-categories a:hover{border-color:var(--color-accent);color:var(--color-fg)}
+.menu-categories a .menu-arrow{font-size:var(--icon-lg);color:var(--color-muted)}
 .cat{display:inline-block;font-size:var(--fs-2);font-weight:700;color:var(--color-accent);letter-spacing:.02em;text-transform:uppercase;margin-bottom:.5rem;border-bottom:3px solid var(--ink);padding-bottom:.25rem;align-self:flex-start;width:fit-content;max-width:100%}
 .post{display:flex;flex-direction:column;border:1px solid var(--color-line);border-radius:var(--radius-md);overflow:hidden;transition:all var(--duration) var(--ease);background:var(--color-bg)}
 .post:hover{transform:translateY(-4px);box-shadow:0 20px 40px rgba(0,0,0,.08);border-color:var(--color-line)}
