@@ -26,8 +26,10 @@
 .content-col section{margin-bottom:var(--section-gap)}
 .section-bar{display:flex;align-items:center;gap:var(--sp-5);margin-bottom:var(--sp-6)}
 .post-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--sp-5)}
-.journal-list{display:flex;flex-direction:row;gap:var(--sp-4);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding:var(--sp-1) var(--sp-1) var(--sp-2)}
-.journal-list::-webkit-scrollbar{display:none}
+.journal-list{position:relative;display:block;overflow:hidden}
+.journal-nav{display:flex;gap:.6rem;margin-top:var(--sp-5);justify-content:center}
+.journal-dot{position:relative;width:12px;height:12px;border-radius:50%;background:var(--color-line);border:none;padding:0;cursor:pointer;transition:background var(--duration) var(--ease),transform var(--duration) var(--ease)}
+.journal-dot.is-active{background:var(--ink);transform:scale(1.25)}
 .sidebar-col{min-width:0}
 .cat-blocks{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-5);border-bottom:1px solid var(--color-line);padding-bottom:var(--section-gap);margin-bottom:0}
 /* ============ أقسام مواضيعية (نظام الجزيرة) ============ */

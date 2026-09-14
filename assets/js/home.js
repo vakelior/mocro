@@ -97,10 +97,13 @@
 
   function renderJournal(articles) {
     var list = document.querySelector('#journal .journal-list');
+    var nav = document.querySelector('#journal .journal-nav');
     if (!list) return;
     list.innerHTML = '';
-    articles.forEach(function (a) {
-      var item = el('article', 'journal-item');
+    var dotsHtml = '';
+    articles.forEach(function (a, i) {
+      var item = el('article', 'journal-item' + (i === 0 ? ' is-active' : ''));
+      item.setAttribute('data-jslide', '');
       var href = artUrl(a);
       item.setAttribute('data-href', href);
       item.setAttribute('tabindex', '0');
@@ -109,7 +112,7 @@
       if (a.featured_image) {
         var thumb = el('div', 'journal-thumb');
         var img = document.createElement('img');
-        img.src = a.featured_image; img.alt = a.title; img.loading = 'lazy';
+        img.src = a.featured_image; img.alt = a.title; img.loading = i === 0 ? 'eager' : 'lazy';
         thumb.appendChild(img);
         item.appendChild(thumb);
       }
@@ -121,37 +124,60 @@
       item.addEventListener('click', function () { window.location.href = href; });
       item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
       list.appendChild(item);
+      dotsHtml += '<button class="journal-dot' + (i === 0 ? ' is-active' : '') + '" data-jdot="' + i + '" aria-label="خبر ' + (i + 1) + '"></button>';
     });
+    if (nav) nav.innerHTML = dotsHtml;
   }
 
   function initJournalSlider() {
     var section = document.getElementById('journal');
     if (!section) return;
     var list = section.querySelector('.journal-list');
-    var prev = section.querySelector('[data-journal-prev]');
-    var next = section.querySelector('[data-journal-next]');
-    if (!list || !prev || !next) return;
+    if (!list) return;
+    var slides = Array.prototype.slice.call(list.querySelectorAll('[data-jslide]'));
+    var dots = Array.prototype.slice.call(section.querySelectorAll('[data-jdot]'));
+    if (!slides.length) return;
 
-    var isRTL = document.documentElement.getAttribute('dir') === 'rtl' ||
-      (getComputedStyle && getComputedStyle(document.body).direction === 'rtl');
+    var current = 0;
+    function showSlide(i) {
+      current = (i + slides.length) % slides.length;
+      slides.forEach(function (s, x) { s.classList.toggle('is-active', x === current); });
+      dots.forEach(function (d, x) { d.classList.toggle('is-active', x === current); });
+    }
+    function nextSlide() { showSlide(current + 1); }
+    function prevSlide() { showSlide(current - 1); }
+    showSlide(0);
+    dots.forEach(function (dot) {
+      dot.onclick = function () { showSlide(parseInt(dot.getAttribute('data-jdot'), 10)); };
+    });
 
-    function updateButtons() {
-      var maxScroll = list.scrollWidth - list.clientWidth;
-      var pos = isRTL ? Math.abs(list.scrollLeft) : list.scrollLeft;
-      prev.disabled = pos <= 1;
-      next.disabled = pos >= maxScroll - 1;
-    }
-    function step() {
-      var first = list.querySelector('.journal-item');
-      if (!first) return 300;
-      var gap = parseFloat(getComputedStyle(list).columnGap) || parseFloat(getComputedStyle(list).gap) || 0;
-      return first.offsetWidth + gap;
-    }
-    prev.addEventListener('click', function () { list.scrollBy({ left: isRTL ? step() : -step(), behavior: 'smooth' }); });
-    next.addEventListener('click', function () { list.scrollBy({ left: isRTL ? -step() : step(), behavior: 'smooth' }); });
-    list.addEventListener('scroll', updateButtons, { passive: true });
-    window.addEventListener('resize', updateButtons);
-    updateButtons();
+    // Manual touch/pointer swipe only (RTL aware) — no autoplay.
+    var sx = null, sy = null, swiping = false, lock = false;
+    list.style.touchAction = 'pan-y';
+    list.addEventListener('pointerdown', function (ev) {
+      if (ev.pointerType === 'mouse' && ev.button !== 0) return;
+      swiping = true; lock = false; sx = ev.clientX; sy = ev.clientY;
+      try { list.setPointerCapture(ev.pointerId); } catch (e) {}
+    });
+    list.addEventListener('pointermove', function (ev) {
+      if (!swiping || sx === null) return;
+      var dx = ev.clientX - sx; var dy = ev.clientY - sy;
+      if (!lock && Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      if (Math.abs(dy) > Math.abs(dx)) { swiping = false; lock = false; sx = null; sy = null; return; }
+      lock = true;
+    });
+    list.addEventListener('pointerup', function (ev) {
+      if (!swiping || sx === null) { swiping = false; sx = null; sy = null; return; }
+      swiping = false;
+      var dx = ev.clientX - sx;
+      var isRTL = document.documentElement.getAttribute('dir') === 'rtl' || (getComputedStyle && getComputedStyle(document.body).direction === 'rtl');
+      if (Math.abs(dx) > 50) {
+        if ((dx < 0 && !isRTL) || (dx > 0 && isRTL)) nextSlide();
+        else prevSlide();
+      }
+      sx = null; sy = null; lock = false;
+    });
+    list.addEventListener('pointercancel', function () { swiping = false; sx = null; sy = null; lock = false; });
   }
 
   async function renderHome() {
