@@ -63,14 +63,28 @@
     }
   }
 
-  async function init() {
-    if (!M) return;
-
-    var categories = [];
-    try { var cr = await M.listCategories(); categories = cr.data || []; populateCategoryNav(categories); } catch (e) {}
+  function loadCategories() {
+    if (!M) {
+      // Mocro client not ready yet (scripts order / async). Retry shortly.
+      setTimeout(loadCategories, 300);
+      return;
+    }
+    M.listCategories().then(function (cr) {
+      populateCategoryNav((cr && cr.data) || []);
+    }).catch(function () {
+      setTimeout(loadCategories, 1500);
+    });
   }
 
-  document.addEventListener('DOMContentLoaded', init);
+  function init() {
+    loadCategories();
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
   window.MocroShared = {
     populateCategoryNav: populateCategoryNav,
     base: base
