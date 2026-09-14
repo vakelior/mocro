@@ -125,13 +125,7 @@
     var body = el('div', 'author-card-body');
     body.appendChild(el('div', 'author-card-eyebrow', 'الكاتب'));
     var nameWrap = el('div', 'author-card-name');
-    if (author.slug) {
-      var a = el('a', null, author.name || '');
-      a.href = url('author.html?slug=' + encodeURIComponent(author.slug));
-      nameWrap.appendChild(a);
-    } else {
-      nameWrap.textContent = author.name || '';
-    }
+    nameWrap.textContent = author.name || '';
     body.appendChild(nameWrap);
     if (author.bio) body.appendChild(el('div', 'author-card-bio', author.bio));
 
