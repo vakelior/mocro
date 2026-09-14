@@ -6,9 +6,6 @@
 .search-field{position:relative}
 .search-field-icon{position:absolute;top:50%;transform:translateY(-50%);inset-inline-start:var(--sp-4);font-size:var(--icon-lg);color:var(--color-muted);pointer-events:none}
 .search-input{width:100%;font-family:inherit;font-size:var(--fs-2);padding:var(--sp-4) var(--sp-5);padding-inline-start:3rem;background:var(--color-bg-soft);color:var(--color-fg);border:1px solid var(--color-line);border-radius:var(--radius-sm);outline:none}
-/* Menu search field: align text start with the categories' right margin (16px), icon on the opposite side */
-.menu-search .search-input{padding-inline-start:var(--sp-4);padding-inline-end:3rem}
-.menu-search .search-field-icon{inset-inline-start:auto;inset-inline-end:var(--sp-4)}
 .search-input:focus{border-color:var(--color-accent)}
 .search-input::-webkit-search-cancel-button,.search-input::-webkit-search-decoration{-webkit-appearance:none;appearance:none;display:none}
 .search-input::-ms-clear{display:none;width:0;height:0}
