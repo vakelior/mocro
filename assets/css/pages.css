@@ -6,6 +6,8 @@
 .search-field{position:relative}
 .search-field-icon{position:absolute;top:50%;transform:translateY(-50%);inset-inline-start:var(--sp-4);font-size:var(--icon-lg);color:var(--color-muted);pointer-events:none}
 .search-input{width:100%;font-family:inherit;font-size:var(--fs-2);padding:var(--sp-4) var(--sp-5);padding-inline-start:3rem;background:var(--color-bg-soft);color:var(--color-fg);border:1px solid var(--color-line);border-radius:var(--radius-sm);outline:none}
+/* Menu search: text starts at the categories' 16px margin; icon stays on the right */
+.menu-search .search-input{padding-inline-start:var(--sp-4)}
 .search-input:focus{border-color:var(--color-accent)}
 .search-input::-webkit-search-cancel-button,.search-input::-webkit-search-decoration{-webkit-appearance:none;appearance:none;display:none}
 .search-input::-ms-clear{display:none;width:0;height:0}
@@ -105,7 +107,7 @@
 .admin-header{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4);margin-bottom:var(--sp-6);padding-bottom:var(--sp-4);border-bottom:3px solid var(--ink);flex-wrap:wrap}
 .admin-header .brand{font-size:var(--fs-4);font-weight:700;letter-spacing:.03em}
 .admin-header .admin-user{font-size:var(--fs-2);color:var(--color-muted);margin-top:.25rem}
-.admin-header-actions{display:flex;align-items:center;gap:var(--sp-3);flex-wrap:wrap}
+.admin-header-actions{display:flex;align-items:center;gap:var(--sp-3)}
 
 .admin-tabs{display:flex;gap:0;margin-bottom:var(--sp-5);border-bottom:1px solid var(--color-line);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
 .admin-tab{display:inline-flex;align-items:center;gap:.45rem;padding:var(--sp-3) var(--sp-5);font-weight:700;font-size:var(--fs-2);color:var(--color-muted);border-bottom:2px solid transparent;white-space:nowrap;cursor:pointer;transition:color var(--duration-fast),border-color var(--duration-fast)}
