@@ -30,11 +30,9 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--color-fg);outline-o
 .ticker-item{position:absolute;inset:0;width:100%;display:flex;align-items:center;gap:.5rem;white-space:nowrap;overflow:hidden;font-size:var(--fs-2);font-weight:400;color:#000000;padding-inline:.25rem;transition:transform .5s cubic-bezier(.4,0,.2,1),opacity .5s ease;will-change:transform,opacity}
 .ticker-track.dragging .ticker-item{transition:none}
 .ticker-item a{display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:inherit;transition:color var(--duration) var(--ease)}
-.ticker-item a:hover{color:#000000}
 .ticker-item .material-symbols-outlined{font-size:var(--icon-md);color:#000000}
 .ticker-controls{display:inline-flex;align-items:center;gap:.25rem;flex-shrink:0}
 .ticker-btn{width:32px;height:32px;display:inline-flex;align-items:center;justify-content:center;color:#000000;border-radius:var(--radius-sm);transition:background var(--duration) var(--ease),color var(--duration) var(--ease)}
-.ticker-btn:hover{background:rgba(0,0,0,.06);color:#000000}
 .ticker-btn .material-symbols-outlined{font-size:var(--icon-md)}
 .ticker-dots{display:inline-flex;align-items:center;gap:.3rem;flex-shrink:0;padding-inline-end:.35rem}
 .ticker-dot{width:7px;height:7px;border-radius:50%;background:#d4d4d4;padding:0;transition:background var(--duration) var(--ease),transform var(--duration) var(--ease)}
