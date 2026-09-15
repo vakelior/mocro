@@ -23,6 +23,18 @@
 
     document.title = cat.name + ' — مُوكْرُو';
     head.innerHTML = '';
+
+    var bc = el('nav', 'breadcrumb');
+    var homeLink = el('a', null, 'الرئيسية');
+    homeLink.href = url('index.html');
+    var sep = el('span', 'material-symbols-outlined breadcrumb-arrow', 'chevron_backward');
+    sep.setAttribute('aria-hidden', 'true');
+    var cur = el('span', 'breadcrumb-current', cat.name);
+    bc.appendChild(homeLink);
+    bc.appendChild(sep);
+    bc.appendChild(cur);
+    head.appendChild(bc);
+
     head.appendChild(el('h1', null, cat.name));
     if (cat.description) head.appendChild(el('div', 'page-desc', cat.description));
 
