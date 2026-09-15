@@ -91,7 +91,6 @@
         item.appendChild(thumb);
       }
       var body = el('div', 'journal-body');
-      if (a.category) body.appendChild(el('span', 'cat', a.category.name));
       body.appendChild(el('h3', null, a.title));
       if (a.excerpt) body.appendChild(el('p', null, a.excerpt));
       item.appendChild(body);
