@@ -45,19 +45,16 @@
 
     var list = el('div', 'journal-list');
     articles.forEach(function (a) {
-      var item = el('article', 'journal-item');
+      var item = el('article', 'search-result');
       var href = url('article.html?slug=' + encodeURIComponent(a.slug));
       item.setAttribute('data-href', href);
       item.setAttribute('tabindex', '0');
       item.setAttribute('role', 'link');
       item.setAttribute('aria-label', a.title);
-      var body = el('div', 'journal-body');
-      body.appendChild(el('h3', null, a.title));
-      body.appendChild(el('p', null, a.excerpt));
-      body.appendChild(el('span', 'cat', dateStr(a.published_at) + ' · قراءة ' + readingTime(a.content)));
-      var arrow = el('a', 'journal-arrow material-symbols-outlined', 'chevron_backward');
-      arrow.href = href; arrow.setAttribute('aria-hidden', 'true'); arrow.setAttribute('tabindex', '-1');
-      item.appendChild(body); item.appendChild(arrow);
+      var body = el('div', 'sr-body');
+      body.appendChild(el('div', 'sr-title', a.title));
+      body.appendChild(el('div', 'sr-meta', dateStr(a.published_at) + ' · قراءة ' + readingTime(a.content)));
+      item.appendChild(body);
       item.addEventListener('click', function () { window.location.href = href; });
       item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
       list.appendChild(item);
