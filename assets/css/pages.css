@@ -75,7 +75,7 @@
 .author-card-name{font-size:var(--fs-3);font-weight:700;margin-bottom:.4rem;color:var(--color-fg);display:flex;align-items:center;gap:.2rem}
 .author-card-name .material-symbols-outlined{font-size:var(--fs-3);color:var(--color-accent);line-height:1}
 .author-card-bio{font-size:var(--fs-2);color:var(--color-muted);line-height:1.8}
-.author-card-date{display:flex;align-items:center;gap:.5rem;font-size:var(--fs-2);color:var(--color-muted);margin-top:.5rem}
+.author-card-date{display:flex;align-items:center;gap:.5rem;font-size:var(--fs-2);font-weight:700;color:var(--color-muted);margin-top:.5rem}
 .author-card-date .material-symbols-outlined{font-size:var(--icon-sm)}
 
 .related-section{max-width:var(--max-width);margin-inline:auto;padding-block:var(--sp-4) var(--sp-6)}
