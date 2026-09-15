@@ -79,13 +79,6 @@
       body.appendChild(el('span', 'cat', a.category ? a.category.name : 'مقال'));
       body.appendChild(el('h2', null, a.title));
       body.appendChild(el('p', null, a.excerpt));
-      var link = document.createElement('a');
-      link.href = artUrl(a); link.className = 'slide-link';
-      link.appendChild(document.createTextNode('اقرأ المقال '));
-      var ar = el('span', 'material-symbols-outlined', 'chevron_backward'); ar.setAttribute('aria-hidden', 'true');
-      link.appendChild(ar);
-      link.addEventListener('click', function (e) { e.stopPropagation(); });
-      body.appendChild(link);
       slide.appendChild(media); slide.appendChild(body);
       slide.addEventListener('click', function () { window.location.href = artUrl(a); });
       slide.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = artUrl(a); } });
