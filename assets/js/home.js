@@ -76,7 +76,6 @@
       var media = el('div', 'slide-media');
       if (a.featured_image) { var img = document.createElement('img'); img.src = a.featured_image; img.alt = a.title; img.loading = i === 0 ? 'eager' : 'lazy'; media.appendChild(img); }
       var body = el('div', 'slide-body');
-      body.appendChild(el('span', 'cat', a.category ? a.category.name : 'مقال'));
       body.appendChild(el('h2', null, a.title));
       body.appendChild(el('p', null, a.excerpt));
       slide.appendChild(media); slide.appendChild(body);
@@ -112,7 +111,7 @@
       var body = el('div', 'journal-body');
       body.appendChild(el('h3', null, a.title));
       body.appendChild(el('p', null, a.excerpt));
-      body.appendChild(el('span', 'cat', (a.category ? a.category.name + ' · ' : '') + readingTime(a.content)));
+      body.appendChild(el('span', 'cat', readingTime(a.content)));
       item.appendChild(body);
       item.addEventListener('click', function () { window.location.href = href; });
       item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
