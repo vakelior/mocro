@@ -3,8 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>مُوكْرُو — أخبار المغرب</title>
+<title>مُوكْرُو — منصة الأخبار العربية</title>
+<meta name="description" content="مُوكْرُو — منصة أخبار عربية تغطي السياسة والاقتصاد والرياضة والثقافة والتكنولوجيا والأخبار المحلية والعالمية والصحة، بمهنية وموضوعية وبتصميم عصري أنيق.">
 <meta name="theme-color" content="#000000">
+<link rel="canonical" href="https://vakelior.github.io/mocro/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="مُوكْرُو">
+<meta property="og:title" content="مُوكْرُو — منصة الأخبار العربية">
+<meta property="og:description" content="منصة أخبار عربية تغطي الأحداث المحلية والعالمية أولاً بأول.">
+<meta property="og:url" content="https://vakelior.github.io/mocro/">
+<meta property="og:locale" content="ar_AR">
+<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -15,6 +24,9 @@
 <link rel="stylesheet" href="assets/css/components.css?v=9">
 <link rel="stylesheet" href="assets/css/layout.css?v=10">
 <link rel="stylesheet" href="assets/css/pages.css?v=8">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"NewsMediaOrganization","name":"مُوكْرُو","url":"https://vakelior.github.io/mocro/","description":"مُوكْرُو — منصة أخبار عربية تغطي الأحداث المحلية والعالمية."}
+</script>
 </head>
 <body>
 <a href="#main" class="skip-link">تخطّى إلى المحتوى</a>
@@ -45,24 +57,27 @@
 </header>
 
 <main id="main">
-  <section class="featured container" id="featured">
-    <div class="featured-slider" id="featured-slider"></div>
-    <div class="slider-nav" id="slider-nav" role="tablist" aria-label="التنقل بين المقالات المميزة"></div>
+  <h1 class="sr-only">مُوكْرُو — منصة الأخبار العربية</h1>
+  <section class="featured container" aria-label="أهم الأخبار">
+    <div class="featured-slider" data-slider></div>
+    <div class="slider-nav" role="tablist" aria-label="التنقل بين الأخبار"></div>
   </section>
-  <div class="main-grid container">
-    <section class="content-col">
-      <div class="section-bar"><h2 class="section-title">المقالات</h2></div>
-      <div class="journal-list" id="journal-list"></div>
-      <div class="journal-nav" id="journal-nav" role="tablist" aria-label="التنقل بين المقالات"></div>
-    </section>
+  <div class="container main-grid">
+    <div class="content-col">
+      <section id="journal">
+        <div class="section-bar"><h2 class="section-title">آخر الأخبار</h2><span class="section-rule"></span></div>
+        <div class="journal-list"></div>
+        <div class="journal-nav" role="tablist" aria-label="التنقل بين آخر الأخبار"></div>
+      </section>
+    </div>
   </div>
 </main>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/api.js"></script>
 <script src="assets/js/main.js?v=4"></script>
-<script src="assets/js/home.js?v=8"></script>
 <script src="assets/js/search.js"></script>
 <script src="assets/js/shared.js"></script>
+<script src="assets/js/home.js?v=8"></script>
 </body>
 </html>
