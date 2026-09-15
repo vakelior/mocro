@@ -6,7 +6,7 @@
    - Full-width sections that CONTAIN a .container must NOT add gutter either.
    This keeps header, ticker, featured, content and footer on the same axis.
 */
-.featured{max-width:var(--max-width);margin-inline:auto;margin-block:var(--sp-4) 0}
+.featured{max-width:var(--max-width);margin-inline:auto;margin-block:var(--sp-2) 0}
 .featured-slider{position:relative;display:block;border:1px solid var(--glass-border);border-radius:var(--radius-md);overflow:hidden;background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
 .slide{display:none;grid-template-columns:1fr 1.15fr;min-height:0;height:240px;align-items:stretch;cursor:pointer}
 .slide.is-active{display:grid}
