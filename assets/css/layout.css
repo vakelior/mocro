@@ -7,7 +7,7 @@
    This keeps header, ticker, featured, content and footer on the same axis.
 */
 .featured{max-width:var(--max-width);margin-inline:auto;margin-block:var(--sp-4) 0}
-.featured-slider{position:relative;display:block;border:1px solid var(--color-line);border-radius:var(--radius-md);overflow:hidden;background:var(--color-bg)}
+.featured-slider{position:relative;display:block;border:1px solid var(--glass-border);border-radius:var(--radius-md);overflow:hidden;background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
 .slide{display:none;grid-template-columns:1fr 1.15fr;min-height:0;height:240px;align-items:stretch;cursor:pointer}
 .slide.is-active{display:grid}
 .slide-media{display:block;width:100%;height:100%;min-height:0;overflow:hidden;background:var(--color-bg-soft)}
@@ -40,7 +40,7 @@
 .section-more::before{content:"";position:absolute;inset-inline-start:0;top:50%;transform:translateY(-50%);height:1.3em;width:3px;background:var(--color-accent)}
 .section-more .material-symbols-outlined{font-size:var(--icon-md)}
 .theme-grid{display:grid;grid-template-columns:1.6fr 1fr;gap:var(--sp-5);border-top:1px solid var(--color-line);padding-top:var(--sp-5)}
-.theme-lead{display:flex;gap:var(--sp-5);align-items:center;border:1px solid var(--color-line);border-radius:var(--radius-md);overflow:hidden;padding:0;background:var(--color-bg);cursor:pointer}
+.theme-lead{display:flex;gap:var(--sp-5);align-items:center;border:1px solid var(--glass-border);border-radius:var(--radius-md);overflow:hidden;padding:0;background:var(--glass-bg);cursor:pointer;-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
 .theme-lead-media{flex:0 0 44%;min-width:0;overflow:hidden;background:var(--color-bg-soft)}
 .theme-lead-media img{width:100%;height:100%;object-fit:cover;object-position:center;display:block;aspect-ratio:16/10}
 .theme-lead-body{padding:var(--sp-4) var(--sp-5)}
@@ -54,19 +54,19 @@
 .theme-item h4{font-size:var(--fs-2);font-weight:700;line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:.35rem;transition:color var(--duration-fast)}
 .theme-item .meta{display:block}
 .theme-empty{color:var(--color-muted);font-size:var(--fs-2);line-height:1.75;font-weight:300;padding:var(--sp-4) 0}
-.footer-cta{background:#ffffff;color:#000000;padding-block:var(--sp-9);text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--color-line)}
-.footer-cta h2{font-size:var(--fs-4);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:var(--sp-3);color:#000000}
-.footer-cta p{color:#000000}
-.footer-cta h2 .accent-word{color:#000000}
-.footer-cta .eyebrow{font-family:var(--font-sans);font-size:clamp(1.25rem,2.09vw,1.375rem);font-weight:700;letter-spacing:.02em;color:#000000;margin-bottom:var(--sp-5)}
-.footer-cta .sub{color:#000000;margin:var(--sp-5) auto 0;font-size:var(--fs-3);font-weight:400;max-width:600px;line-height:1.9}
-.mocro-footer{background:#ffffff;color:#000000;padding-block:var(--sp-9) var(--sp-6);border-top:1px solid var(--color-line)}
+.footer-cta{background:var(--glass-bg);color:var(--color-fg);padding-block:var(--sp-9);text-align:center;position:relative;overflow:hidden;border-top:1px solid var(--color-line)}
+.footer-cta h2{font-size:var(--fs-4);font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-bottom:var(--sp-3);color:var(--color-fg)}
+.footer-cta p{color:var(--color-muted)}
+.footer-cta h2 .accent-word{color:var(--color-fg)}
+.footer-cta .eyebrow{font-family:var(--font-sans);font-size:clamp(1.25rem,2.09vw,1.375rem);font-weight:700;letter-spacing:.02em;color:var(--color-fg);margin-bottom:var(--sp-5)}
+.footer-cta .sub{color:var(--color-muted);margin:var(--sp-5) auto 0;font-size:var(--fs-3);font-weight:400;max-width:600px;line-height:1.9}
+.mocro-footer{background:var(--glass-bg);color:var(--color-fg);padding-block:var(--sp-9) var(--sp-6);border-top:1px solid var(--color-line)}
 .footer-grid{display:grid;grid-template-columns:2fr 1fr;gap:var(--sp-6);margin-bottom:var(--sp-7);align-items:start}
-.footer-grid h4{font-size:var(--fs-3);font-weight:700;margin-bottom:var(--sp-5);letter-spacing:0;color:#000000}
-.footer-grid a{display:block;color:#000000;font-size:var(--fs-2);margin-bottom:var(--sp-3);font-weight:400;transition:color var(--duration-fast) var(--ease)}
-.footer-brand{font-size:var(--fs-3);font-weight:700;margin-bottom:var(--sp-3);display:flex;align-items:center;gap:.7rem;color:#000000}
-.footer-brand-desc{color:#000000;font-size:var(--fs-2);font-weight:400;max-width:380px;line-height:1.9;margin-top:var(--sp-2)}
-.footer-bottom{border-top:1px solid var(--color-line);padding-top:var(--sp-6);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-4);font-size:var(--fs-2);color:#000000;font-weight:700;letter-spacing:.01em}
+.footer-grid h4{font-size:var(--fs-3);font-weight:700;margin-bottom:var(--sp-5);letter-spacing:0;color:var(--color-fg)}
+.footer-grid a{display:block;color:var(--color-muted);font-size:var(--fs-2);margin-bottom:var(--sp-3);font-weight:400;transition:color var(--duration-fast) var(--ease)}
+.footer-brand{font-size:var(--fs-3);font-weight:700;margin-bottom:var(--sp-3);display:flex;align-items:center;gap:.7rem;color:var(--color-fg)}
+.footer-brand-desc{color:var(--color-muted);font-size:var(--fs-2);font-weight:400;max-width:380px;line-height:1.9;margin-top:var(--sp-2)}
+.footer-bottom{border-top:1px solid var(--color-line);padding-top:var(--sp-6);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:var(--sp-4);font-size:var(--fs-2);color:var(--color-fg);font-weight:700;letter-spacing:.01em}
 .reveal{opacity:0;transform:translateY(20px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
 .reveal.in-view{opacity:1;transform:translateY(0)}
 @media(max-width:980px){.main-grid{grid-template-columns:1fr}.sidebar-col{display:grid;grid-template-columns:1fr;gap:var(--sp-5)}.widget{margin-bottom:0}.cat-blocks{grid-template-columns:1fr}.theme-grid{grid-template-columns:1fr}.nav-desktop{display:none}.burger{display:block}}
