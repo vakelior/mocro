@@ -20,7 +20,6 @@
     document.addEventListener('click', function (e) { if (menu.classList.contains('is-open') && !menu.contains(e.target) && e.target !== burger) closeMenu(); });
   }
 
-  var sliderAuto = null;
   function initSlider() {
     var slides = Array.prototype.slice.call(document.querySelectorAll('[data-slide]'));
     var dots = Array.prototype.slice.call(document.querySelectorAll('[data-slider-dot]'));
@@ -31,30 +30,26 @@
     function nextSlide() { showSlide(current + 1); }
     function prevSlide() { showSlide(current - 1); }
     showSlide(0);
-    dots.forEach(function (dot) { dot.onclick = function () { showSlide(parseInt(dot.getAttribute('data-slider-dot'), 10)); restartAuto(); }; });
-    function startAuto() { if (slides.length <= 1) return; if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; sliderAuto = setInterval(nextSlide, 6000); }
-    function restartAuto() { clearInterval(sliderAuto); startAuto(); }
-    startAuto();
+    dots.forEach(function (dot) { dot.onclick = function () { showSlide(parseInt(dot.getAttribute('data-slider-dot'), 10)); }; });
 
-    // Touch / pointer swipe for the featured slider (RTL aware).
+    // Touch / pointer swipe for the featured slider (RTL aware) — manual only (no autoplay).
     if (sliderRoot) {
       var sx = null, sy = null, swiping = false, lock = false;
       sliderRoot.style.touchAction = 'pan-y';
       sliderRoot.addEventListener('pointerdown', function (ev) {
         if (ev.pointerType === 'mouse' && ev.button !== 0) return;
         swiping = true; lock = false; sx = ev.clientX; sy = ev.clientY;
-        clearInterval(sliderAuto);
         try { sliderRoot.setPointerCapture(ev.pointerId); } catch (e) {}
       });
       sliderRoot.addEventListener('pointermove', function (ev) {
         if (!swiping || sx === null) return;
         var dx = ev.clientX - sx; var dy = ev.clientY - sy;
         if (!lock && Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
-        if (Math.abs(dy) > Math.abs(dx)) { swiping = false; lock = false; sx = null; sy = null; restartAuto(); return; }
+        if (Math.abs(dy) > Math.abs(dx)) { swiping = false; lock = false; sx = null; sy = null; return; }
         lock = true;
       });
       sliderRoot.addEventListener('pointerup', function (ev) {
-        if (!swiping || sx === null) { restartAuto(); return; }
+        if (!swiping || sx === null) { swiping = false; sx = null; sy = null; lock = false; return; }
         swiping = false;
         var dx = ev.clientX - sx;
         var isRTL = (document.documentElement.getAttribute('dir') === 'rtl') || (getComputedStyle && getComputedStyle(document.body).direction === 'rtl');
@@ -64,9 +59,8 @@
           else prevSlide();
         }
         sx = null; sy = null; lock = false;
-        restartAuto();
       });
-      sliderRoot.addEventListener('pointercancel', function () { swiping = false; sx = null; sy = null; lock = false; restartAuto(); });
+      sliderRoot.addEventListener('pointercancel', function () { swiping = false; sx = null; sy = null; lock = false; });
     }
   }
   initSlider();
