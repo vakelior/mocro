@@ -84,7 +84,7 @@
       slider.appendChild(slide);
       dotsHtml += '<button class="slider-dot' + (i === 0 ? ' is-active' : '') + '" data-slider-dot="' + i + '" aria-label="المقال ' + (i + 1) + '"></button>';
     });
-    if (nav) nav.innerHTML = dotsHtml;
+    if (nav) nav.innerHTML = '<span class="material-symbols-outlined swipe-hint" aria-hidden="true">swipe_left</span>' + dotsHtml;
   }
 
   function renderJournal(articles) {
@@ -118,7 +118,7 @@
       list.appendChild(item);
       dotsHtml += '<button class="journal-dot' + (i === 0 ? ' is-active' : '') + '" data-jdot="' + i + '" aria-label="خبر ' + (i + 1) + '"></button>';
     });
-    if (nav) nav.innerHTML = dotsHtml;
+    if (nav) nav.innerHTML = '<span class="material-symbols-outlined swipe-hint" aria-hidden="true">swipe_left</span>' + dotsHtml;
   }
 
   function initJournalSlider() {
