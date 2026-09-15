@@ -232,25 +232,22 @@
 
     root.innerHTML = '';
 
-    var back = el('div', 'article-back container');
-    var backBtn = el('button', 'back-btn');
-    backBtn.type = 'button';
-    backBtn.appendChild(document.createTextNode('رجوع'));
-    backBtn.appendChild(icon('chevron_backward'));
-    backBtn.setAttribute('aria-label', 'الرجوع إلى الصفحة السابقة');
-    backBtn.addEventListener('click', function () {
-      if (window.history.length > 1 && document.referrer) { window.history.back(); }
-      else { window.location.href = url('index.html'); }
-    });
-    back.appendChild(backBtn);
-    root.appendChild(back);
-
     var head = el('div', 'article-head container');
+
     if (a.category) {
-      var catLink = el('a', 'cat', a.category.name);
-      catLink.href = url('category.html?slug=' + encodeURIComponent(a.category.slug));
-      head.appendChild(catLink);
+      var bc = el('nav', 'breadcrumb');
+      var homeLink = el('a', null, 'الرئيسية');
+      homeLink.href = url('index.html');
+      var sep = el('span', 'material-symbols-outlined breadcrumb-arrow', 'chevron_backward');
+      sep.setAttribute('aria-hidden', 'true');
+      var catCrumb = el('a', null, a.category.name);
+      catCrumb.href = url('category.html?slug=' + encodeURIComponent(a.category.slug));
+      bc.appendChild(homeLink);
+      bc.appendChild(sep);
+      bc.appendChild(catCrumb);
+      head.appendChild(bc);
     }
+
     head.appendChild(el('h1', null, a.title));
     if (a.excerpt) head.appendChild(el('p', 'article-deck', a.excerpt));
 
