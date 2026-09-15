@@ -32,10 +32,10 @@
 .mobile-menu a{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-4);padding:var(--sp-4) 0;font-size:var(--fs-3);font-weight:600;color:var(--color-fg);border-bottom:1px solid var(--color-line);transition:padding var(--duration) var(--ease),color var(--duration-fast)}
 .mobile-menu a:last-child{border-bottom:none}
 .mobile-menu a .menu-arrow{font-size:var(--icon-lg);color:var(--color-muted);transition:all var(--duration-fast)}
-.menu-categories{display:flex;flex-direction:column;gap:0}
-.menu-categories a{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);border:none;border-bottom:1px solid var(--color-line);border-radius:0;font-size:var(--fs-2);font-weight:600;color:var(--color-fg);background:transparent;transition:all var(--duration-fast)}
+.menu-categories{display:flex;flex-direction:column;gap:var(--sp-2)}
+.menu-categories a{display:flex;align-items:center;justify-content:space-between;gap:var(--sp-3);padding:var(--sp-3) var(--sp-4);border:1px solid var(--color-line);border-radius:var(--radius-md);font-size:var(--fs-2);font-weight:600;color:var(--color-fg);background:var(--color-bg);transition:all var(--duration-fast)}
 .menu-categories a .menu-arrow{font-size:var(--icon-lg);color:var(--color-muted)}
-.menu-categories a:last-child{border-bottom:none}
+.menu-categories a:last-child{border-bottom:1px solid var(--color-line)}
 .cat{position:relative;display:inline-block;font-size:var(--fs-3);font-weight:700;color:var(--color-accent);letter-spacing:.02em;text-transform:uppercase;margin-bottom:.5rem;padding-inline-start:var(--sp-4);align-self:flex-start;width:fit-content;max-width:100%}
 .cat::before{content:"";position:absolute;inset-inline-start:0;top:50%;transform:translateY(-50%);height:1.3em;width:3px;background:var(--ink)}
 .post{display:flex;flex-direction:column;border:1px solid var(--color-line);border-radius:var(--radius-md);overflow:hidden;transition:all var(--duration) var(--ease);background:var(--color-bg)}
