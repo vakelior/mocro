@@ -3,20 +3,20 @@
    MOCRO — Global Design System
    Unified spacing + alignment system (invisible grid),
    responsive across Desktop / Tablet / Mobile, RTL-safe.
-   Black glassmorphism theme.
+   Vanta black glassmorphism theme.
 */
 :root{
-  --color-bg:#0a0a0a;
-  --color-bg-soft:#141414;
+  --color-bg:#000000;
+  --color-bg-soft:#0a0a0a;
   --color-bg-inverse:#ffffff;
-  --color-surface:#050505;
+  --color-surface:#000000;
   --color-fg:#f5f5f5;
   --color-fg-inverse:#0a0a0a;
   --color-muted:#b3b3b3;
   --color-muted-inverse:#8a8a8a;
   --color-line:rgba(255,255,255,.10);
   --color-line-inverse:rgba(0,0,0,.22);
-  --color-header-bg:rgba(10,10,10,.72);
+  --color-header-bg:rgba(0,0,0,.72);
   --color-accent:#ffffff;
   --color-accent-soft:rgba(255,255,255,.10);
   --glass-bg:rgba(255,255,255,.04);
@@ -74,6 +74,6 @@
   --duration:.35s;
   --duration-slow:.6s;
   --radius-sm:0px;
-  --radius-md:12px;
-  --radius-full:999px;
+  --radius-md:0px;
+  --radius-full:0px;
 }
