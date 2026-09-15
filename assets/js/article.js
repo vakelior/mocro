@@ -196,7 +196,6 @@
     var dateStr = formatDate(publishedAt);
     if (dateStr) {
       var dateRow = el('div', 'author-card-date');
-      dateRow.appendChild(icon('schedule'));
       dateRow.appendChild(el('span', null, dateStr));
       body.appendChild(dateRow);
     }
