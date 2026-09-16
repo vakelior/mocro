@@ -18,6 +18,7 @@
 .search-result .sr-meta{font-size:var(--fs-2);color:var(--color-muted)}
 .listing .search-result{margin-bottom:var(--sp-2)}
 .listing .search-result:last-child{margin-bottom:0}
+.listing .search-result .sr-meta{font-weight:700}
 
 .article-hero{max-width:var(--max-width);margin-inline:auto;margin-block:var(--sp-3) 0}
 .article-hero-media{aspect-ratio:16/9;overflow:hidden;border:1px solid var(--color-line);background:var(--color-bg-soft)}
