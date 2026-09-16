@@ -87,6 +87,43 @@
     if (nav) nav.innerHTML = dotsHtml;
   }
 
+  function renderCategorySections(categories, articles) {
+    var host = document.getElementById('home-categories');
+    if (!host) return;
+    host.innerHTML = '';
+    categories.forEach(function (c) {
+      var items = articles.filter(function (a) { return a && a.category_id === c.id; }).slice(0, 6);
+      if (!items.length) return;
+
+      var section = el('section', 'home-cat');
+
+      var title = document.createElement('a');
+      title.href = catUrl(c);
+      title.className = 'section-title';
+      title.textContent = c.name;
+      section.appendChild(title);
+
+      var list = el('div', 'home-cat-list');
+      items.forEach(function (a) {
+        var item = el('article', 'search-result');
+        var href = artUrl(a);
+        item.setAttribute('data-href', href);
+        item.setAttribute('tabindex', '0');
+        item.setAttribute('role', 'link');
+        item.setAttribute('aria-label', a.title);
+        var body = el('div', 'sr-body');
+        body.appendChild(el('div', 'sr-title', a.title));
+        body.appendChild(el('div', 'sr-meta', dateStr(a.published_at) + ' · قراءة ' + readingTime(a.content)));
+        item.appendChild(body);
+        item.addEventListener('click', function () { window.location.href = href; });
+        item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
+        list.appendChild(item);
+      });
+      section.appendChild(list);
+      host.appendChild(section);
+    });
+  }
+
   function renderJournal(articles) {
     var list = document.querySelector('#journal .journal-list');
     var nav = document.querySelector('#journal .journal-nav');
@@ -143,7 +180,6 @@
       dot.onclick = function () { showSlide(parseInt(dot.getAttribute('data-jdot'), 10)); };
     });
 
-    // Manual touch/pointer swipe only (RTL aware) — no autoplay.
     var sx = null, sy = null, swiping = false, lock = false;
     list.style.touchAction = 'pan-y';
     list.addEventListener('pointerdown', function (ev) {
@@ -175,7 +211,7 @@
   async function renderHome() {
     try {
       var results = await Promise.all([
-        M.listCategories(), M.featuredArticles(), M.latestArticles()
+        M.listCategories(), M.featuredArticles(), M.latestArticles(200)
       ]);
       var categories = results[0].data || [];
       var featured = (results[1].data || []).map(M.normalize);
@@ -184,8 +220,7 @@
       if (!featured.length) featured = latest.slice(0, 6);
       renderNav(categories);
       renderSlider(featured.slice(0, 6));
-      renderJournal(latest.slice(0, 8));
-      initJournalSlider();
+      renderCategorySections(categories, latest);
 
       if (typeof window.MocroInitSlider === 'function') window.MocroInitSlider();
     } catch (err) {
