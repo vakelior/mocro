@@ -22,7 +22,8 @@
 
 /* Homepage category sections */
 .home-cat{margin-bottom:var(--sp-6)}
-.home-cat .section-title{margin-bottom:var(--sp-3)}
+.home-cat .section-title{margin-bottom:var(--sp-3);padding-inline-start:0}
+.home-cat .section-title::before{display:none}
 .home-cat-list{display:flex;flex-direction:column;gap:var(--sp-2);margin-top:var(--sp-3)}
 .home-cat-list .search-result{margin-bottom:0}
 .home-cat-list .search-result .sr-meta{font-weight:700}
