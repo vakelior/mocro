@@ -1,7 +1,7 @@
 /**
  * MOCRO — article.js | dynamic article page (/article.html?slug=…)
  * Same visual language as home: monochrome + gold, editorial, RTL.
- * No emoji icons — only Material Symbols (monochrome, consistent stroke).
+ * No emoji icons — only inline Material-style SVG icons.
  */
 (function () {
   'use strict';
@@ -11,7 +11,20 @@
   function url(p) { var b = window.MOCRO_CONFIG.SITE_BASE; if (b && b.slice(-1) !== '/') b += '/'; return (b || '') + p; }
   function qs(n) { return new URLSearchParams(window.location.search).get(n); }
   function el(t, c, x) { var e = document.createElement(t); if (c) e.className = c; if (x != null) e.textContent = x; return e; }
-  function icon(name) { var s = document.createElement('span'); s.className = 'material-symbols-outlined'; s.setAttribute('aria-hidden', 'true'); s.textContent = name; return s; }
+
+  var ICON_PATHS = {
+    'person': '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
+    'verified': '<path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="m8.5 12.5 2.5 2.5 5-5"/>',
+    'chevron': '<polyline points="15 18 9 12 15 6"/>'
+  };
+  function icon(name, cls) {
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('class', 'icon' + (cls ? ' ' + cls : ''));
+    s.setAttribute('viewBox', '0 0 24 24');
+    s.setAttribute('aria-hidden', 'true');
+    s.innerHTML = ICON_PATHS[name] || '';
+    return s;
+  }
 
   function esc(s) {
     return String(s == null ? '' : s)
@@ -238,8 +251,7 @@
       var bc = el('nav', 'breadcrumb');
       var homeLink = el('a', null, 'الرئيسية');
       homeLink.href = url('index.html');
-      var sep = el('span', 'material-symbols-outlined breadcrumb-arrow', 'chevron_backward');
-      sep.setAttribute('aria-hidden', 'true');
+      var sep = icon('chevron', 'breadcrumb-arrow');
       var catCrumb = el('a', null, a.category.name);
       catCrumb.href = url('category.html?slug=' + encodeURIComponent(a.category.slug));
       bc.appendChild(homeLink);

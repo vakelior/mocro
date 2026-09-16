@@ -11,6 +11,15 @@
   function dateStr(iso) { if (!iso) return ''; try { return new Date(iso).toLocaleDateString('ar-TN', { year: 'numeric', month: 'long', day: 'numeric' }); } catch (e) { return iso.slice(0, 10); } }
   function readingTime(content) { var w = (content || '').trim().split(/\s+/).length; var m = Math.max(1, Math.round(w / 180)); return m + (m === 1 ? ' دقيقة' : ' دقائق'); }
 
+  function chevron(cls) {
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('class', 'icon' + (cls ? ' ' + cls : ''));
+    s.setAttribute('viewBox', '0 0 24 24');
+    s.setAttribute('aria-hidden', 'true');
+    s.innerHTML = '<polyline points="15 18 9 12 15 6"/>';
+    return s;
+  }
+
   async function render() {
     var slug = qs('slug');
     var grid = document.getElementById('listing-grid');
@@ -27,8 +36,7 @@
     var bc = el('nav', 'breadcrumb');
     var homeLink = el('a', null, 'الرئيسية');
     homeLink.href = url('index.html');
-    var sep = el('span', 'material-symbols-outlined breadcrumb-arrow', 'chevron_backward');
-    sep.setAttribute('aria-hidden', 'true');
+    var sep = chevron('breadcrumb-arrow');
     var cur = el('span', 'breadcrumb-current', cat.name);
     bc.appendChild(homeLink);
     bc.appendChild(sep);

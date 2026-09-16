@@ -13,6 +13,15 @@
   }
   function catUrl(c) { return base('category.html?slug=' + encodeURIComponent(c.slug)); }
 
+  function chevron(cls) {
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('class', 'icon' + (cls ? ' ' + cls : ''));
+    s.setAttribute('viewBox', '0 0 24 24');
+    s.setAttribute('aria-hidden', 'true');
+    s.innerHTML = '<polyline points="15 18 9 12 15 6"/>';
+    return s;
+  }
+
   function populateCategoryNav(categories) {
     var desktopSub = document.getElementById('nav-categories-desktop');
     var mobileMenu = document.getElementById('mobile-menu');
@@ -37,7 +46,6 @@
         catBox = document.createElement('div');
         catBox.id = 'menu-categories';
         catBox.className = 'menu-categories';
-        // place right after .menu-search block
         if (menuSearch && menuSearch.nextSibling) mobileMenu.insertBefore(catBox, menuSearch.nextSibling);
         else mobileMenu.appendChild(catBox);
       }
@@ -46,9 +54,7 @@
         var a = document.createElement('a');
         a.href = catUrl(c); a.setAttribute('data-cat', '');
         var span = document.createElement('span'); span.textContent = c.name; a.appendChild(span);
-        var ar = document.createElement('span');
-        ar.className = 'material-symbols-outlined menu-arrow'; ar.setAttribute('aria-hidden', 'true'); ar.textContent = 'chevron_backward';
-        a.appendChild(ar);
+        a.appendChild(chevron('menu-arrow'));
         catBox.appendChild(a);
       });
     }
@@ -65,7 +71,6 @@
 
   function loadCategories() {
     if (!M) {
-      // Mocro client not ready yet (scripts order / async). Retry shortly.
       setTimeout(loadCategories, 300);
       return;
     }

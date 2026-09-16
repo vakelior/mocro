@@ -13,6 +13,15 @@
   function artUrl(a) { return url('article.html?slug=' + encodeURIComponent(a.slug)); }
   function catUrl(c) { return url('category.html?slug=' + encodeURIComponent(c.slug)); }
 
+  function chevron(cls) {
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('class', 'icon' + (cls ? ' ' + cls : ''));
+    s.setAttribute('viewBox', '0 0 24 24');
+    s.setAttribute('aria-hidden', 'true');
+    s.innerHTML = '<polyline points="15 18 9 12 15 6"/>';
+    return s;
+  }
+
   function renderNav(categories) {
     var desktopSub = document.getElementById('nav-categories-desktop');
     var mobileMenu = document.getElementById('mobile-menu');
@@ -45,9 +54,7 @@
         var a = document.createElement('a');
         a.href = catUrl(c); a.setAttribute('data-cat', '');
         a.appendChild(el('span', null, c.name));
-        var arrow = el('span', 'material-symbols-outlined menu-arrow', 'chevron_backward');
-        arrow.setAttribute('aria-hidden', 'true');
-        a.appendChild(arrow);
+        a.appendChild(chevron('menu-arrow'));
         catBox.appendChild(a);
       });
     }
