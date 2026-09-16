@@ -76,6 +76,8 @@
 .author-card-date .material-symbols-outlined{font-size:var(--icon-sm)}
 
 .related-section{max-width:var(--max-width);margin-inline:auto;padding-block:var(--sp-4) var(--sp-6)}
+.related-section .section-title{padding-inline-start:0;font-size:var(--fs-3)}
+.related-section .section-title::before{display:none}
 .related-grid{position:relative;display:block;overflow:hidden;margin-top:var(--sp-4)}
 .related-item{display:none;grid-template-columns:1fr 1.15fr;align-items:stretch;gap:0;padding:0;border:1px solid var(--glass-border);border-radius:var(--radius-md);background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur);cursor:pointer;overflow:hidden;min-height:0}
 .related-item.is-visible{display:grid}
