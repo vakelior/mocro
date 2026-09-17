@@ -28,6 +28,13 @@
 .home-cat-list .search-result{margin-bottom:0}
 .home-cat-list .search-result .sr-meta{font-weight:700}
 
+/* Homepage filter bar + unified card list */
+.home-filter{display:flex;flex-wrap:wrap;gap:var(--sp-2);margin-block:var(--sp-5) var(--sp-4)}
+.filter-chip{display:inline-flex;align-items:center;padding:.5rem var(--sp-4);font-size:var(--fs-2);font-weight:700;color:var(--color-muted);background:var(--color-bg);border:1px solid var(--color-line);border-radius:0;cursor:pointer;transition:all var(--duration-fast);white-space:nowrap}
+.filter-chip:hover{border-color:var(--color-accent);color:var(--color-fg)}
+.filter-chip.is-active{background:var(--ink);color:var(--ink-fg);border-color:var(--ink)}
+.home-cards{display:flex;flex-direction:column;gap:var(--sp-2);margin-bottom:var(--sp-6)}
+
 .article-hero{max-width:var(--max-width);margin-inline:auto;margin-block:var(--sp-3) 0}
 .article-hero-media{aspect-ratio:16/9;overflow:hidden;border:1px solid var(--color-line);background:var(--color-bg-soft)}
 .article-hero-media img{width:100%;height:100%;object-fit:cover}
