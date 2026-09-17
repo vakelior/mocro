@@ -208,7 +208,6 @@
     inner.appendChild(avatar);
 
     var body = el('div', 'author-card-body');
-    body.appendChild(el('div', 'author-card-eyebrow', 'الكاتب'));
     var nameWrap = el('div', 'author-card-name');
     var nameSpan = el('span', null, author.name || '');
     nameWrap.appendChild(nameSpan);
