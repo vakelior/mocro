@@ -5,6 +5,7 @@
 
 .search-field{position:relative}
 .search-field-icon{position:absolute;top:50%;transform:translateY(-50%);left:var(--sp-4);font-size:var(--icon-lg);color:var(--color-muted);pointer-events:none}
+.msi{display:inline-block;flex-shrink:0;vertical-align:middle;fill:currentColor;stroke:none;width:var(--icon-md);height:var(--icon-md)}
 .search-input{width:100%;font-family:inherit;font-size:var(--fs-2);padding:var(--sp-4) var(--sp-5);padding-inline-start:var(--sp-4);background:var(--color-bg-soft);color:var(--color-fg);border:1px solid var(--color-line);border-radius:var(--radius-md);outline:none}
 .search-input:focus{border-color:var(--color-accent)}
 .search-input::-webkit-search-cancel-button,.search-input::-webkit-search-decoration{-webkit-appearance:none;appearance:none;display:none}
@@ -159,6 +160,7 @@
 .author-cell-avatar{width:40px;height:40px;border-radius:50%;object-fit:cover;border:1px solid var(--color-line);flex-shrink:0;background:var(--color-bg-soft)}
 .author-cell-avatar.placeholder{display:inline-flex;align-items:center;justify-content:center;color:var(--color-muted)}
 .author-cell-avatar.placeholder .material-symbols-outlined{font-size:var(--icon-md)}
+.author-cell-avatar.placeholder .icon{width:var(--icon-md);height:var(--icon-md)}
 
 .badge{display:inline-block;font-size:var(--fs-2);font-weight:700;padding:.2rem .6rem;letter-spacing:.02em;white-space:nowrap}
 .badge-published{background:var(--color-accent-soft);color:var(--color-accent)}

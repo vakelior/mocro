@@ -7,20 +7,19 @@
 <meta name="theme-color" content="#000000">
 <meta name="robots" content="noindex,nofollow">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">
 <link rel="stylesheet" href="assets/css/fonts.css">
 <link rel="stylesheet" href="assets/css/tokens.css">
 <link rel="stylesheet" href="assets/css/base.css">
 <link rel="stylesheet" href="assets/css/components.css">
 <link rel="stylesheet" href="assets/css/layout.css">
-<link rel="stylesheet" href="assets/css/pages.css">
+<link rel="stylesheet" href="assets/css/pages.css?v=1">
 </head>
 <body>
 <header class="mocro-header" id="top">
   <div class="masthead"><div class="container masthead-inner">
     <a href="index.html" class="brand" aria-label="مُوكْرُو">مُوكْرُو</a>
     <div class="masthead-actions">
-      <a href="index.html" class="search-btn" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:700;text-decoration:none"><span class="material-symbols-outlined">arrow_back</span> الموقع</a>
+      <a href="index.html" class="search-btn" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:700;text-decoration:none"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="m313-440 224 224-57 56-320-320 320-320 57 56-224 224h487v80H313Z"/></svg> الموقع</a>
       <button class="admin-btn ghost" id="logout-btn">خروج</button>
     </div>
   </div></div>
@@ -32,15 +31,15 @@
       <div class="admin-user" id="admin-user">…</div>
     </div>
     <div class="admin-header-actions">
-      <button class="admin-btn primary" data-action="new-article"><span class="material-symbols-outlined">add</span> مقال جديد</button>
+      <button class="admin-btn primary" data-action="new-article"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg> مقال جديد</button>
     </div>
   </div>
 
   <div class="admin-tabs" id="admin-tabs">
-    <button class="admin-tab is-active" data-tab="articles"><span class="material-symbols-outlined">article</span> المقالات</button>
-    <button class="admin-tab" data-tab="categories"><span class="material-symbols-outlined">category</span> الأقسام</button>
-    <button class="admin-tab" data-tab="authors"><span class="material-symbols-outlined">group</span> الكتّاب</button>
-    <button class="admin-tab" data-tab="tags"><span class="material-symbols-outlined">sell</span> الوسوم</button>
+    <button class="admin-tab is-active" data-tab="articles"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="M280-280h280v-80H280v80Zm0-160h400v-80H280v80Zm0-160h400v-80H280v80Zm-80 480q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-80h560v-560H200v560Zm0-560v560-560Z"/></svg> المقالات</button>
+    <button class="admin-tab" data-tab="categories"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="m260-520 220-360 220 360H260ZM700-80q-75 0-127.5-52.5T520-260q0-75 52.5-127.5T700-440q75 0 127.5 52.5T880-260q0 75-52.5 127.5T700-80Zm-580-20v-320h320v320H120Zm580-60q42 0 71-29t29-71q0-42-29-71t-71-29q-42 0-71 29t-29 71q0 42 29 71t71 29Zm-500-20h160v-160H200v160Zm202-420h156l-78-126-78 126Zm78 0ZM360-340Zm340 80Z"/></svg> الأقسام</button>
+    <button class="admin-tab" data-tab="authors"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="M40-160v-112q0-34 17.5-62.5T104-378q62-31 126-46.5T360-440q66 0 130 15.5T616-378q29 15 46.5 43.5T680-272v112H40Zm720 0v-120q0-44-24.5-84.5T666-434q51 6 96 20.5t84 35.5q36 20 55 44.5t19 53.5v120H760ZM360-480q-66 0-113-47t-47-113q0-66 47-113t113-47q66 0 113 47t47 113q0 66-47 113t-113 47Zm400-160q0 66-47 113t-113 47q-11 0-28-2.5t-28-5.5q27-32 41.5-71t14.5-81q0-42-14.5-81T544-792q14-5 28-6.5t28-1.5q66 0 113 47t47 113ZM120-240h480v-32q0-11-5.5-20T580-306q-54-27-109-40.5T360-360q-56 0-111 13.5T140-306q-9 5-14.5 14t-5.5 20v32Zm240-320q33 0 56.5-23.5T440-640q0-33-23.5-56.5T360-720q-33 0-56.5 23.5T280-640q0 33 23.5 56.5T360-560Zm0 320Zm0-400Z"/></svg> الكتّاب</button>
+    <button class="admin-tab" data-tab="tags"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="M856-390 570-104q-12 12-27 18t-30 6q-15 0-30-6t-27-18L103-457q-11-11-17-25.5T80-513v-287q0-33 23.5-56.5T160-880h287q16 0 31 6.5t26 17.5l352 353q12 12 17.5 27t5.5 30q0 15-5.5 29.5T856-390ZM513-160l286-286-353-354H160v286l353 354ZM260-640q25 0 42.5-17.5T320-700q0-25-17.5-42.5T260-760q-25 0-42.5 17.5T200-700q0 25 17.5 42.5T260-640Zm220 160Z"/></svg> الوسوم</button>
   </div>
 
   <div class="admin-panel is-active" data-panel="articles">
@@ -64,7 +63,7 @@
   </div>
 
   <div class="admin-panel" data-panel="categories">
-    <div style="margin-bottom:1rem"><button class="admin-btn primary" data-action="new-category"><span class="material-symbols-outlined">add</span> قسم جديد</button></div>
+    <div style="margin-bottom:1rem"><button class="admin-btn primary" data-action="new-category"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg> قسم جديد</button></div>
     <div style="overflow-x:auto">
       <table class="admin-table" id="categories-table">
         <thead><tr><th>الاسم</th><th>Slug</th><th>الترتيب</th><th>نشط</th><th>إجراءات</th></tr></thead>
@@ -74,7 +73,7 @@
   </div>
 
   <div class="admin-panel" data-panel="authors">
-    <div style="margin-bottom:1rem"><button class="admin-btn primary" data-action="new-author"><span class="material-symbols-outlined">add</span> كاتب جديد</button></div>
+    <div style="margin-bottom:1rem"><button class="admin-btn primary" data-action="new-author"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg> كاتب جديد</button></div>
     <div style="overflow-x:auto">
       <table class="admin-table" id="authors-table">
         <thead><tr><th>الكاتب</th><th>إجراءات</th></tr></thead>
@@ -84,7 +83,7 @@
   </div>
 
   <div class="admin-panel" data-panel="tags">
-    <div style="margin-bottom:1rem"><button class="admin-btn primary" data-action="new-tag"><span class="material-symbols-outlined">add</span> وسم جديد</button></div>
+    <div style="margin-bottom:1rem"><button class="admin-btn primary" data-action="new-tag"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg> وسم جديد</button></div>
     <div style="display:flex;flex-wrap:wrap;gap:.5rem" id="tags-list"></div>
   </div>
 </main>
@@ -93,7 +92,7 @@
   <div class="admin-form" style="background:var(--color-bg);border:1px solid var(--color-line);padding:2rem;max-width:820px;width:100%;margin:auto">
     <div class="full" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
       <h2 style="font-size:var(--fs-3)" id="editor-title">مقال جديد</h2>
-      <button class="search-close" style="position:static" data-editor-close aria-label="إغلاق"><span class="material-symbols-outlined">close</span></button>
+      <button class="search-close" style="position:static" data-editor-close aria-label="إغلاق"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button>
     </div>
     <div class="admin-field full"><label>العنوان</label><input type="text" id="art-title" placeholder="عنوان المقال"></div>
     <div class="admin-field"><label>Slug (فارغ = تلقائي)</label><input type="text" id="art-slug" placeholder="auto"></div>
@@ -120,7 +119,7 @@
   <div class="admin-form" style="background:var(--color-bg);border:1px solid var(--color-line);padding:2rem;max-width:560px;width:100%;margin:auto">
     <div class="full" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem">
       <h2 style="font-size:var(--fs-3)" id="gen-title">إضافة</h2>
-      <button class="search-close" style="position:static" data-gen-close aria-label="إغلاق"><span class="material-symbols-outlined">close</span></button>
+      <button class="search-close" style="position:static" data-gen-close aria-label="إغلاق"><svg class="msi" viewBox="0 -960 960 960" aria-hidden="true"><path d="m256-200-56-56 224-224-224-224 56-56 224 224 224-224 56 56-224 224 224 224-56 56-224-224-224 224Z"/></svg></button>
     </div>
     <div id="gen-fields" style="grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:1.25rem"></div>
     <div class="full" style="display:flex;gap:.75rem;margin-top:1rem">
@@ -134,6 +133,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="assets/js/config.js"></script>
 <script src="assets/js/api.js"></script>
-<script src="assets/js/admin.js"></script>
+<script src="assets/js/admin.js?v=1"></script>
 </body>
 </html>

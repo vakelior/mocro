@@ -100,7 +100,17 @@
       td.appendChild(acts); tr.appendChild(td); tbody.appendChild(tr);
     });
   }
-  function icon(name) { var s = document.createElement('span'); s.className = 'material-symbols-outlined'; s.setAttribute('aria-hidden', 'true'); s.textContent = name; return s; }
+  var ICON_PATHS = {
+    'person': '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>'
+  };
+  function icon(name) {
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('class', 'icon');
+    s.setAttribute('viewBox', '0 0 24 24');
+    s.setAttribute('aria-hidden', 'true');
+    s.innerHTML = ICON_PATHS[name] || '';
+    return s;
+  }
   function renderTags() {
     var box = document.getElementById('tags-list'); box.innerHTML = '';
     cache.tags.forEach(function (t) {
