@@ -14,7 +14,7 @@
 
   var ICON_PATHS = {
     'person': '<path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>',
-    'verified': '<path d="M23 12l-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.7 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12zm-12.91 4.72-3.8-3.81 1.48-1.48 2.32 2.33 5.85-5.87 1.48 1.48-7.33 7.35z"/>',
+    'verified': '<path d="m344-60-76-128-144-32 14-148-98-112 98-112-14-148 144-32 76-128 136 58 136-58 76 128 144 32-14 148 98 112-98 112 14 148-144 32-76 128-136-58-136 58Zm34-102 102-44 104 44 56-96 110-26-10-112 74-84-74-86 10-112-110-24-58-96-102 44-104-44-56 96-110 24 10 112-74 86 74 84-10 114 110 24 58 96Zm102-318Zm-42 142 226-226-56-58-170 170-86-84-56 56 142 142Z"/>',
     'chevron': '<polyline points="15 18 9 12 15 6"/>'
   };
   function icon(name, cls) {
@@ -27,9 +27,12 @@
   }
 
   function verifiedBadge() {
-    var s = icon('verified', 'verified-badge');
+    var s = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    s.setAttribute('class', 'icon verified-badge');
+    s.setAttribute('viewBox', '0 -960 960 960');
     s.setAttribute('role', 'img');
     s.setAttribute('aria-label', 'موثّق');
+    s.innerHTML = ICON_PATHS['verified'] || '';
     return s;
   }
 
