@@ -205,9 +205,7 @@
       avatar = el('span', 'author-card-avatar placeholder');
       avatar.appendChild(icon('person'));
     }
-    var avWrap = el('div', 'author-card-avatar-wrap');
-    avWrap.appendChild(avatar);
-    inner.appendChild(avWrap);
+    inner.appendChild(avatar);
 
     var body = el('div', 'author-card-body');
     body.appendChild(el('div', 'author-card-eyebrow', 'الكاتب'));
