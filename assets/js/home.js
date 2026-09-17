@@ -67,33 +67,6 @@
     }
   }
 
-  function renderSlider(featured) {
-    var slider = document.querySelector('.featured-slider');
-    var nav = document.querySelector('.slider-nav');
-    if (!slider) return;
-    slider.innerHTML = '';
-    var dotsHtml = '';
-    featured.forEach(function (a, i) {
-      var slide = el('div', 'slide' + (i === 0 ? ' is-active' : ''));
-      slide.setAttribute('data-slide', '');
-      slide.setAttribute('data-href', artUrl(a));
-      slide.setAttribute('tabindex', '0');
-      slide.setAttribute('role', 'link');
-      slide.setAttribute('aria-label', a.title);
-      var media = el('div', 'slide-media');
-      if (a.featured_image) { var img = document.createElement('img'); img.src = a.featured_image; img.alt = a.title; img.loading = i === 0 ? 'eager' : 'lazy'; media.appendChild(img); }
-      var body = el('div', 'slide-body');
-      body.appendChild(el('h2', null, a.title));
-      body.appendChild(el('p', null, a.excerpt));
-      slide.appendChild(media); slide.appendChild(body);
-      slide.addEventListener('click', function () { window.location.href = artUrl(a); });
-      slide.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = artUrl(a); } });
-      slider.appendChild(slide);
-      dotsHtml += '<button class="slider-dot' + (i === 0 ? ' is-active' : '') + '" data-slider-dot="' + i + '" aria-label="المقال ' + (i + 1) + '"></button>';
-    });
-    if (nav) nav.innerHTML = dotsHtml;
-  }
-
   function renderCategorySections(categories, articles) {
     var host = document.getElementById('home-categories');
     if (!host) return;
@@ -218,18 +191,13 @@
   async function renderHome() {
     try {
       var results = await Promise.all([
-        M.listCategories(), M.featuredArticles(), M.latestArticles(200)
+        M.listCategories(), M.latestArticles(200)
       ]);
       var categories = results[0].data || [];
-      var featured = (results[1].data || []).map(M.normalize);
-      var latest = (results[2].data || []).map(M.normalize);
+      var latest = (results[1].data || []).map(M.normalize);
 
-      if (!featured.length) featured = latest.slice(0, 6);
       renderNav(categories);
-      renderSlider(featured.slice(0, 6));
       renderCategorySections(categories, latest);
-
-      if (typeof window.MocroInitSlider === 'function') window.MocroInitSlider();
     } catch (err) {
       console.error('MOCRO home render error:', err);
     }

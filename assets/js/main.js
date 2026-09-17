@@ -20,52 +20,6 @@
     document.addEventListener('click', function (e) { if (menu.classList.contains('is-open') && !menu.contains(e.target) && e.target !== burger) closeMenu(); });
   }
 
-  function initSlider() {
-    var slides = Array.prototype.slice.call(document.querySelectorAll('[data-slide]'));
-    var dots = Array.prototype.slice.call(document.querySelectorAll('[data-slider-dot]'));
-    if (!slides.length) return;
-    var current = 0;
-    var sliderRoot = slides[0].parentElement || null;
-    function showSlide(i) { current = (i + slides.length) % slides.length; slides.forEach(function (s, x) { s.classList.toggle('is-active', x === current); }); dots.forEach(function (d, x) { d.classList.toggle('is-active', x === current); }); }
-    function nextSlide() { showSlide(current + 1); }
-    function prevSlide() { showSlide(current - 1); }
-    showSlide(0);
-    dots.forEach(function (dot) { dot.onclick = function () { showSlide(parseInt(dot.getAttribute('data-slider-dot'), 10)); }; });
-
-    // Touch / pointer swipe for the featured slider (RTL aware) — manual only (no autoplay).
-    if (sliderRoot) {
-      var sx = null, sy = null, swiping = false, lock = false;
-      sliderRoot.style.touchAction = 'pan-y';
-      sliderRoot.addEventListener('pointerdown', function (ev) {
-        if (ev.pointerType === 'mouse' && ev.button !== 0) return;
-        swiping = true; lock = false; sx = ev.clientX; sy = ev.clientY;
-        try { sliderRoot.setPointerCapture(ev.pointerId); } catch (e) {}
-      });
-      sliderRoot.addEventListener('pointermove', function (ev) {
-        if (!swiping || sx === null) return;
-        var dx = ev.clientX - sx; var dy = ev.clientY - sy;
-        if (!lock && Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
-        if (Math.abs(dy) > Math.abs(dx)) { swiping = false; lock = false; sx = null; sy = null; return; }
-        lock = true;
-      });
-      sliderRoot.addEventListener('pointerup', function (ev) {
-        if (!swiping || sx === null) { swiping = false; sx = null; sy = null; lock = false; return; }
-        swiping = false;
-        var dx = ev.clientX - sx;
-        var isRTL = (document.documentElement.getAttribute('dir') === 'rtl') || (getComputedStyle && getComputedStyle(document.body).direction === 'rtl');
-        if (Math.abs(dx) > 50) {
-          // In RTL, swiping left (negative dx) advances to the next slide.
-          if ((dx < 0 && !isRTL) || (dx > 0 && isRTL)) nextSlide();
-          else prevSlide();
-        }
-        sx = null; sy = null; lock = false;
-      });
-      sliderRoot.addEventListener('pointercancel', function () { swiping = false; sx = null; sy = null; lock = false; });
-    }
-  }
-  initSlider();
-  window.MocroInitSlider = initSlider;
-
   document.querySelectorAll('a[href^="#"]').forEach(function (link) {
     link.addEventListener('click', function (e) {
       var id = link.getAttribute('href');
