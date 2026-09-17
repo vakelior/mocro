@@ -80,7 +80,7 @@
 
 /* Author card */
 .author-card{max-width:var(--max-width);margin-inline:auto;margin-bottom:var(--sp-8);padding-inline:0}
-.author-card-inner{display:flex;align-items:center;gap:var(--sp-5);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:var(--sp-5) var(--sp-6);background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
+.author-card-inner{display:flex;align-items:flex-start;gap:var(--sp-5);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:var(--sp-5) var(--sp-6);background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
 .author-card-avatar{width:84px;height:84px;border-radius:50%;object-fit:cover;border:1px solid var(--color-line);flex-shrink:0;background:var(--color-bg-soft)}
 .author-card-avatar.placeholder{display:inline-flex;align-items:center;justify-content:center;color:var(--color-muted)}
 .author-card-avatar.placeholder .material-symbols-outlined{font-size:var(--icon-lg)}
@@ -88,9 +88,9 @@
 .author-card-eyebrow{font-size:var(--fs-2);font-weight:700;letter-spacing:.03em;color:var(--color-muted);margin-bottom:.25rem}
 .author-card-name{font-size:var(--fs-3);font-weight:700;margin-bottom:.4rem;color:var(--color-fg);display:flex;align-items:center;gap:.2rem}
 .author-card-name .material-symbols-outlined{font-size:var(--fs-3);color:var(--color-accent);line-height:1}
-.author-card-name .verified-badge{width:18px;height:18px;flex-shrink:0;display:inline-block;vertical-align:middle}
+.author-card-name .verified-badge{width:18px;height:18px;flex-shrink:0;display:inline-block;vertical-align:middle;color:var(--color-accent)}
 .author-card-bio{font-size:var(--fs-2);color:var(--color-muted);line-height:1.8}
-.author-card-date{display:flex;align-items:center;gap:.5rem;font-size:var(--fs-2);font-weight:700;color:var(--color-muted);margin-top:.5rem}
+.author-card-date{display:flex;align-items:center;gap:.5rem;font-size:var(--fs-2);font-weight:400;color:var(--color-muted);margin-top:.5rem}
 .author-card-date .material-symbols-outlined{font-size:var(--icon-sm)}
 
 .related-section{max-width:var(--max-width);margin-inline:auto;padding-block:var(--sp-4) var(--sp-6)}
