@@ -19,6 +19,7 @@
 .listing .search-result{margin-bottom:var(--sp-2)}
 .listing .search-result:last-child{margin-bottom:0}
 .listing .search-result .sr-meta{font-weight:700}
+.sr-date{font-weight:400}
 
 /* Homepage category sections */
 .home-cat{margin-bottom:var(--sp-6)}

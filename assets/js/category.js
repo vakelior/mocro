@@ -61,7 +61,10 @@
       item.setAttribute('aria-label', a.title);
       var body = el('div', 'sr-body');
       body.appendChild(el('div', 'sr-title', a.title));
-      body.appendChild(el('div', 'sr-meta', dateStr(a.published_at) + ' · قراءة ' + readingTime(a.content)));
+      var meta = el('div', 'sr-meta');
+      meta.appendChild(el('span', 'sr-date', dateStr(a.published_at)));
+      meta.appendChild(el('span', null, ' · قراءة ' + readingTime(a.content)));
+      body.appendChild(meta);
       item.appendChild(body);
       item.addEventListener('click', function () { window.location.href = href; });
       item.addEventListener('keydown', function (e) { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.location.href = href; } });
