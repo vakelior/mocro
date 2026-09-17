@@ -82,8 +82,9 @@
 /* Author card */
 .author-card{max-width:var(--max-width);margin-inline:auto;margin-bottom:var(--sp-8);padding-inline:0}
 .author-card-inner{display:flex;align-items:flex-start;gap:var(--sp-5);border:1px solid var(--glass-border);border-radius:var(--radius-md);padding:var(--sp-5) var(--sp-6);background:var(--glass-bg);-webkit-backdrop-filter:var(--glass-blur);backdrop-filter:var(--glass-blur)}
-.author-card-avatar{width:84px;height:84px;border-radius:50%;object-fit:cover;border:1px solid var(--color-line);flex-shrink:0;background:var(--color-bg-soft)}
-.author-card-avatar.placeholder{display:inline-flex;align-items:center;justify-content:center;color:var(--color-muted)}
+.author-card-avatar-wrap{width:84px;height:84px;border-radius:50%;overflow:hidden;border:1px solid var(--color-line);flex-shrink:0;background:var(--color-bg-soft);position:relative}
+.author-card-avatar{width:100%;height:100%;object-fit:cover;object-position:center 30%;display:block;transform:scale(1.35)}
+.author-card-avatar.placeholder{display:inline-flex;align-items:center;justify-content:center;color:var(--color-muted);transform:none}
 .author-card-avatar.placeholder .material-symbols-outlined{font-size:var(--icon-lg)}
 .author-card-body{flex:1;min-width:0}
 .author-card-eyebrow{font-size:var(--fs-2);font-weight:700;letter-spacing:.03em;color:var(--color-muted);margin-bottom:.25rem}
