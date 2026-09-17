@@ -86,7 +86,6 @@
       var list = el('div', 'home-cat-list');
       items.forEach(function (a) {
         var item = el('article', 'search-result');
-        if (a.featured_image) { item.classList.add('has-thumb-bg'); item.style.setProperty('--thumb-bg', "url('" + a.featured_image + "')"); }
         var href = artUrl(a);
         item.setAttribute('data-href', href);
         item.setAttribute('tabindex', '0');
