@@ -26,6 +26,17 @@
     return s;
   }
 
+  function verifiedBadge() {
+    var img = document.createElement('img');
+    img.className = 'verified-badge';
+    img.src = url('assets/img/verified.svg');
+    img.alt = 'موثّق';
+    img.width = 18; img.height = 18;
+    img.loading = 'lazy';
+    img.decoding = 'async';
+    return img;
+  }
+
   function esc(s) {
     return String(s == null ? '' : s)
       .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
@@ -202,7 +213,7 @@
     var nameWrap = el('div', 'author-card-name');
     var nameSpan = el('span', null, author.name || '');
     nameWrap.appendChild(nameSpan);
-    nameWrap.appendChild(icon('verified'));
+    nameWrap.appendChild(verifiedBadge());
     body.appendChild(nameWrap);
     if (author.bio) body.appendChild(el('div', 'author-card-bio', author.bio));
 
