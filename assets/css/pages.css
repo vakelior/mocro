@@ -29,7 +29,7 @@
 .home-cat-list .search-result .sr-meta{font-weight:700}
 
 /* Homepage filter bar + unified card list */
-.home-filter{display:flex;flex-wrap:nowrap;gap:var(--sp-2);margin-block:8px var(--sp-4);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-behavior:smooth;padding-bottom:var(--sp-1)}
+.home-filter{display:flex;flex-wrap:nowrap;gap:var(--sp-2);margin-block:8px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;scroll-behavior:smooth}
 .home-filter::-webkit-scrollbar{display:none}
 .filter-chip{display:inline-flex;align-items:center;padding:.5rem var(--sp-4);font-size:var(--fs-2);font-weight:700;color:var(--color-muted);background:var(--color-bg);border:1px solid var(--color-line);border-radius:0;cursor:pointer;transition:all var(--duration-fast);white-space:nowrap;flex-shrink:0}
 .filter-chip:hover{border-color:var(--color-accent);color:var(--color-fg)}
