@@ -27,14 +27,10 @@
   }
 
   function verifiedBadge() {
-    var img = document.createElement('img');
-    img.className = 'verified-badge';
-    img.src = url('assets/img/verified.svg');
-    img.alt = 'موثّق';
-    img.width = 18; img.height = 18;
-    img.loading = 'lazy';
-    img.decoding = 'async';
-    return img;
+    var s = icon('verified', 'verified-badge');
+    s.setAttribute('role', 'img');
+    s.setAttribute('aria-label', 'موثّق');
+    return s;
   }
 
   function esc(s) {
