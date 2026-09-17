@@ -34,6 +34,10 @@
 .filter-chip:hover{border-color:var(--color-accent);color:var(--color-fg)}
 .filter-chip.is-active{background:var(--ink);color:var(--ink-fg);border-color:var(--ink)}
 .home-cards{display:flex;flex-direction:column;gap:var(--sp-2);margin-bottom:var(--sp-6)}
+.home-cards .search-result{background:var(--ink);border-color:var(--ink)}
+.home-cards .search-result .sr-title{color:var(--ink-fg)}
+.home-cards .search-result .sr-meta{color:var(--ink-fg-muted)}
+.home-cards .search-result:hover{background:var(--color-surface);border-color:var(--color-surface)}
 
 .article-hero{max-width:var(--max-width);margin-inline:auto;margin-block:var(--sp-3) 0}
 .article-hero-media{aspect-ratio:16/9;overflow:hidden;border:1px solid var(--color-line);background:var(--color-bg-soft)}
