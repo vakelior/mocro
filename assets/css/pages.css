@@ -112,7 +112,7 @@
 .breadcrumb-arrow{font-size:var(--icon-sm);color:var(--color-accent);line-height:1}
 .breadcrumb-current{color:var(--color-fg);font-weight:700}
 
-.page-head{max-width:var(--max-width);margin:var(--sp-6) auto var(--sp-4);padding-block:var(--sp-6) 0}
+.page-head{max-width:var(--max-width);margin:16px auto var(--sp-4);padding-block:0}
 .page-head h1{position:relative;font-size:var(--fs-4);font-weight:700;margin-bottom:var(--sp-2);display:inline-block;padding-inline-start:0}
 .page-head .page-desc{color:var(--color-muted);font-size:var(--fs-2);max-width:640px}
 .listing{max-width:var(--max-width);margin-inline:auto;padding-bottom:var(--section-gap)}
