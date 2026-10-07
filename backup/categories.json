@@ -1,0 +1,66 @@
+[
+    {
+        "id": "4b34bf73-001b-488c-9a59-c457743159b8",
+        "name": "Local",
+        "slug": "local",
+        "description": "Local news and community issues.",
+        "sort_order": 6,
+        "is_active": true
+    },
+    {
+        "id": "56bbb68b-dcca-43e2-8a4f-325b8543b5bc",
+        "name": "Health",
+        "slug": "health",
+        "description": "Health, science, medicine and lifestyle.",
+        "sort_order": 8,
+        "is_active": true
+    },
+    {
+        "id": "5c6ea47c-ab91-4b89-b173-5a9876389e86",
+        "name": "Politics",
+        "slug": "politics",
+        "description": "Local and international politics news and the latest developments.",
+        "sort_order": 1,
+        "is_active": true
+    },
+    {
+        "id": "ad8298dd-c73e-4e35-8f8a-b3005a9b1d9a",
+        "name": "Economy",
+        "slug": "economy",
+        "description": "Markets, economy, business and finance.",
+        "sort_order": 2,
+        "is_active": true
+    },
+    {
+        "id": "d2fe734c-ec05-4879-8d23-b19acb48d79e",
+        "name": "Culture & Arts",
+        "slug": "culture-arts",
+        "description": "Literature, art, cinema, music and heritage.",
+        "sort_order": 4,
+        "is_active": true
+    },
+    {
+        "id": "df01277c-33dc-42b8-a8ff-23ae4d44d860",
+        "name": "Technology",
+        "slug": "technology",
+        "description": "Technology, artificial intelligence and innovation news.",
+        "sort_order": 5,
+        "is_active": true
+    },
+    {
+        "id": "ecda4ed4-544b-4931-be11-9375c1d59730",
+        "name": "World",
+        "slug": "world",
+        "description": "Top world events as they happen.",
+        "sort_order": 7,
+        "is_active": true
+    },
+    {
+        "id": "f1489472-4744-40ad-99ae-d34355f3c603",
+        "name": "Sports",
+        "slug": "sports",
+        "description": "Local and world sports news and top matches.",
+        "sort_order": 3,
+        "is_active": true
+    }
+]
