@@ -1,0 +1,45 @@
+/* ============ DESIGN TOKENS ============ */
+:root{
+  color-scheme:dark;
+  forced-color-adjust:none;
+  --color-bg:#000000;
+  --color-bg-soft:#111111;
+  --color-bg-inverse:#ffffff;
+  --color-surface:#ffffff;
+  --color-fg:#ffffff;
+  --color-fg-inverse:#000000;
+  --color-muted:#a3a3a3;
+  --color-muted-inverse:#666666;
+  --color-line:#000000;
+  --color-line-inverse:#e8e8e8;
+  --color-header-bg:rgba(0,0,0,.88);
+  --color-accent:#ffffff;
+  --color-accent-soft:rgba(255,255,255,.12);
+  --glass-bg:rgba(255,255,255,.04);
+  --glass-bg-strong:rgba(255,255,255,.08);
+  --glass-blur:blur(20px) saturate(160%);
+  --glass-border:rgba(0,0,0,.6);
+  --font-sans:'Spotify Mix',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'JetBrains Mono','SFMono-Regular',Consolas,monospace;
+  --fs-2:clamp(1.0625rem,1.562vw,1.25rem);
+  --fs-3:clamp(1.1875rem,1.875vw,1.5rem);
+  --fs-4:clamp(1.625rem,3.281vw,2.625rem);
+  --icon-sm:clamp(1rem,1.562vw,1.25rem);
+  --icon-md:clamp(1.25rem,1.875vw,1.5rem);
+  --icon-lg:clamp(1.5rem,2.188vw,1.75rem);
+  --sp-1:0.25rem;--sp-2:0.5rem;--sp-3:0.75rem;--sp-4:1rem;--sp-5:1.5rem;--sp-6:2rem;--sp-7:2.5rem;--sp-8:3rem;--sp-9:4rem;--sp-10:5rem;
+  --max-width:1240px;
+  --content-width:760px;
+  --gutter:clamp(1rem,3vw,2rem);
+  --section-gap:clamp(2.5rem,6vw,4rem);
+  --ink:#ffffff;
+  --ink-fg:#000000;
+  --ink-fg-muted:#a3a3a3;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --duration-fast:.2s;
+  --duration:.35s;
+  --duration-slow:.6s;
+  --radius-sm:0px;
+  --radius-md:0px;
+  --radius-full:0px;
+}
