@@ -1,0 +1,13 @@
+{
+  "name": "mocro",
+  "version": "1.0.0",
+  "description": "Mocro — modern news platform (politics, economy, sports, culture, technology, health, local & world affairs).",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev .",
+    "deploy": "wrangler pages deploy .",
+    "backup": "node scripts/backup-articles.mjs"
+  },
+  "keywords": ["news", "morocco", "afrobeat"],
+  "license": "MIT"
+}
